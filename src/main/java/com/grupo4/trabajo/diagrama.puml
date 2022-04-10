@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Cliente{
+-direccion: String
+-deuda: float
+-tiposervicio: Servicio
+
+
++pedirPedido(pedido: Pedido)
++setters()
++getters()
+}
+
+abstract class Servicio{
+- cantLimpiezas: int
+- cantOrdenamientos: int
+- limiteDeuda: float
+
++validarPedido(pedido: Pedido,deuda: float)
++asignarRobots(Collection<Robot> robots)
+-actualizarServicio(pedido: Pedido)
+}
+
+class Robot{
+- pedidosPendientes: int
+- idRobot: String
+- superficie: String
+- puedeOrdenar: boolean
+- puedeLustrar: boolean
+- costo: float
+
++agregarPedido()
++finalizarPedido()
+}
+
+Servicio <|-- Platinium
+Servicio <|-- Classic
+Servicio <|-- Economic
+
+Robot <-- Servicio
+Pedido <-- Cliente
+
+class Platinium{
+-cuota: float
+limiteDeuda = cuota
+cantLimpiezas = INFINITE
+cantOrdenamientos = INFINITE
+}
+class Classic{
+limiteDeuda = 2000
+cantOrdenamientos = 3
+cantLimpiezas = INFINITE
+}
+
+class Economic{
+limiteDeuda = 0
+cantLimpiezas = 3
+cantOrdenamientos = 0
+}
+
+
+Cliente *-- Servicio
+
+class Pedido{
+- limpiezaSimple: boolean
+- ordenamiento: boolean
+- superficie: String
+}
+
+
+
+@enduml
