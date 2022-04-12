@@ -16,10 +16,13 @@ abstract class Servicio{
 - cantLimpiezas: int
 - cantOrdenamientos: int
 - limiteDeuda: float
+ -cuota: float
 
 +validarPedido(pedido: Pedido,deuda: float)
 +asignarRobots(Collection<Robot> robots)
 -actualizarServicio(pedido: Pedido)
++setters()
++getters()
 }
 
 class Robot{
@@ -38,11 +41,10 @@ Servicio <|-- Platinium
 Servicio <|-- Classic
 Servicio <|-- Economic
 
-Robot <-- Servicio
-Pedido <-- Cliente
+Robot <-- Servicio : Uso
+Pedido <--  Cliente : Uso
 
 class Platinium{
--cuota: float
 limiteDeuda = cuota
 cantLimpiezas = INFINITE
 cantOrdenamientos = INFINITE
@@ -60,7 +62,7 @@ cantOrdenamientos = 0
 }
 
 
-Cliente *-- Servicio
+Cliente *--  Servicio : composición
 
 class Pedido{
 - limpiezaSimple: boolean
@@ -68,6 +70,7 @@ class Pedido{
 - superficie: String
 }
 
-
+note left of Economic : definimos los limites de cada tipo de servicio\n para mas legibilidad
+note left of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
 
 @enduml
