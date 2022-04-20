@@ -4,6 +4,7 @@ import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 public abstract class Servicio {
     private int cantLimpiezas;
@@ -11,15 +12,33 @@ public abstract class Servicio {
     private float limiteDeuda;
     private float couta;
 
-    public void validarPedido(Pedido pedido,float deuda){
+    public abstract void validarPedido(Pedido pedido,float deuda);
 
+    public float asignarRobots(Collection<Robot> robots,Pedido pedido){
+
+        Collection<Robot> robotsPedido = buscarRobots(pedido,robots);
+
+        float costo = 0f;
+        Iterator<Robot> it = robotsPedido.iterator();
+        while(it.hasNext()){
+            it.next().agregarPedido(pedido);
+            costo += it.next().getCosto();
+        }
+        return costo;
     }
 
-    public void asignarRobots(Collection<Robot> Robots){
-
+    public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
+        //condicion de busqueda: los robots mas economicos
+        return null;
     }
 
-    public void actualizarServicio(Pedido pedido){
+    public void actualizarServicio(Pedido pedido, float costo) {
+        if (pedido.isRequiereLimpieza()) {
+            setCantLimpiezas(getCantLimpiezas() - 1);
+        }
+        if (pedido.isOrdenamiento()) {
+            setCantOrdenamientos(getCantOrdenamientos() - 1);
+        }
 
     }
 

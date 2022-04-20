@@ -32,9 +32,9 @@ abstract class Servicio{
 }
 
 abstract class Robot{
-- pedidosPendientes: int
+- pedidosPendientes: Collection<Pedido>
 - idRobot: String
-- superficie: String
+- superficie: Superficie
 - puedeOrdenar: boolean
 - puedeLustrar: boolean
 - costo: float
@@ -44,31 +44,31 @@ abstract class Robot{
 }
 
 class K311Y_fl{
- superficie = "Pisos"
+ superficie = PISOS
  puedeOrdenar = false
  puedeLustrar = false
  costo = 1000
 }
 class K311Y_fu{
-superficie = "Muebles"
+superficie = MUEBLES
  puedeOrdenar = false
  puedeLustrar = true
  costo = 500
 }
 class P011H{
-superficie = "Pisos"
+superficie = PISOS
  puedeOrdenar = false
  puedeLustrar = true
  costo = 1500
 }
 class K311Y_a{
- superficie = "Pisos/Muebles"
+ superficie = PISOSYMUEBLES
  puedeOrdenar = true
  puedeLustrar = true
  costo = 5000
 }
 class S031RTY{
-superficie = "N/A"
+superficie = null
  puedeOrdenar = true
  puedeLustrar = false
  costo = 2700
@@ -115,6 +115,14 @@ class Pedido{
 - ordenamiento: boolean
 - superficie: String
 }
+
+enum Superficie{
+PISOS
+MUEBLES
+PISOSYMUEBLES
+}
+
+Robot -right-> Superficie : uso
 
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad

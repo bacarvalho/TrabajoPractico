@@ -3,9 +3,9 @@
 
 autonumber
 
-Alice -> Bob: XD
-Bob --> Alice: L
+Alice -> Bob:
+Bob --> Alice:
 
-Alice -> Bob: xxd
-Alice <-- Bob: another authentication Response
+Alice -> Bob:
+Alice <-- Bob:
 @enduml

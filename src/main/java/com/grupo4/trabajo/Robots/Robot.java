@@ -1,26 +1,37 @@
 package com.grupo4.trabajo.Robots;
 
+import com.grupo4.trabajo.Pedido;
+
+import java.util.Collection;
+import java.util.List;
+
 public abstract class Robot {
-    private int pedidosPendientes;
+    private List<Pedido> pedidosPendientes;
     private String idRobot;
-    private String superficie;
+    private Superficie superficie;
     private boolean puedeOrdenar;
     private boolean puedeLustrar;
     private float costo;
 
-    public void agregarPedido(){
-
+    public void agregarPedido(Pedido pedido){
+        pedidosPendientes.add(pedido);
     }
 
     public void finalizarPedido(){
+        /*si la lista de pedidos esta vacia, lanza una excepcion, de lo contrario elimina el primer
+        * pedido de la lista*/
 
+        if(pedidosPendientes.isEmpty()){
+            //excepcion PedidosPendientesVaciosException
+        }
+        pedidosPendientes.remove(pedidosPendientes.get(0));
     }
 
-    public int getPedidosPendientes() {
+    public List<Pedido> getPedidosPendientes() {
         return pedidosPendientes;
     }
 
-    public void setPedidosPendientes(int pedidosPendientes) {
+    public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
         this.pedidosPendientes = pedidosPendientes;
     }
 
@@ -32,11 +43,11 @@ public abstract class Robot {
         this.idRobot = idRobot;
     }
 
-    public String getSuperficie() {
+    public Superficie getSuperficie() {
         return superficie;
     }
 
-    public void setSuperficie(String superficie) {
+    public void setSuperficie(Superficie superficie) {
         this.superficie = superficie;
     }
 
