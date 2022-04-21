@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Pedido;
 
 public class Classic extends Servicio{
@@ -9,7 +10,7 @@ public class Classic extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, float deuda) {
+    public void validarPedido(Pedido pedido, Cliente cliente) {
 
     }
 }

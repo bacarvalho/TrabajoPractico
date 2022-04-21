@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 
@@ -11,8 +12,8 @@ public class Economic extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, float deuda) {
-        if(deuda > getLimiteDeuda()){
+    public void validarPedido(Pedido pedido, Cliente cliente) {
+        if(cliente.getDeuda() > getLimiteDeuda()){
             //EsMorosoException
         }
         if(pedido.isRequiereLimpieza()){

@@ -14,7 +14,7 @@ public abstract class Servicio {
     private float limiteDeuda;
     private float couta;
 
-    public abstract void validarPedido(Pedido pedido,float deuda);
+    public abstract void validarPedido(Pedido pedido,Cliente cliente);
 
 
     /*cambie la variable deuda por cliente ya que si solo ponemos la deuda, no es posible luego sumarle el costo final
@@ -24,7 +24,7 @@ public abstract class Servicio {
 
 
         //valida que se pueda realizar el pedido. que el cliente no sea moroso y el servicio pueda satisfacer el pedido
-        validarPedido(pedido,cliente.getDeuda());
+        validarPedido(pedido,cliente);
 
         //busca los robots necesarios para realizar el pedido
         Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());

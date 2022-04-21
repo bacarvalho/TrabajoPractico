@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
@@ -17,7 +18,7 @@ public class Platinium extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, float deuda) {
+    public void validarPedido(Pedido pedido, Cliente cliente) {
 
     }
 }
