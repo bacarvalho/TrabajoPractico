@@ -8,7 +8,7 @@ public class Cliente {
     private Servicio tipoServicio;
 
     public void pedirPedido(Pedido pedido){
-        tipoServicio.validarPedido(pedido,deuda);
+        tipoServicio.realizarPedido(pedido,this);
     }
 
     public String getDireccion() {

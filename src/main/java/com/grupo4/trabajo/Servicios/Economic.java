@@ -23,7 +23,5 @@ public class Economic extends Servicio{
         if(pedido.isOrdenamiento()){
             //NoCantOrdenamientoDisponibleException
         }
-        float costo = asignarRobots(Empresa.getRobots(),pedido);
-        actualizarServicio(pedido,costo);
     }
 }

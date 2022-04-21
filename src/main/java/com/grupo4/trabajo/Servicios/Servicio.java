@@ -1,5 +1,7 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
+import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
@@ -14,14 +16,40 @@ public abstract class Servicio {
 
     public abstract void validarPedido(Pedido pedido,float deuda);
 
-    public float asignarRobots(Collection<Robot> robots,Pedido pedido){
 
-        Collection<Robot> robotsPedido = buscarRobots(pedido,robots);
+    /*cambie la variable deuda por cliente ya que si solo ponemos la deuda, no es posible luego sumarle el costo final
+    * cosa que con esta vatiable si puedo, se ve en la funcion actualizar servicio*/
+    public void realizarPedido(Pedido pedido, Cliente cliente){
+        //proximamente se le agregara el try catch para atrapar excepciones
 
-        float costo = 0f;
-        Iterator<Robot> it = robotsPedido.iterator();
+
+        //valida que se pueda realizar el pedido. que el cliente no sea moroso y el servicio pueda satisfacer el pedido
+        validarPedido(pedido,cliente.getDeuda());
+
+        //busca los robots necesarios para realizar el pedido
+        Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
+
+        //calcula el costo total del pedido
+        float costo = getCostoRobots(robotsPedido);
+
+        //agrega los pedidos pendientes a los robots
+        agregarPedidoRobots(robotsPedido,pedido);
+
+        //actualiza el servicio, sumandole el costo al cliente y restandole al servicio el ordenamiento y la limpieza que necesite
+        actualizarServicio(pedido, cliente, costo);
+    }
+
+    public void agregarPedidoRobots(Collection<Robot> robots,Pedido pedido){
+        Iterator<Robot> it = robots.iterator();
         while(it.hasNext()){
             it.next().agregarPedido(pedido);
+        }
+    }
+
+    public float getCostoRobots(Collection<Robot> robots){
+        float costo = 0f;
+        Iterator<Robot> it = robots.iterator();
+        while(it.hasNext()){
             costo += it.next().getCosto();
         }
         return costo;
@@ -32,14 +60,14 @@ public abstract class Servicio {
         return null;
     }
 
-    public void actualizarServicio(Pedido pedido, float costo) {
+    public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
         if (pedido.isRequiereLimpieza()) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
         if (pedido.isOrdenamiento()) {
             setCantOrdenamientos(getCantOrdenamientos() - 1);
         }
-
+        cliente.setDeuda(cliente.getDeuda() + costo);
     }
 
 
