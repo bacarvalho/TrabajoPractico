@@ -12,6 +12,12 @@ class Cliente{
 +getters()
 }
 
+class Empresa{
+-Collection<Robot> robots
+-Collection<Cliente> clientes
+}
+
+
 abstract class Servicio{
 - cantLimpiezas: int
 - cantOrdenamientos: int
@@ -25,10 +31,10 @@ abstract class Servicio{
 +getters()
 }
 
-class Robot{
-- pedidosPendientes: int
+abstract class Robot{
+- pedidosPendientes: Collection<Pedido>
 - idRobot: String
-- superficie: String
+- superficie: Superficie
 - puedeOrdenar: boolean
 - puedeLustrar: boolean
 - costo: float
@@ -37,12 +43,52 @@ class Robot{
 +finalizarPedido()
 }
 
+class K311Y_fl{
+ superficie = PISOS
+ puedeOrdenar = false
+ puedeLustrar = false
+ costo = 1000
+}
+class K311Y_fu{
+superficie = MUEBLES
+ puedeOrdenar = false
+ puedeLustrar = true
+ costo = 500
+}
+class P011H{
+superficie = PISOS
+ puedeOrdenar = false
+ puedeLustrar = true
+ costo = 1500
+}
+class K311Y_a{
+ superficie = PISOSYMUEBLES
+ puedeOrdenar = true
+ puedeLustrar = true
+ costo = 5000
+}
+class S031RTY{
+superficie = null
+ puedeOrdenar = true
+ puedeLustrar = false
+ costo = 2700
+}
+
+Robot <|-- K311Y_fl
+Robot <|-- K311Y_fu
+Robot <|-- P011H
+Robot <|-- K311Y_a
+Robot <|-- S031RTY
+
 Servicio <|-- Platinium
 Servicio <|-- Classic
 Servicio <|-- Economic
 
 Robot <-- Servicio : Uso
 Pedido <--  Cliente : Uso
+
+Cliente <-up- Empresa  : Uso
+Robot <-up-  Empresa : Uso
 
 class Platinium{
 limiteDeuda = cuota
@@ -70,7 +116,16 @@ class Pedido{
 - superficie: String
 }
 
-note left of Economic : definimos los limites de cada tipo de servicio\n para mas legibilidad
+enum Superficie{
+PISOS
+MUEBLES
+PISOSYMUEBLES
+}
+
+Robot -right-> Superficie : uso
+
+note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
+note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note left of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
 
 @enduml
