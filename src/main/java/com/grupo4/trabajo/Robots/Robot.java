@@ -1,6 +1,7 @@
 package com.grupo4.trabajo.Robots;
 
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.SinPedidosPendientesException;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,11 +18,12 @@ public abstract class Robot {
         pedidosPendientes.add(pedido);
     }
 
-    public void finalizarPedido(){
+    public void finalizarPedido() throws SinPedidosPendientesException{
         /*si la lista de pedidos esta vacia, lanza una excepcion, de lo contrario elimina el primer
         * pedido de la lista*/
 
         if(pedidosPendientes.isEmpty()){
+            throw new SinPedidosPendientesException("No hay pedidos pendientes.");
             //excepcion PedidosPendientesVaciosException
         }
         pedidosPendientes.remove(pedidosPendientes.get(0));
