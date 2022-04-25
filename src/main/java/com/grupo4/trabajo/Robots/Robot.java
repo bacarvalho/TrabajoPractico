@@ -3,7 +3,7 @@ package com.grupo4.trabajo.Robots;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.SinPedidosPendientesException;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Robot {
@@ -15,16 +15,17 @@ public abstract class Robot {
     private float costo;
 
     public void agregarPedido(Pedido pedido){
+        if (pedidosPendientes == null){
+            this.pedidosPendientes = new ArrayList<Pedido>();
+        }
         pedidosPendientes.add(pedido);
     }
 
     public void finalizarPedido() throws SinPedidosPendientesException{
         /*si la lista de pedidos esta vacia, lanza una excepcion, de lo contrario elimina el primer
         * pedido de la lista*/
-
         if(pedidosPendientes.isEmpty()){
             throw new SinPedidosPendientesException("No hay pedidos pendientes.");
-            //excepcion PedidosPendientesVaciosException
         }
         pedidosPendientes.remove(pedidosPendientes.get(0));
     }
@@ -33,10 +34,10 @@ public abstract class Robot {
         return pedidosPendientes;
     }
 
-    public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
+/*     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
         this.pedidosPendientes = pedidosPendientes;
     }
-
+ */
     public String getIdRobot() {
         return idRobot;
     }
