@@ -12,18 +12,17 @@ import java.util.stream.Collectors;
 
 public class Platinium extends Servicio{
     public Platinium(){
-
         setLimiteDeuda(getCouta());
-        setCantOrdenamientos(-1); //Ilimitado.
-        setCantLimpiezas(-1); //Ilimitado.
+
     }
 
     //Esto lo modificaria a "Robot" porque entiendo que esto deberia devolverte el robot que se le va a asignar.
     //Otro tema para charlar: No deberiamos definir de que tipo va a ser la Collection?
+
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
         //Condicion de busqueda: los robots con menor cantidad de pedidos pendientes
 
-
+        pedido.
         //Una opción
         Robot oldestUser = robots.stream().filter(p -> p.isPuedeOrdenar() == true && p.isPuedeLustrar() == true)
                     .min(Comparator.comparing(Robot::getIntPedidosPendientes))
