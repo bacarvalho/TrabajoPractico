@@ -2,6 +2,8 @@ package com.grupo4.trabajo.Servicios;
 
 
 import com.grupo4.trabajo.*;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 
 public class Classic extends Servicio{
     public Classic(){
@@ -15,12 +17,14 @@ public class Classic extends Servicio{
         try{
             ordenamientosDisponibles(pedido);
             validarDeuda(cliente);
-        }catch (NoCantOrdenamientoDisponibleException || EsDeudorException e){}
+        }catch (NoCantOrdenamientoDisponibleException | EsDeudorException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private void ordenamientosDisponibles(Pedido pedido) throws NoCantOrdenamientoDisponibleException{
-        if(pedido.isOrdenamiento() && getCantOrdenamientos()==0){
-            throw new NoCantOrdenamientoDisponibleException();
+        if(pedido.requiereOrdenamiento() && getCantOrdenamientos()==0){
+            throw new NoCantOrdenamientoDisponibleException("No hay suficiente ordenamiento");
         }
     }
 

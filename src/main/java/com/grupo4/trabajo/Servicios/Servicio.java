@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.Servicios;
 
-import Exceptions.EsDeudorException;
-import Exceptions.NoCantLimpiezasDisponibleException;
-import Exceptions.NoCantOrdenamientoDisponibleException;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
+import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
@@ -64,10 +64,10 @@ public abstract class Servicio {
     }
 
     public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
-        if (pedido.isRequiereLimpieza()) {
+        if (pedido.requiereLimpieza()) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
-        if (pedido.isOrdenamiento()) {
+        if (pedido.requiereOrdenamiento()) {
             setCantOrdenamientos(getCantOrdenamientos() - 1);
         }
         cliente.setDeuda(cliente.getDeuda() + costo);
