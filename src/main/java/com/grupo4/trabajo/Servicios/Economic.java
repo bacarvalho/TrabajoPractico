@@ -14,22 +14,22 @@ public class Economic extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
+    public void validarPedido(Pedido pedido, Cliente cliente)  {
         try {
             EsDeudor(pedido, cliente);
             LimpiezasDisponibles(pedido, cliente);
             OrdenamientosDisponibles(pedido, cliente);
         }
-        catch (EsDeudorException e) {}
-        catch (NoCantLimpiezasDisponibleException e) {}
-        catch (NoCantOrdenamientoDisponibleException e){}
+        catch (EsDeudorException | NoCantLimpiezasDisponibleException | NoCantOrdenamientoDisponibleException e ) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
     @Override
     public void EsDeudor(Pedido pedido, Cliente cliente) throws EsDeudorException{
         if(cliente.getDeuda() > getLimiteDeuda()){
-            throw new EsDeudorException();
+            throw new EsDeudorException("El cliente Economic no puede deber");
         }
 
     }
@@ -38,7 +38,7 @@ public class Economic extends Servicio{
     public void LimpiezasDisponibles(Pedido pedido, Cliente cliente) throws NoCantLimpiezasDisponibleException{
         if(pedido.isRequiereLimpieza()){
             if(getCantLimpiezas() == 0){
-                throw new NoCantLimpiezasDisponibleException();
+                throw new NoCantLimpiezasDisponibleException("El cliente no tiene más limpiezas disponibles");
             }
         }
     }
@@ -47,7 +47,7 @@ public class Economic extends Servicio{
     public void OrdenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
 
         if(pedido.isOrdenamiento()){
-            throw new NoCantOrdenamientoDisponibleException();
+            throw new NoCantOrdenamientoDisponibleException("El cliente Economic no puede ordenar");
         }
     }
 
