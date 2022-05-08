@@ -1,9 +1,11 @@
 package com.grupo4.trabajo.Robots;
 
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.SinPedidosPendientesException;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Robot {
@@ -18,12 +20,11 @@ public abstract class Robot {
         pedidosPendientes.add(pedido);
     }
 
-    public void finalizarPedido(){
+    public void finalizarPedido() throws SinPedidosPendientesException{
         /*si la lista de pedidos esta vacia, lanza una excepcion, de lo contrario elimina el primer
         * pedido de la lista*/
-
         if(pedidosPendientes.isEmpty()){
-            //excepcion PedidosPendientesVaciosException
+            throw new SinPedidosPendientesException("No hay pedidos pendientes.");
         }
         pedidosPendientes.remove(pedidosPendientes.get(0));
     }
@@ -32,6 +33,7 @@ public abstract class Robot {
         return pedidosPendientes;
     }
 
+/*     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
     public int getIntPedidosPendientes() {
         return pedidosPendientes.size();
     }
@@ -39,7 +41,7 @@ public abstract class Robot {
     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
         this.pedidosPendientes = pedidosPendientes;
     }
-
+ */
     public String getIdRobot() {
         return idRobot;
     }
