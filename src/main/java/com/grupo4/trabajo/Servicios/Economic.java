@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.Servicios;
 
-import Exceptions.EsDeudorException;
-import Exceptions.NoCantLimpiezasDisponibleException;
-import Exceptions.NoCantOrdenamientoDisponibleException;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
+import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Pedido;
 
@@ -36,7 +36,7 @@ public class Economic extends Servicio{
 
     @Override
     public void LimpiezasDisponibles(Pedido pedido, Cliente cliente) throws NoCantLimpiezasDisponibleException{
-        if(pedido.isRequiereLimpieza()){
+        if(pedido.requiereLimpieza()){
             if(getCantLimpiezas() == 0){
                 throw new NoCantLimpiezasDisponibleException("El cliente no tiene más limpiezas disponibles");
             }
@@ -46,7 +46,7 @@ public class Economic extends Servicio{
     @Override
     public void OrdenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
 
-        if(pedido.isOrdenamiento()){
+        if(pedido.requiereOrdenamiento()){
             throw new NoCantOrdenamientoDisponibleException("El cliente Economic no puede ordenar");
         }
     }

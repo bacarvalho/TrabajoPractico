@@ -1,4 +1,4 @@
-package Exceptions;
+package com.grupo4.trabajo.Exceptions;
 
 public class NoCantOrdenamientoDisponibleException extends Exception {
 

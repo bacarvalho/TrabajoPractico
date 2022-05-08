@@ -1,8 +1,8 @@
 package com.grupo4.trabajo;
 
-import Exceptions.EsDeudorException;
-import Exceptions.NoCantLimpiezasDisponibleException;
-import Exceptions.NoCantOrdenamientoDisponibleException;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
+import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Servicios.Servicio;
 
 public class Cliente {

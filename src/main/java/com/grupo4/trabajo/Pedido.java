@@ -15,7 +15,7 @@ public class Pedido {
         this.requiereLimpieza = requiereLimpieza;
     }
 
-    public boolean isRequiereLimpieza() {
+    public boolean requiereLimpieza() {
         return requiereLimpieza;
     }
 
@@ -27,7 +27,7 @@ public class Pedido {
         this.superficie = superficie;
     }
 
-    public boolean isLimpiezaSimple() {
+    public boolean limpiezaSimple() {
         return limpiezaSimple;
     }
 
@@ -35,7 +35,7 @@ public class Pedido {
         this.limpiezaSimple = limpiezaSimple;
     }
 
-    public boolean isOrdenamiento() {
+    public boolean requiereOrdenamiento() {
         return ordenamiento;
     }
 
