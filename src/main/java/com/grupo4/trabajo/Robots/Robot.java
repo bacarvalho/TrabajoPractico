@@ -33,7 +33,6 @@ public abstract class Robot {
         return pedidosPendientes;
     }
 
-/*     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
     public int getIntPedidosPendientes() {
         return pedidosPendientes.size();
     }
@@ -41,7 +40,7 @@ public abstract class Robot {
     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
         this.pedidosPendientes = pedidosPendientes;
     }
- */
+
     public String getIdRobot() {
         return idRobot;
     }

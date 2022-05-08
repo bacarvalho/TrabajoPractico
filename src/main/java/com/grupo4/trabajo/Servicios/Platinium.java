@@ -26,8 +26,13 @@ public class Platinium extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) throws Exception {
-        esDeudor(pedido, cliente);
+    public void validarPedido(Pedido pedido, Cliente cliente) {
+        try {
+            esDeudor(pedido, cliente);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //esDeudorException
