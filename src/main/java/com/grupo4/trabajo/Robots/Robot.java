@@ -3,6 +3,7 @@ package com.grupo4.trabajo.Robots;
 import com.grupo4.trabajo.Pedido;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class Robot {
@@ -29,6 +30,10 @@ public abstract class Robot {
 
     public List<Pedido> getPedidosPendientes() {
         return pedidosPendientes;
+    }
+
+    public int getIntPedidosPendientes() {
+        return pedidosPendientes.size();
     }
 
     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
