@@ -1,5 +1,8 @@
 package com.grupo4.trabajo.Servicios;
 
+import Exceptions.EsDeudorException;
+import Exceptions.NoCantLimpiezasDisponibleException;
+import Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
@@ -14,17 +17,17 @@ public abstract class Servicio {
     private float limiteDeuda;
     private float couta;
 
-    public abstract void validarPedido(Pedido pedido,Cliente cliente);
+    public abstract void validarPedido(Pedido pedido,Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException;
 
 
     /*cambie la variable deuda por cliente ya que si solo ponemos la deuda, no es posible luego sumarle el costo final
     * cosa que con esta vatiable si puedo, se ve en la funcion actualizar servicio*/
-    public void realizarPedido(Pedido pedido, Cliente cliente){
+    public void realizarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException{
         //proximamente se le agregara el try catch para atrapar excepciones
 
 
         //valida que se pueda realizar el pedido. que el cliente no sea moroso y el servicio pueda satisfacer el pedido
-        validarPedido(pedido,cliente);
+        validarPedido(pedido,cliente) ;
 
         //busca los robots necesarios para realizar el pedido
         Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
@@ -101,5 +104,15 @@ public abstract class Servicio {
 
     public void setCouta(float couta) {
         this.couta = couta;
+    }
+
+    public void EsDeudor(Pedido pedido, Cliente cliente) throws EsDeudorException{
+    }
+
+    public void LimpiezasDisponibles(Pedido pedido, Cliente cliente) throws NoCantLimpiezasDisponibleException{
+    }
+
+    public void OrdenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
+
     }
 }
