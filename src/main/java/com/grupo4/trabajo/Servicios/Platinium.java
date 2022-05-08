@@ -21,21 +21,7 @@ public class Platinium extends Servicio{
 
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
         //Condicion de busqueda: los robots con menor cantidad de pedidos pendientes
-
-        pedido.
-        //Una opción
-        Robot oldestUser = robots.stream().filter(p -> p.isPuedeOrdenar() == true && p.isPuedeLustrar() == true)
-                    .min(Comparator.comparing(Robot::getIntPedidosPendientes))
-                    .get();
-
-
-        //Otra opcion;
-        Collection<Robot> robotsDisponibles = robots.stream().filter(p -> p.isPuedeOrdenar() == true && p.isPuedeLustrar() == true).collect(Collectors.toList());
-
-        oldestUser = robotsDisponibles.stream()
-                .min(Comparator.comparing(Robot::getIntPedidosPendientes))
-                .get();
-
+        //TODO: Rehacer
         return null;
     }
 
