@@ -6,16 +6,18 @@ public class Pedido {
     private boolean limpiezaSimple;
     private boolean requiereLimpieza;
     private boolean ordenamiento;
+    private boolean requiereLustramiento;
     private Superficie superficie;
 
-    public Pedido(boolean limpiezaSimple,boolean ordenamiento,Superficie superficie, boolean requiereLimpieza){
+    public Pedido(boolean limpiezaSimple,boolean ordenamiento,Superficie superficie, boolean requiereLimpieza,boolean requiereLustramiento){
         this.limpiezaSimple = limpiezaSimple;
         this.ordenamiento = ordenamiento;
         this.superficie = superficie;
         this.requiereLimpieza = requiereLimpieza;
+        this.requiereLustramiento = requiereLustramiento;
     }
 
-    public boolean isRequiereLimpieza() {
+    public boolean requiereLimpieza() {
         return requiereLimpieza;
     }
 
@@ -27,7 +29,7 @@ public class Pedido {
         this.superficie = superficie;
     }
 
-    public boolean isLimpiezaSimple() {
+    public boolean limpiezaSimple() {
         return limpiezaSimple;
     }
 
@@ -35,12 +37,24 @@ public class Pedido {
         this.limpiezaSimple = limpiezaSimple;
     }
 
-    public boolean isOrdenamiento() {
+    public boolean requiereOrdenamiento() {
         return ordenamiento;
     }
 
     public void setOrdenamiento(boolean ordenamiento) {
         this.ordenamiento = ordenamiento;
+    }
+
+    public Superficie getSuperficie() {
+        return superficie;
+    }
+
+    public boolean requiereLustramiento() {
+        return requiereLustramiento;
+    }
+
+    public void setRequiereLustramiento(boolean requiereLustramiento) {
+        this.requiereLustramiento = requiereLustramiento;
     }
 
 }

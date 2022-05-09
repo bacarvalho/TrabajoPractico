@@ -1,15 +1,22 @@
 package com.grupo4.trabajo;
 
-import com.grupo4.trabajo.Robots.Robot;
+import com.grupo4.trabajo.Robots.*;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 public class Empresa {
-    private static Collection<Robot> robots;
+    private static Collection<Robot> robots = Arrays.asList(
+            new K311Y_a(),
+            new K311Y_fl(),
+            new K311Y_fu(),
+            new P011H(),
+            new S031RTY()
+        );
     private Collection<Cliente> clientes;
 
     public Empresa(){
-        //un robot de cada uno
+
     }
 
     public static Collection<Robot> getRobots() {

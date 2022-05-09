@@ -1,7 +1,7 @@
 package com.grupo4.trabajo.Robots;
 
 import com.grupo4.trabajo.Pedido;
-import com.grupo4.trabajo.SinPedidosPendientesException;
+import com.grupo4.trabajo.Exceptions.SinPedidosPendientesException;
 
 import java.util.Collection;
 import java.util.Comparator;

@@ -7,4 +7,9 @@ public class S031RTY extends Robot{
         setPuedeLustrar(false);
         setCosto(2700f);
     }
+
+    @Override
+    public String toString() {
+        return "S031RTY";
+    }
 }
