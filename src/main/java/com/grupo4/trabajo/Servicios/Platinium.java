@@ -3,6 +3,9 @@ package com.grupo4.trabajo.Servicios;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
+import com.grupo4.trabajo.Robots.Superficie;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -20,8 +23,30 @@ public class Platinium extends Servicio{
 
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
         //Condicion de busqueda: los robots con menor cantidad de pedidos pendientes
-        //TODO: Rehacer
-        return null;
+
+        Collection<Robot> robotsPedido = new ArrayList<>();
+        if(pedido.requiereLimpieza()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(robot -> robot.getSuperficie() == Superficie.PISOS)
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingInt(Robot::getIntPedidosPendientes)).get();
+            robotsPedido.add(robot);
+        }
+        if(pedido.requiereOrdenamiento()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(Robot::isPuedeOrdenar)
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
+            robotsPedido.add(robot);
+        }
+        if(pedido.requiereLustramiento()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
+            robotsPedido.add(robot);
+        }
+        return robotsPedido;
     }
 
     @Override
