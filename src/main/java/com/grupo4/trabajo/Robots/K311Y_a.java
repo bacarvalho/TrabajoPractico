@@ -7,4 +7,9 @@ public class K311Y_a extends Robot{
         setPuedeLustrar(true);
         setCosto(5000f);
     }
+
+    @Override
+    public String toString() {
+        return "K311Y-a";
+    }
 }
