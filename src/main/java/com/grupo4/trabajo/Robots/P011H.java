@@ -7,4 +7,9 @@ public class P011H extends Robot{
         setPuedeLustrar(true);
         setCosto(1500f);
     }
+
+    @Override
+    public String toString() {
+        return "P011H";
+    }
 }
