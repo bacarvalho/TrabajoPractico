@@ -1,6 +1,7 @@
 package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.Cliente;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 import com.grupo4.trabajo.Robots.Superficie;
@@ -25,27 +26,25 @@ public class Platinium extends Servicio{
         //Condicion de busqueda: los robots con menor cantidad de pedidos pendientes
 
         Collection<Robot> robotsPedido = new ArrayList<>();
-        if(pedido.requiereLimpieza()){
-            Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.getSuperficie() == Superficie.PISOS)
-                    .collect(Collectors.toList());
-            Robot robot = aux.stream().min(Comparator.comparingInt(Robot::getIntPedidosPendientes)).get();
-            robotsPedido.add(robot);
-        }
-        if(pedido.requiereOrdenamiento()){
-            Collection<Robot> aux = robots.stream()
-                    .filter(Robot::isPuedeOrdenar)
-                    .collect(Collectors.toList());
-            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
-            robotsPedido.add(robot);
-        }
-        if(pedido.requiereLustramiento()){
-            Collection<Robot> aux = robots.stream()
-                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
-                    .collect(Collectors.toList());
-            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
-            robotsPedido.add(robot);
-        }
+            Robot robot = robots.stream().min(Comparator.comparingInt(Robot::getIntPedidosPendientes)).get();
+            if(robot.isPuedeLustrar() && robot.isPuedeOrdenar())
+                 robotsPedido.add(robot);
+            else {
+                if (pedido.requiereOrdenamiento()) {
+                    Collection<Robot> aux = robots.stream()
+                            .filter(Robot::isPuedeOrdenar)
+                            .collect(Collectors.toList());
+                   Robot robotAux = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
+                    robotsPedido.add(robotAux);
+                }
+                if (pedido.requiereLustramiento()) {
+                    Collection<Robot> aux = robots.stream()
+                            .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
+                            .collect(Collectors.toList());
+                    Robot robotAux2 = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
+                    robotsPedido.add(robotAux2);
+                }
+            }
         return robotsPedido;
     }
 
@@ -54,16 +53,15 @@ public class Platinium extends Servicio{
         try {
             esDeudor(pedido, cliente);
         }
-        catch (Exception e) {
+        catch (EsDeudorException e) {
             System.out.println(e.getMessage());
         }
     }
 
     //esDeudorException
-    private void esDeudor(Pedido pedido, Cliente cliente) throws Exception{
+    private void esDeudor(Pedido pedido, Cliente cliente) throws EsDeudorException {
         if(cliente.getDeuda() > getLimiteDeuda()){
-            throw new Exception();
+            throw new EsDeudorException("Cuenta con una deuda mayor al de una cuota");
         }
-
     }
 }

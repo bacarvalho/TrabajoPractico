@@ -17,6 +17,8 @@ public abstract class Robot {
     private float costo;
 
     public void agregarPedido(Pedido pedido){
+        if (pedidosPendientes == null)
+            pedidosPendientes = new ArrayList<>();
         pedidosPendientes.add(pedido);
     }
 
@@ -34,7 +36,10 @@ public abstract class Robot {
     }
 
     public int getIntPedidosPendientes() {
-        return pedidosPendientes.size();
+        if (pedidosPendientes == null)
+            return 0;
+
+        return pedidosPendientes.size() ;
     }
 
     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
