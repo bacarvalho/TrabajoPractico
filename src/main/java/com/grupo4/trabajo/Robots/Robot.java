@@ -3,6 +3,8 @@ package com.grupo4.trabajo.Robots;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Exceptions.SinPedidosPendientesException;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +17,8 @@ public abstract class Robot {
     private float costo;
 
     public void agregarPedido(Pedido pedido){
-        if (pedidosPendientes == null){
-            this.pedidosPendientes = new ArrayList<Pedido>();
-        }
+        if (pedidosPendientes == null)
+            pedidosPendientes = new ArrayList<>();
         pedidosPendientes.add(pedido);
     }
 
@@ -34,10 +35,17 @@ public abstract class Robot {
         return pedidosPendientes;
     }
 
-/*     public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
+    public int getIntPedidosPendientes() {
+        if (pedidosPendientes == null)
+            return 0;
+
+        return pedidosPendientes.size() ;
+    }
+
+    public void setPedidosPendientes(List<Pedido> pedidosPendientes) {
         this.pedidosPendientes = pedidosPendientes;
     }
- */
+
     public String getIdRobot() {
         return idRobot;
     }
