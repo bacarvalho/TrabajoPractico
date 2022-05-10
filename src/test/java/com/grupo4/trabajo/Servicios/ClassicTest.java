@@ -1,9 +1,10 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,12 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ClassicTest {
     Classic servicio;
+    Cliente cliente;
     Pedido p;
     Collection<Robot> robotsPedido;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         servicio = new Classic();
+        cliente=new Cliente();
+        cliente.setDeuda(2000);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -28,7 +32,6 @@ class ClassicTest {
 
 
     //Test Case Nro 2.
-
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
         p = new Pedido(true,true, null,true,false);
@@ -43,6 +46,7 @@ class ClassicTest {
         assertEquals(robotsPedido.toString(), robotsBuscados.toString());
     }
 
+    //Test Case Nro 3.
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
         p = new Pedido(true,false, Superficie.MUEBLES,true,true);
@@ -56,8 +60,10 @@ class ClassicTest {
         assertEquals(robotsPedido.toString(), robotsBuscados.toString());
     }
 
-
-
-
+    //Test Case nro 4.
+    @Test
+    void denegarPedidoPorDeuda(){
+        assertThrows(EsDeudorException.class, () -> servicio.validarDeuda(cliente));
+    }
 
 }
