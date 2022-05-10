@@ -15,8 +15,9 @@ public class Classic extends Servicio{
     public void validarPedido(Pedido pedido, Cliente cliente) {
         //solo consultamos si pide ordenamiento porque las limpiezas son ilimitadas
         try{
-            ordenamientosDisponibles(pedido);
             validarDeuda(cliente);
+            ordenamientosDisponibles(pedido);
+
         }catch (NoCantOrdenamientoDisponibleException | EsDeudorException e){
             System.out.println(e.getMessage());
         }
@@ -28,8 +29,8 @@ public class Classic extends Servicio{
         }
     }
 
-    private void validarDeuda(Cliente cliente) throws EsDeudorException {
-        if(cliente.getDeuda()>getLimiteDeuda()){
+    public void validarDeuda(Cliente cliente) throws EsDeudorException {
+        if(cliente.getDeuda()>=getLimiteDeuda()){
             throw new EsDeudorException("Cliente es deudor");
         }
     }
