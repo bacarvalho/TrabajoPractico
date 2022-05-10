@@ -35,17 +35,19 @@ public class Testeo4TP {
 
     @Test
     void denegarPedidoPorDeuda() {
-
         boolean thrown = false;
-
-        try{
+        try {
             servicio.validarDeuda(cliente);
-        }catch(EsDeudorException e){
-            thrown=true;
+        } catch (EsDeudorException e) {
+            thrown = true;
         }
-
         assertTrue(thrown);
 
+    }
+
+    @Test
+    void denegarPedidoPorDeuda2(){
+        assertThrows(EsDeudorException.class, () -> servicio.validarDeuda(cliente));
     }
 }
 
