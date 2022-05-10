@@ -7,9 +7,13 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
+import com.grupo4.trabajo.Robots.Superficie;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public abstract class Servicio {
     private int cantLimpiezas;
@@ -34,7 +38,6 @@ public abstract class Servicio {
 
         //calcula el costo total del pedido
         float costo = getCostoRobots(robotsPedido);
-
         //agrega los pedidos pendientes a los robots
         agregarPedidoRobots(robotsPedido,pedido);
 
@@ -59,8 +62,31 @@ public abstract class Servicio {
     }
 
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
-        //condicion de busqueda: los robots mas economicos
-        return null;
+        //Condicion de busqueda: los robots mas economicos.
+
+        Collection<Robot> robotsPedido = new ArrayList<>();
+        if(pedido.requiereLimpieza()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(robot -> robot.getSuperficie() == Superficie.PISOS)
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
+            robotsPedido.add(robot);
+        }
+        if(pedido.requiereOrdenamiento()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(Robot::isPuedeOrdenar)
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
+            robotsPedido.add(robot);
+        }
+        if(pedido.requiereLustramiento()){
+            Collection<Robot> aux = robots.stream()
+                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
+                    .collect(Collectors.toList());
+            Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
+            robotsPedido.add(robot);
+        }
+        return robotsPedido;
     }
 
     public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
