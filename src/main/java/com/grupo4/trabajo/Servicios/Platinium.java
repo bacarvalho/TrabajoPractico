@@ -4,7 +4,6 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Robots.Superficie;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,16 +29,16 @@ public class Platinium extends Servicio{
             if(robot.isPuedeLustrar() && robot.isPuedeOrdenar())
                  robotsPedido.add(robot);
             else {
-                if (pedido.requiereOrdenamiento()) {
+                if (pedido.requiereOrdenamiento() != null) {
                     Collection<Robot> aux = robots.stream()
-                            .filter(Robot::isPuedeOrdenar)
+                            .filter(r -> r.isPuedeOrdenar() && r.getSuperficie() == pedido.requiereOrdenamiento().getSuperficie())
                             .collect(Collectors.toList());
                    Robot robotAux = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                     robotsPedido.add(robotAux);
                 }
-                if (pedido.requiereLustramiento()) {
+                if (pedido.requiereLustramiento() != null) {
                     Collection<Robot> aux = robots.stream()
-                            .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
+                            .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.requiereLustramiento().getSuperficie())
                             .collect(Collectors.toList());
                     Robot robotAux2 = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                     robotsPedido.add(robotAux2);

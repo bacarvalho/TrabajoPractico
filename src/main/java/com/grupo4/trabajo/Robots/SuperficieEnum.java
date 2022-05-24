@@ -1,5 +1,5 @@
 package com.grupo4.trabajo.Robots;
 
-public enum Superficie {
+public enum SuperficieEnum {
     PISOS,MUEBLES,PISOSYMUEBLES
 }

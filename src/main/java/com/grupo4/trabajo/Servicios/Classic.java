@@ -24,7 +24,7 @@ public class Classic extends Servicio{
     }
 
     private void ordenamientosDisponibles(Pedido pedido) throws NoCantOrdenamientoDisponibleException{
-        if(pedido.requiereOrdenamiento() && getCantOrdenamientos()==0){
+        if(pedido.requiereOrdenamiento() != null && getCantOrdenamientos()==0){
             throw new NoCantOrdenamientoDisponibleException("No hay suficiente ordenamiento");
         }
     }

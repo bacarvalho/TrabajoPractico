@@ -1,18 +1,11 @@
 package com.grupo4.trabajo.Servicios;
 import com.grupo4.trabajo.Cliente;
-import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
-import com.grupo4.trabajo.Robots.K311Y_fl;
-import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Robots.S031RTY;
-import com.grupo4.trabajo.Robots.Superficie;
+import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -28,7 +21,7 @@ public class EconomicTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         servicio = new Economic();
-        pedidoEco = new Pedido(true,true, Superficie.PISOS,true,false);
+        pedidoEco = new Pedido(true,new Superficie(SuperficieEnum.MUEBLES), new Superficie(SuperficieEnum.PISOS),new Superficie(SuperficieEnum.PISOS));
         cliente = new Cliente();
     }
 

@@ -1,33 +1,28 @@
 package com.grupo4.trabajo;
 
-import com.grupo4.trabajo.Robots.Superficie;
+import com.grupo4.trabajo.Robots.SuperficieEnum;
 
 public class Pedido {
     private boolean limpiezaSimple;
-    private boolean requiereLimpieza;
-    private boolean ordenamiento;
-    private boolean requiereLustramiento;
-    private Superficie superficie;
+    private Superficie requiereLimpieza;
+    private Superficie ordenamiento;
+    private Superficie requiereLustramiento;
 
-    public Pedido(boolean limpiezaSimple,boolean ordenamiento,Superficie superficie, boolean requiereLimpieza,boolean requiereLustramiento){
+    public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie requiereLimpieza, Superficie requiereLustramiento){
         this.limpiezaSimple = limpiezaSimple;
         this.ordenamiento = ordenamiento;
-        this.superficie = superficie;
         this.requiereLimpieza = requiereLimpieza;
         this.requiereLustramiento = requiereLustramiento;
     }
 
-    public boolean requiereLimpieza() {
+    public Superficie requiereLimpieza() {
         return requiereLimpieza;
     }
 
-    public void setRequiereLimpieza(boolean requiereLimpieza) {
+    public void setRequiereLimpieza(Superficie requiereLimpieza) {
         this.requiereLimpieza = requiereLimpieza;
     }
 
-    public void setSuperficie(Superficie superficie) {
-        this.superficie = superficie;
-    }
 
     public boolean limpiezaSimple() {
         return limpiezaSimple;
@@ -37,23 +32,19 @@ public class Pedido {
         this.limpiezaSimple = limpiezaSimple;
     }
 
-    public boolean requiereOrdenamiento() {
+    public Superficie requiereOrdenamiento() {
         return ordenamiento;
     }
 
-    public void setOrdenamiento(boolean ordenamiento) {
+    public void setOrdenamiento(Superficie ordenamiento) {
         this.ordenamiento = ordenamiento;
     }
 
-    public Superficie getSuperficie() {
-        return superficie;
-    }
-
-    public boolean requiereLustramiento() {
+    public Superficie requiereLustramiento() {
         return requiereLustramiento;
     }
 
-    public void setRequiereLustramiento(boolean requiereLustramiento) {
+    public void setRequiereLustramiento(Superficie requiereLustramiento) {
         this.requiereLustramiento = requiereLustramiento;
     }
 

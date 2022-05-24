@@ -3,6 +3,7 @@ package com.grupo4.trabajo.Servicios;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +32,7 @@ public class PlatinumTest {
         robot4 = new S031RTY();
         robot5 = new K311Y_a();
 
-        p = new Pedido(true,true, Superficie.PISOSYMUEBLES,true,true);
+        p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOSYMUEBLES),new Superficie(SuperficieEnum.PISOS));
         robot1.agregarPedido(p);
         robot2.agregarPedido(p);
         robot3.agregarPedido(p);
