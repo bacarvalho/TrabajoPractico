@@ -1,14 +1,19 @@
 package com.grupo4.trabajo.Servicios;
 
+import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Superficie;
+import com.grupo4.trabajo.Exceptions.EsDeudorException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.ClientInfoStatus;
 import java.util.*;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlatinumTest {
@@ -22,6 +27,9 @@ public class PlatinumTest {
     K311Y_a robot5;
     Collection<Robot> robotsPedido;
     Collection<Robot> robots;
+    static final float CUOTA = 200;
+    static final float DEUDA = 300;
+
 
     @BeforeEach
     void setUp() {
@@ -53,13 +61,25 @@ public class PlatinumTest {
 
         Empresa.setRobots(robots);
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
-        Iterator<Robot> it = robotsPedido.iterator();
 
-        Collection<Robot> robotsBuscados = Arrays.asList(
-                new K311Y_a()
+        Robot robotMenosPedidos = robots.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
+        List<Robot> robotsMenosPedidos = Arrays.asList(
+            robotMenosPedidos
         );
-
-        assertEquals(robotsPedido.toString(), robotsBuscados.toString());
+        assertEquals(robotsPedido.toString(), robotsMenosPedidos.toString());
     }
+
+    @Test
+    public void excedeLaDeuda() {
+        Platinium servicio = new Platinium();
+        servicio.setLimiteDeuda(CUOTA);
+
+        Cliente cliente = new Cliente();
+        cliente.setDeuda(DEUDA);
+        cliente.setTipoServicio(servicio);
+
+        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
+    }
+
 }
 
