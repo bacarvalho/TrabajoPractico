@@ -7,7 +7,7 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Robots.Superficie;
+import com.grupo4.trabajo.Robots.SuperficieEnum;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -65,23 +65,23 @@ public abstract class Servicio {
         //Condicion de busqueda: los robots mas economicos.
 
         Collection<Robot> robotsPedido = new ArrayList<>();
-        if(pedido.requiereLimpieza()){
+        if(pedido.requiereLimpieza() != null){
             Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.getSuperficie() == Superficie.PISOS)
+                    .filter(robot -> robot.getSuperficie() == pedido.requiereLimpieza().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereOrdenamiento()){
+        if(pedido.requiereOrdenamiento() != null){
             Collection<Robot> aux = robots.stream()
-                    .filter(Robot::isPuedeOrdenar)
+                    .filter(robot -> robot.isPuedeOrdenar() && robot.getSuperficie() == pedido.requiereOrdenamiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereLustramiento()){
+        if(pedido.requiereLustramiento() != null){
             Collection<Robot> aux = robots.stream()
-                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getSuperficie())
+                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.requiereLustramiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
@@ -90,10 +90,10 @@ public abstract class Servicio {
     }
 
     public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
-        if (pedido.requiereLimpieza()) {
+        if (pedido.requiereLimpieza() != null) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
-        if (pedido.requiereOrdenamiento()) {
+        if (pedido.requiereOrdenamiento() != null) {
             setCantOrdenamientos(getCantOrdenamientos() - 1);
         }
         cliente.setDeuda(cliente.getDeuda() + costo);

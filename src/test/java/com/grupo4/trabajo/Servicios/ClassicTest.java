@@ -5,6 +5,7 @@ import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -34,7 +35,7 @@ class ClassicTest {
     //Test Case Nro 2.
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
-        p = new Pedido(true,true, null,true,false);
+        p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
@@ -49,7 +50,7 @@ class ClassicTest {
     //Test Case Nro 3.
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
-        p = new Pedido(true,false, Superficie.MUEBLES,true,true);
+        p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
 
         Collection<Robot> robotsBuscados = Arrays.asList(

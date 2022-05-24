@@ -3,15 +3,13 @@ package com.grupo4.trabajo.Robots;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Exceptions.SinPedidosPendientesException;
 
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Robot {
     private List<Pedido> pedidosPendientes;
     private String idRobot;
-    private Superficie superficie;
+    private SuperficieEnum superficie;
     private boolean puedeOrdenar;
     private boolean puedeLustrar;
     private float costo;
@@ -54,11 +52,11 @@ public abstract class Robot {
         this.idRobot = idRobot;
     }
 
-    public Superficie getSuperficie() {
+    public SuperficieEnum getSuperficie() {
         return superficie;
     }
 
-    public void setSuperficie(Superficie superficie) {
+    public void setSuperficie(SuperficieEnum superficie) {
         this.superficie = superficie;
     }
 
