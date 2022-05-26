@@ -8,9 +8,7 @@ import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,11 +37,12 @@ class ClassicTest {
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
-        Collection<Robot> robotsBuscados = Arrays.asList(
+        List<Robot> robotsBuscados = Arrays.asList(
                 new K311Y_fl(),
                 new S031RTY()
         );
 
+        assertTrue(robotsBuscados.get(1).isPuedeOrdenar());
         assertEquals(robotsPedido.toString(), robotsBuscados.toString());
     }
 
@@ -53,11 +52,12 @@ class ClassicTest {
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
 
-        Collection<Robot> robotsBuscados = Arrays.asList(
+        List<Robot> robotsBuscados = Arrays.asList(
                 new K311Y_fl(),
                 new K311Y_fu()
         );
 
+        assertTrue(robotsBuscados.get(1).isPuedeLustrar());
         assertEquals(robotsPedido.toString(), robotsBuscados.toString());
     }
 
