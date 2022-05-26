@@ -3,6 +3,7 @@ package com.grupo4.trabajo.Servicios;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Superficie;
@@ -65,6 +66,14 @@ class ClassicTest {
     @Test
     void denegarPedidoPorDeuda(){
         assertThrows(EsDeudorException.class, () -> servicio.validarDeuda(cliente));
+    }
+
+    @Test
+    void denegarPedidoPorCantDeOrdenamientosInsuficientes(){
+        p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
+        cliente.setDeuda(0);
+        servicio.setCantOrdenamientos(0);
+        assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.ordenamientosDisponibles(p));
     }
 
 }
