@@ -48,12 +48,12 @@ public class Platinium extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) {
+    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException {
         try {
             esDeudor(pedido, cliente);
         }
         catch (EsDeudorException e) {
-            System.out.println(e.getMessage());
+            throw new EsDeudorException("Cuenta con una deuda mayor al de una cuota");
         }
     }
 
