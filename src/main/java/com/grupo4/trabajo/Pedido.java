@@ -1,26 +1,24 @@
 package com.grupo4.trabajo;
 
-import com.grupo4.trabajo.Robots.SuperficieEnum;
-
 public class Pedido {
     private boolean limpiezaSimple;
-    private Superficie requiereLimpieza;
+    private Superficie limpieza;
     private Superficie ordenamiento;
-    private Superficie requiereLustramiento;
+    private Superficie lustramiento;
 
     public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie requiereLimpieza, Superficie requiereLustramiento){
         this.limpiezaSimple = limpiezaSimple;
         this.ordenamiento = ordenamiento;
-        this.requiereLimpieza = requiereLimpieza;
-        this.requiereLustramiento = requiereLustramiento;
+        this.limpieza = requiereLimpieza;
+        this.lustramiento = requiereLustramiento;
     }
 
-    public Superficie requiereLimpieza() {
-        return requiereLimpieza;
+    public boolean requiereLimpieza() {
+        return limpieza != null;
     }
 
-    public void setRequiereLimpieza(Superficie requiereLimpieza) {
-        this.requiereLimpieza = requiereLimpieza;
+    public void setLimpieza(Superficie limpieza) {
+        this.limpieza = limpieza;
     }
 
 
@@ -32,20 +30,31 @@ public class Pedido {
         this.limpiezaSimple = limpiezaSimple;
     }
 
-    public Superficie requiereOrdenamiento() {
-        return ordenamiento;
+    public boolean requiereOrdenamiento() {
+        return ordenamiento != null;
     }
 
     public void setOrdenamiento(Superficie ordenamiento) {
         this.ordenamiento = ordenamiento;
     }
 
-    public Superficie requiereLustramiento() {
-        return requiereLustramiento;
+    public boolean requiereLustramiento() {
+        return lustramiento != null;
     }
 
-    public void setRequiereLustramiento(Superficie requiereLustramiento) {
-        this.requiereLustramiento = requiereLustramiento;
+    public void setLustramiento(Superficie lustramiento) {
+        this.lustramiento = lustramiento;
     }
 
+    public Superficie getLimpieza() {
+        return limpieza;
+    }
+
+    public Superficie getOrdenamiento() {
+        return ordenamiento;
+    }
+
+    public Superficie getLustramiento() {
+        return lustramiento;
+    }
 }

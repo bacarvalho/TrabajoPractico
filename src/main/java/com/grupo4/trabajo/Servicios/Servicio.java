@@ -65,23 +65,23 @@ public abstract class Servicio {
         //Condicion de busqueda: los robots mas economicos.
 
         Collection<Robot> robotsPedido = new ArrayList<>();
-        if(pedido.requiereLimpieza() != null){
+        if(pedido.requiereLimpieza()){
             Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.getSuperficie() == pedido.requiereLimpieza().getSuperficie())
+                    .filter(robot -> robot.getSuperficie() == pedido.getLimpieza().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereOrdenamiento() != null){
+        if(pedido.requiereOrdenamiento()){
             Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.isPuedeOrdenar() && robot.getSuperficie() == pedido.requiereOrdenamiento().getSuperficie())
+                    .filter(robot -> robot.isPuedeOrdenar() && robot.getSuperficie() == pedido.getOrdenamiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereLustramiento() != null){
+        if(pedido.requiereLustramiento()){
             Collection<Robot> aux = robots.stream()
-                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.requiereLustramiento().getSuperficie())
+                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getLustramiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
@@ -90,10 +90,10 @@ public abstract class Servicio {
     }
 
     public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
-        if (pedido.requiereLimpieza() != null) {
+        if (pedido.requiereLimpieza()) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
-        if (pedido.requiereOrdenamiento() != null) {
+        if (pedido.requiereOrdenamiento()) {
             setCantOrdenamientos(getCantOrdenamientos() - 1);
         }
         cliente.setDeuda(cliente.getDeuda() + costo);

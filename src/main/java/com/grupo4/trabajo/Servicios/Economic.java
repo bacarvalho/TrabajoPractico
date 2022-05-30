@@ -36,7 +36,7 @@ public class Economic extends Servicio{
 
     @Override
     public void LimpiezasDisponibles(Pedido pedido, Cliente cliente) throws NoCantLimpiezasDisponibleException{
-        if(pedido.requiereLimpieza() != null){
+        if(pedido.requiereLimpieza()){
             if(getCantLimpiezas() == 0){
                 throw new NoCantLimpiezasDisponibleException("El cliente no tiene más limpiezas disponibles");
             }
@@ -46,7 +46,7 @@ public class Economic extends Servicio{
     @Override
     public void OrdenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
 
-        if(pedido.requiereOrdenamiento() != null){
+        if(pedido.requiereOrdenamiento()){
             throw new NoCantOrdenamientoDisponibleException("El cliente Economic no puede ordenar");
         }
     }

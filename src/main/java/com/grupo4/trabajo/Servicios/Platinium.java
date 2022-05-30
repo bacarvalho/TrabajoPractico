@@ -29,16 +29,16 @@ public class Platinium extends Servicio{
             if(robot.isPuedeLustrar() && robot.isPuedeOrdenar())
                  robotsPedido.add(robot);
             else {
-                if (pedido.requiereOrdenamiento() != null) {
+                if (pedido.requiereOrdenamiento()) {
                     Collection<Robot> aux = robots.stream()
-                            .filter(r -> r.isPuedeOrdenar() && r.getSuperficie() == pedido.requiereOrdenamiento().getSuperficie())
+                            .filter(r -> r.isPuedeOrdenar() && r.getSuperficie() == pedido.getOrdenamiento().getSuperficie())
                             .collect(Collectors.toList());
                    Robot robotAux = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                     robotsPedido.add(robotAux);
                 }
-                if (pedido.requiereLustramiento() != null) {
+                if (pedido.requiereLustramiento()) {
                     Collection<Robot> aux = robots.stream()
-                            .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.requiereLustramiento().getSuperficie())
+                            .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getLustramiento().getSuperficie())
                             .collect(Collectors.toList());
                     Robot robotAux2 = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                     robotsPedido.add(robotAux2);
