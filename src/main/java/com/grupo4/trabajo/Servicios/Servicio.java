@@ -23,26 +23,16 @@ public abstract class Servicio {
 
     public abstract void validarPedido(Pedido pedido,Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException;
 
+    public void realizarPedido(Pedido pedido, Cliente cliente){
+        try{
+            validarPedido(pedido,cliente) ;
+            Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
+            agregarPedidoRobots(robotsPedido,pedido);
+            actualizarServicio(pedido, cliente, getCostoRobots(robotsPedido));
+        } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
+            System.out.println(e.getMessage());
+        }
 
-    /*cambie la variable deuda por cliente ya que si solo ponemos la deuda, no es posible luego sumarle el costo final
-    * cosa que con esta vatiable si puedo, se ve en la funcion actualizar servicio*/
-    public void realizarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException{
-        //proximamente se le agregara el try catch para atrapar excepciones
-
-
-        //valida que se pueda realizar el pedido. que el cliente no sea moroso y el servicio pueda satisfacer el pedido
-        validarPedido(pedido,cliente) ;
-
-        //busca los robots necesarios para realizar el pedido
-        Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
-
-        //calcula el costo total del pedido
-        float costo = getCostoRobots(robotsPedido);
-        //agrega los pedidos pendientes a los robots
-        agregarPedidoRobots(robotsPedido,pedido);
-
-        //actualiza el servicio, sumandole el costo al cliente y restandole al servicio el ordenamiento y la limpieza que necesite
-        actualizarServicio(pedido, cliente, costo);
     }
 
     public void agregarPedidoRobots(Collection<Robot> robots,Pedido pedido){

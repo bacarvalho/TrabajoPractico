@@ -12,14 +12,13 @@ public class Classic extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) {
-        //solo consultamos si pide ordenamiento porque las limpiezas son ilimitadas
+    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException {
         try{
             validarDeuda(cliente);
             ordenamientosDisponibles(pedido);
 
         }catch (NoCantOrdenamientoDisponibleException | EsDeudorException e){
-            System.out.println(e.getMessage());
+            throw e;
         }
     }
 

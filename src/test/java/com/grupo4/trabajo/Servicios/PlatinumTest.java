@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlatinumTest {
 
-    Platinium servicio;
+    Servicio servicio;
     Pedido p;
     K311Y_fl robot1;
     K311Y_fu robot2;
