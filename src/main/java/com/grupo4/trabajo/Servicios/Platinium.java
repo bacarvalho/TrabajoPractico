@@ -53,7 +53,7 @@ public class Platinium extends Servicio{
             esDeudor(pedido, cliente);
         }
         catch (EsDeudorException e) {
-            throw new EsDeudorException("Cuenta con una deuda mayor al de una cuota");
+            throw e;
         }
     }
 

@@ -13,9 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class EconomicTest {
 
 
-
     Pedido pedidoEco;
-    Economic servicio;
+    Servicio servicio;
     Cliente cliente;
 
     @org.junit.jupiter.api.BeforeEach

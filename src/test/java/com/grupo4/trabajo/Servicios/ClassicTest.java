@@ -15,7 +15,7 @@ import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClassicTest {
-    Classic servicio;
+    Servicio servicio;
     Cliente cliente;
     Pedido p;
     Collection<Robot> robotsPedido;
@@ -64,7 +64,8 @@ class ClassicTest {
     //Test Case nro 4.
     @Test
     void denegarPedidoPorDeuda(){
-        assertThrows(EsDeudorException.class, () -> servicio.validarDeuda(cliente));
+        p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
+        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
     }
 
 }

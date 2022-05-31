@@ -14,14 +14,14 @@ public class Economic extends Servicio{
     }
 
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente)  {
+    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
         try {
             EsDeudor(pedido, cliente);
             LimpiezasDisponibles(pedido, cliente);
             OrdenamientosDisponibles(pedido, cliente);
         }
         catch (EsDeudorException | NoCantLimpiezasDisponibleException | NoCantOrdenamientoDisponibleException e ) {
-            System.out.println(e.getMessage());
+           throw e;
         }
     }
 
