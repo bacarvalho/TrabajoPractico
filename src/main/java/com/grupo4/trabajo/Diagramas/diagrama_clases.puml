@@ -19,12 +19,12 @@ class Empresa{
 
 
 abstract class Servicio{
+- pedidoValidator: PedidoValidator
 - cantLimpiezas: int
 - cantOrdenamientos: int
 - limiteDeuda: float
  -cuota: float
 
-+validarPedido(pedido: Pedido,deuda: float)
 +asignarRobots(Collection<Robot> robots)
 -actualizarServicio(pedido: Pedido)
 +setters()
