@@ -6,16 +6,16 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
 
-public class pedidoValidatorEconomic implements PedidoValidator,DeudorValidator,LimpiezasDisponiblesValidator,OrdenamientosDisponiblesValidator{
+public class PedidoValidatorEconomic implements PedidoValidator,DeudorValidator,LimpiezasDisponiblesValidator,OrdenamientosDisponiblesValidator{
     @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) {
+    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
         try{
             esDeudor(cliente);
             limpiezasDisponibles(pedido,cliente);
             ordenamientosDisponibles(pedido,cliente);
         }
-        catch (Exception e){
-            System.out.println("");
+        catch (EsDeudorException | NoCantLimpiezasDisponibleException | NoCantOrdenamientoDisponibleException e){
+            throw e;
         }
     }
 
