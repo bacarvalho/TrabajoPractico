@@ -21,7 +21,7 @@ public class EconomicTest {
     void setUp() {
         servicio = new Economic();
         pedidoEco = new Pedido(true,new Superficie(SuperficieEnum.MUEBLES), new Superficie(SuperficieEnum.PISOS),new Superficie(SuperficieEnum.PISOS));
-        cliente = new Cliente();
+        cliente = new Cliente(servicio);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -36,9 +36,7 @@ public class EconomicTest {
         /*
          * 1. Un cliente Economic realiza un pedido de limpieza y ordenamiento. El pedido es rechazado ya que no puede solicitar ordenamiento.
          */
-
-         servicio.LimpiezasDisponibles(pedidoEco,cliente);
-        assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.OrdenamientosDisponibles(pedidoEco,cliente));
+        assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.getPedidoValidator().validarPedido(pedidoEco,cliente));
     }
 
 }

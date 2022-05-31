@@ -4,6 +4,7 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
+import com.grupo4.trabajo.Validators.pedidoValidatorPlatinium;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,14 +16,12 @@ import java.util.stream.Collectors;
 public class Platinium extends Servicio{
     public Platinium(){
         setLimiteDeuda(getCouta());
-
+        setPedidoValidator(new pedidoValidatorPlatinium());
     }
 
     //Esto lo modificaria a "Robot" porque entiendo que esto deberia devolverte el robot que se le va a asignar.
     //Otro tema para charlar: No deberiamos definir de que tipo va a ser la Collection?
-
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
-        //Condicion de busqueda: los robots con menor cantidad de pedidos pendientes
 
         Collection<Robot> robotsPedido = new ArrayList<>();
             Robot robot = robots.stream().min(Comparator.comparingInt(Robot::getIntPedidosPendientes)).get();
@@ -45,22 +44,5 @@ public class Platinium extends Servicio{
                 }
             }
         return robotsPedido;
-    }
-
-    @Override
-    public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException {
-        try {
-            esDeudor(pedido, cliente);
-        }
-        catch (EsDeudorException e) {
-            throw e;
-        }
-    }
-
-    //esDeudorException
-    private void esDeudor(Pedido pedido, Cliente cliente) throws EsDeudorException {
-        if(cliente.getDeuda() > getLimiteDeuda()){
-            throw new EsDeudorException("Cuenta con una deuda mayor al de una cuota");
-        }
     }
 }

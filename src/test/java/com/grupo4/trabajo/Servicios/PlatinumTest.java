@@ -74,11 +74,11 @@ public class PlatinumTest {
         Platinium servicio = new Platinium();
         servicio.setLimiteDeuda(CUOTA);
 
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(servicio);
         cliente.setDeuda(DEUDA);
         cliente.setTipoServicio(servicio);
 
-        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
 
 }

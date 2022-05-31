@@ -23,8 +23,8 @@ class ClassicTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         servicio = new Classic();
-        cliente=new Cliente();
-        cliente.setDeuda(2000);
+        cliente=new Cliente(servicio);
+        cliente.setDeuda(2001);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -65,7 +65,7 @@ class ClassicTest {
     @Test
     void denegarPedidoPorDeuda(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
 
 }

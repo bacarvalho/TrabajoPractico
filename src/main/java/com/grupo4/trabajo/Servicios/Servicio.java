@@ -8,6 +8,7 @@ import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Validators.PedidoValidator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,23 +17,21 @@ import java.util.Iterator;
 import java.util.stream.Collectors;
 
 public abstract class Servicio {
+    private PedidoValidator pedidoValidator;
     private int cantLimpiezas;
     private int cantOrdenamientos;
     private float limiteDeuda;
     private float couta;
 
-    public abstract void validarPedido(Pedido pedido,Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException;
-
     public void realizarPedido(Pedido pedido, Cliente cliente){
         try{
-            validarPedido(pedido,cliente) ;
+            pedidoValidator.validarPedido(pedido,cliente);
             Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
             agregarPedidoRobots(robotsPedido,pedido);
             actualizarServicio(pedido, cliente, getCostoRobots(robotsPedido));
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     public void agregarPedidoRobots(Collection<Robot> robots,Pedido pedido){
@@ -110,6 +109,14 @@ public abstract class Servicio {
         return limiteDeuda;
     }
 
+    public PedidoValidator getPedidoValidator() {
+        return pedidoValidator;
+    }
+
+    public void setPedidoValidator(PedidoValidator pedidoValidator) {
+        this.pedidoValidator = pedidoValidator;
+    }
+
     public void setLimiteDeuda(float limiteDeuda) {
         this.limiteDeuda = limiteDeuda;
     }
@@ -120,15 +127,5 @@ public abstract class Servicio {
 
     public void setCouta(float couta) {
         this.couta = couta;
-    }
-
-    public void EsDeudor(Pedido pedido, Cliente cliente) throws EsDeudorException{
-    }
-
-    public void LimpiezasDisponibles(Pedido pedido, Cliente cliente) throws NoCantLimpiezasDisponibleException{
-    }
-
-    public void OrdenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
-
     }
 }

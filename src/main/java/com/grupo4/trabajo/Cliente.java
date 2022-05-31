@@ -10,6 +10,10 @@ public class Cliente {
     private float deuda;
     private Servicio tipoServicio;
 
+    public Cliente(Servicio tipoServicio){
+        this.tipoServicio = tipoServicio;
+    }
+
     public void pedirPedido(Pedido pedido) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
         tipoServicio.realizarPedido(pedido,this);
     }
