@@ -1,0 +1,102 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+abstract class Servicio{
+- pedidoValidator : PedidoValidator
+- cantLimpiezas: int
+- cantOrdenamientos: int
+- limiteDeuda: float
+ -cuota: float
+
++asignarRobots(Collection<Robot> robots)
+-actualizarServicio(pedido: Pedido)
++setters()
++getters()
+}
+
+class Platinium{
+limiteDeuda = cuota
+cantLimpiezas = INFINITE
+cantOrdenamientos = INFINITE
+}
+class Classic{
+limiteDeuda = 2000
+cantOrdenamientos = 3
+cantLimpiezas = INFINITE
+}
+
+class Economic{
+limiteDeuda = 0
+cantLimpiezas = 3
+cantOrdenamientos = 0
+}
+
+interface PedidoValidator{
++validarPedido(pedido: Pedido,cliente: Cliente)
+}
+
+interface deudorValidator{
++esDeudor(cliente: Cliente)
+}
+
+interface ordenamientosDisponiblesValidator{
++ordenamientosDisponibles(pedido: Pedido,cliente: Cliente)
+}
+
+class pedidoValidatorEconomic implements PedidoValidator,deudorValidator,ordenamientosDisponiblesValidator,limpiezasDisponiblesValidator{
+
+}
+class pedidoValidatorClassic implements PedidoValidator,deudorValidator,ordenamientosDisponiblesValidator{
+}
+class pedidoValidatorPlatinium implements PedidoValidator,deudorValidator{
+}
+
+interface limpiezasDisponiblesValidator{
++limpiezasDisponibles(pedido: Pedido,cliente: Cliente)
+}
+
+Servicio <|-- Platinium
+Servicio <|-- Classic
+Servicio <|-- Economic
+
+PedidoValidator -left-* Servicio
+Cliente *--  Servicio : composición
+
+note bottom of pedidoValidatorEconomic
+    funcion validarPedido()
+
+    try{
+        esDeudor()
+        limpiezasDisponibles()
+        ordenamientosDisponibles()
+    }
+    catch(Excepciones){
+    }
+end note
+
+note bottom of pedidoValidatorClassic
+    funcion validarPedido()
+
+    try{
+        esDeudor()
+        ordenamientosDisponibles()
+    }
+    catch(Excepciones){
+    }
+end note
+
+note bottom of pedidoValidatorPlatinium
+    funcion validarPedido()
+
+    try{
+        esDeudor()
+    }
+    catch(Excepciones){
+    }
+end note
+
+note bottom of Platinium: pedidoValidator = new PedidoValidatorPlatinium()
+note bottom of Classic: pedidoValidator = new PedidoValidatorClassic()
+note bottom of Economic: pedidoValidator = new PedidoValidatorEconomic()
+@enduml
