@@ -7,6 +7,7 @@ class Cliente{
 -deuda: float
 -tiposervicio: Servicio
 
++Cliente(Servicio)
 +pedirPedido(pedido: Pedido)
 +setters()
 +getters()
@@ -26,6 +27,7 @@ abstract class Servicio{
  -cuota: float
 
 +asignarRobots(Collection<Robot> robots)
++buscarRobots(pedido,robots) : Collection<Robot>
 -actualizarServicio(pedido: Pedido)
 +setters()
 +getters()
@@ -123,8 +125,12 @@ Servicio <|-- Platinium
 Servicio <|-- Classic
 Servicio <|-- Economic
 
-Robot <-- Servicio : Uso
+interface PedidoValidator{
++validarPedido(pedido: Pedido,cliente: Cliente)
+}
 
+Robot <-- Servicio : Uso
+PedidoValidator -left-* Servicio
 Pedido <--  Cliente : Uso
 
 Cliente <-up- Empresa  : Uso
@@ -140,5 +146,9 @@ Pedido *-left- Superficie
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note right of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
-
+note right of PedidoValidator
+diagrama de funcionamiento
+de pedidoValidator
+en diagrama_clases_pedidoValidator
+end note
 @enduml
