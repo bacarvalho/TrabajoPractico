@@ -1,9 +1,20 @@
 package com.grupo4.trabajo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Pedido {
+
+    @Getter @Setter
     private boolean limpiezaSimple;
+
+    @Getter @Setter
     private Superficie limpieza;
+
+    @Getter @Setter
     private Superficie ordenamiento;
+
+    @Getter @Setter
     private Superficie lustramiento;
 
     public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie requiereLimpieza, Superficie requiereLustramiento){
@@ -17,44 +28,11 @@ public class Pedido {
         return limpieza != null;
     }
 
-    public void setLimpieza(Superficie limpieza) {
-        this.limpieza = limpieza;
-    }
-
-
-    public boolean limpiezaSimple() {
-        return limpiezaSimple;
-    }
-
-    public void setLimpiezaSimple(boolean limpiezaSimple) {
-        this.limpiezaSimple = limpiezaSimple;
-    }
-
     public boolean requiereOrdenamiento() {
         return ordenamiento != null;
     }
 
-    public void setOrdenamiento(Superficie ordenamiento) {
-        this.ordenamiento = ordenamiento;
-    }
-
     public boolean requiereLustramiento() {
         return lustramiento != null;
-    }
-
-    public void setLustramiento(Superficie lustramiento) {
-        this.lustramiento = lustramiento;
-    }
-
-    public Superficie getLimpieza() {
-        return limpieza;
-    }
-
-    public Superficie getOrdenamiento() {
-        return ordenamiento;
-    }
-
-    public Superficie getLustramiento() {
-        return lustramiento;
     }
 }

@@ -3,9 +3,10 @@ package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.*;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
+import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 
-public class Classic extends Servicio{
+public class Classic extends PedidosService {
     public Classic(){
         setLimiteDeuda(2000);
         setCantOrdenamientos(3);
@@ -33,4 +34,5 @@ public class Classic extends Servicio{
             throw new EsDeudorException("Cliente es deudor");
         }
     }
+
 }

@@ -14,7 +14,7 @@ public class EconomicTest {
 
 
     Pedido pedidoEco;
-    Servicio servicio;
+    PedidosService servicio;
     Cliente cliente;
 
     @org.junit.jupiter.api.BeforeEach
@@ -37,7 +37,7 @@ public class EconomicTest {
          * 1. Un cliente Economic realiza un pedido de limpieza y ordenamiento. El pedido es rechazado ya que no puede solicitar ordenamiento.
          */
 
-         servicio.LimpiezasDisponibles(pedidoEco,cliente);
+        servicio.LimpiezasDisponibles(pedidoEco,cliente);
         assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.OrdenamientosDisponibles(pedidoEco,cliente));
     }
 

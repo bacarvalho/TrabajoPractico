@@ -10,7 +10,6 @@ import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.ClientInfoStatus;
 import java.util.*;
 
 import static org.junit.Assert.assertThrows;
@@ -18,7 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlatinumTest {
 
-    Servicio servicio;
+    PedidosService servicio;
+    Cliente cliente;
     Pedido p;
     K311Y_fl robot1;
     K311Y_fu robot2;
@@ -53,6 +53,9 @@ public class PlatinumTest {
                 robot4,
                 robot5
         );
+
+        cliente = new Cliente();
+        cliente.setTipoDeCliente("Platinum");
     }
 
 
@@ -60,7 +63,7 @@ public class PlatinumTest {
     public void pedidoConRobot () {
 
         Empresa.setRobots(robots);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.buscarRobotsParaElPedido(p, cliente);
 
         Robot robotMenosPedidos = robots.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
         List<Robot> robotsMenosPedidos = Arrays.asList(

@@ -15,7 +15,7 @@ import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClassicTest {
-    Servicio servicio;
+    PedidosService servicio;
     Cliente cliente;
     Pedido p;
     Collection<Robot> robotsPedido;
@@ -25,6 +25,7 @@ class ClassicTest {
         servicio = new Classic();
         cliente=new Cliente();
         cliente.setDeuda(2000);
+        cliente.setTipoDeCliente("Classic");
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -36,7 +37,7 @@ class ClassicTest {
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.buscarRobotsParaElPedido(p, cliente);
         Iterator<Robot> it = robotsPedido.iterator();
 
         Collection<Robot> robotsBuscados = Arrays.asList(
@@ -51,7 +52,7 @@ class ClassicTest {
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.buscarRobotsParaElPedido(p, cliente);
 
         Collection<Robot> robotsBuscados = Arrays.asList(
                 new K311Y_fl(),
