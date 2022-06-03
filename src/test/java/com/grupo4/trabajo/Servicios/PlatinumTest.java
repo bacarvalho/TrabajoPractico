@@ -57,7 +57,7 @@ public class PlatinumTest {
 
 
     @Test
-    public void pedidoConRobot () {
+    public void asignacionRobotMenosPedidosAClientePlatinum () {
 
         Empresa.setRobots(robots);
         robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
@@ -70,7 +70,7 @@ public class PlatinumTest {
     }
 
     @Test
-    public void excedeLaDeuda() {
+    public void clientePlatinumConDeudaExcedidaArrojaExcepcion() {
         Platinium servicio = new Platinium();
         servicio.setLimiteDeuda(CUOTA);
 

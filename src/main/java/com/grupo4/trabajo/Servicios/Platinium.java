@@ -47,7 +47,7 @@ public class Platinium extends Servicio{
         return robotsPedido;
     }
 
-    @Override
+    
     public void validarPedido(Pedido pedido, Cliente cliente) throws EsDeudorException {
         try {
             esDeudor(pedido, cliente);

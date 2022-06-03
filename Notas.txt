@@ -1,0 +1,5 @@
+- saque todo de servicio y lo puse en EmpresaManager porque el manejo del pedido lo hace la empresa
+    y cada servicio implementa
+** me suena que buscar robots dentro de empresa tiene que tener algun patron de denio
+- agregue una interface ValidadorPedido para que implemente cada tipo de servicio
+- actializar servicio, lo hace Servicio

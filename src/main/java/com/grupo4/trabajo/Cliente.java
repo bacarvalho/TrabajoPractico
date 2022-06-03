@@ -11,7 +11,9 @@ public class Cliente {
     private Servicio tipoServicio;
 
     public void pedirPedido(Pedido pedido) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
-        tipoServicio.realizarPedido(pedido,this);
+        // empresa deberia ser un singleton
+        EmpresaManager empresaManager = new EmpresaManager();
+        empresaManager.realizarPedido(pedido,this, tipoServicio);
     }
 
     public String getDireccion() {

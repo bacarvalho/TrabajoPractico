@@ -4,26 +4,18 @@ import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Cliente;
-import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
-import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.ValidadorPedido;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.stream.Collectors;
-
-public abstract class Servicio {
+public abstract class Servicio implements ValidadorPedido{
     private int cantLimpiezas;
     private int cantOrdenamientos;
     private float limiteDeuda;
     private float couta;
 
-    public abstract void validarPedido(Pedido pedido,Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException;
+    //public abstract void validarPedido(Pedido pedido,Cliente cliente) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException;
 
-    public void realizarPedido(Pedido pedido, Cliente cliente){
+    /* public void realizarPedido(Pedido pedido, Cliente cliente){
         try{
             validarPedido(pedido,cliente) ;
             Collection<Robot> robotsPedido = buscarRobots(pedido,Empresa.getRobots());
@@ -33,25 +25,25 @@ public abstract class Servicio {
             System.out.println(e.getMessage());
         }
 
-    }
+    } */
 
-    public void agregarPedidoRobots(Collection<Robot> robots,Pedido pedido){
+/*     public void agregarPedidoRobots(Collection<Robot> robots,Pedido pedido){
         Iterator<Robot> it = robots.iterator();
         while(it.hasNext()){
             it.next().agregarPedido(pedido);
         }
-    }
+    } */
 
-    public float getCostoRobots(Collection<Robot> robots){
+/*     public float getCostoRobots(Collection<Robot> robots){
         float costo = 0f;
         Iterator<Robot> it = robots.iterator();
         while(it.hasNext()){
             costo += it.next().getCosto();
         }
         return costo;
-    }
+    } */
 
-    public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
+/*     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots){
         //Condicion de busqueda: los robots mas economicos.
 
         Collection<Robot> robotsPedido = new ArrayList<>();
@@ -77,9 +69,9 @@ public abstract class Servicio {
             robotsPedido.add(robot);
         }
         return robotsPedido;
-    }
+    } */
 
-    public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
+    public void actualizar(Pedido pedido, Cliente cliente, float costo) {
         if (pedido.requiereLimpieza()) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
