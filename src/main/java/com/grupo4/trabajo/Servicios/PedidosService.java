@@ -58,7 +58,7 @@ public abstract class PedidosService {
             default:
                  return obtenerRobotsParaEconomic(pedido, Empresa.getRobots());
         }
-    }
+    } //Estrategy - Somo nosotros.
 
     private Collection<Robot> obtenerRobotsParaEconomic(Pedido pedido, Collection<Robot> robots) {
 
