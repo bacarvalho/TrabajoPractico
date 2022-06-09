@@ -21,13 +21,12 @@ class Empresa{
 
 abstract class Servicio{
 - pedidoValidator: PedidoValidator
+- robotsService: robotsService
 - cantLimpiezas: int
 - cantOrdenamientos: int
 - limiteDeuda: float
- -cuota: float
+-cuota: float
 
-+asignarRobots(Collection<Robot> robots)
-+buscarRobots(pedido,robots) : Collection<Robot>
 -actualizarServicio(pedido: Pedido)
 +setters()
 +getters()
@@ -93,8 +92,21 @@ cantLimpiezas = 3
 cantOrdenamientos = 0
 }
 
+class RobotsService{
+    -buscadorRobots: BuscadorRobots
+    +asignarPedidoRobots(Collection<Robot> robots)
+}
 
+interface BuscadorRobots{
++buscarRobots(pedido,robots) : Collection<Robot>
+}
 
+class BuscadorRobotsEconomic{
+
+}
+
+class BuscadorRobotsPlatinium{
+}
 
 class Pedido{
 - limpiezaSimple: boolean
@@ -131,7 +143,12 @@ interface PedidoValidator{
 
 Robot <-- Servicio : Uso
 PedidoValidator -left-* Servicio
+RobotsService -left-* Servicio
 Pedido <--  Cliente : Uso
+
+RobotsService *-up- BuscadorRobots
+BuscadorRobots <|-up- BuscadorRobotsEconomic
+BuscadorRobots <|-up- BuscadorRobotsPlatinium
 
 Cliente <-up- Empresa  : Uso
 
@@ -146,7 +163,7 @@ Pedido *-left- Superficie
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note right of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
-note right of PedidoValidator
+note bottom of PedidoValidator
 diagrama de funcionamiento
 de pedidoValidator
 en diagrama_clases_pedidoValidator
