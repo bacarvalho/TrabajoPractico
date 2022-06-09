@@ -27,6 +27,7 @@ abstract class Servicio{
 - limiteDeuda: float
 -cuota: float
 
++realizarPedido(pedido: Pedido,cliente: Cliente)
 -actualizarServicio(pedido: Pedido)
 +setters()
 +getters()
