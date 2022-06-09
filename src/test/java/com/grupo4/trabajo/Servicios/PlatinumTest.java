@@ -60,7 +60,7 @@ public class PlatinumTest {
     public void pedidoConRobot () {
 
         Empresa.setRobots(robots);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getRobots());
 
         Robot robotMenosPedidos = robots.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
         List<Robot> robotsMenosPedidos = Arrays.asList(

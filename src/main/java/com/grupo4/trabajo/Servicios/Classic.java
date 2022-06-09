@@ -11,5 +11,6 @@ public class Classic extends Servicio{
         setLimiteDeuda(2000);
         setCantOrdenamientos(3);
         setPedidoValidator(new PedidoValidatorClassic());
+        setRobotsService(new RobotsService(new BuscadorRobotsEconomic()));
     }
 }

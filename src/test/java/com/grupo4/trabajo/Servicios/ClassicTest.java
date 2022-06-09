@@ -36,7 +36,7 @@ class ClassicTest {
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
         Collection<Robot> robotsBuscados = Arrays.asList(
@@ -51,7 +51,7 @@ class ClassicTest {
     @Test
     void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getRobots());
 
         Collection<Robot> robotsBuscados = Arrays.asList(
                 new K311Y_fl(),

@@ -9,6 +9,10 @@ import java.util.Iterator;
 public class RobotsService {
     private BuscadorRobots buscadorRobots;
 
+    public RobotsService(BuscadorRobots buscadorRobots){
+        this.buscadorRobots = buscadorRobots;
+    }
+
     public void agregarPedidoRobots(Collection<Robot> robots, Pedido pedido){
         Iterator<Robot> it = robots.iterator();
         while(it.hasNext()){

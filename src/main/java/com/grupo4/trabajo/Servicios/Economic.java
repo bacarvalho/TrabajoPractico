@@ -8,6 +8,7 @@ public class Economic extends Servicio{
         setCantLimpiezas(3);
         setCantOrdenamientos(0);
         setPedidoValidator(new PedidoValidatorEconomic());
+        setRobotsService(new RobotsService(new BuscadorRobotsEconomic()));
     }
 
 }

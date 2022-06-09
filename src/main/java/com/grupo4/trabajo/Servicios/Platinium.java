@@ -15,7 +15,7 @@ public class Platinium extends Servicio{
     public Platinium(){
         setLimiteDeuda(getCouta());
         setPedidoValidator(new pedidoValidatorPlatinium());
-
+        setRobotsService(new RobotsService(new BuscadorRobotsPlatinium()));
     }
 
     //Esto lo modificaria a "Robot" porque entiendo que esto deberia devolverte el robot que se le va a asignar.
