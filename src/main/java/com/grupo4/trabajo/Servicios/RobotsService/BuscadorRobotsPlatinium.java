@@ -1,4 +1,4 @@
-package com.grupo4.trabajo.Servicios;
+package com.grupo4.trabajo.Servicios.RobotsService;
 
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-public class BuscadorRobotsPlatinium implements BuscadorRobots{
+public class BuscadorRobotsPlatinium implements BuscadorRobots {
 
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots) {
         Collection<Robot> robotsPedido = new ArrayList<>();

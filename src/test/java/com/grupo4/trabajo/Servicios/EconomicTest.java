@@ -4,6 +4,8 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Economic;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 

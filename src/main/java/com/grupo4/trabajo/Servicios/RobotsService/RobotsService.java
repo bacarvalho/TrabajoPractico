@@ -1,4 +1,4 @@
-package com.grupo4.trabajo.Servicios;
+package com.grupo4.trabajo.Servicios.RobotsService;
 
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;

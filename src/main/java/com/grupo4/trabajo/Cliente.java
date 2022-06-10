@@ -3,7 +3,7 @@ package com.grupo4.trabajo;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
-import com.grupo4.trabajo.Servicios.Servicio;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 
 public class Cliente {
     private String direccion;

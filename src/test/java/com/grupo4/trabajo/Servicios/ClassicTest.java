@@ -5,6 +5,8 @@ import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 
