@@ -97,6 +97,20 @@ cantLimpiezas = 3
 cantOrdenamientos = 0
 }
 
+class RobotBuilder{
+    -result: Robot
+
+    +agregarPedidoARobot(): void
+    +reset()
+}
+
+class DirectorRobotBuilder{
+    -robot: RobotBuilder
+    +DirectorRobotBuilder()
+    +cambiarRobot(Robot)
+    +agregarPedidos(cantPedido: int)
+}
+
 class RobotsService{
     -buscadorRobots: BuscadorRobots
     +asignarPedidoRobots(Collection<Robot> robots)
@@ -151,6 +165,8 @@ PedidoValidator -left-* Servicio
 RobotsService -left-* Servicio
 Pedido <--  Cliente : Uso
 
+DirectorRobotBuilder *-right- RobotBuilder
+RobotBuilder --> Robot
 RobotsService *-up- BuscadorRobots
 BuscadorRobots <|-up- BuscadorRobotsEconomic
 BuscadorRobots <|-up- BuscadorRobotsPlatinium
