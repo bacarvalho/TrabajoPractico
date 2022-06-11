@@ -14,8 +14,12 @@ class Cliente{
 }
 
 class Empresa{
+-instancia: Empresa
 -Collection<Robot> robots
 -Collection<Cliente> clientes
+
+-Empresa()
++getInstancia()
 }
 
 

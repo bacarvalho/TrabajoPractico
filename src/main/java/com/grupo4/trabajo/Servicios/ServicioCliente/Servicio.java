@@ -24,7 +24,7 @@ public abstract class Servicio {
     public void realizarPedido(Pedido pedido, Cliente cliente){
         try{
             pedidoValidator.validarPedido(pedido,cliente);
-            Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getRobots());
+            Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
             actualizarServicio(pedido, cliente, getCostoRobots(robotsPedido));
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
