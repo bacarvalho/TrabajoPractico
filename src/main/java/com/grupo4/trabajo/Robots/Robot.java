@@ -15,8 +15,9 @@ public abstract class Robot {
     private float costo;
 
     public void agregarPedido(Pedido pedido){
-        if (pedidosPendientes == null)
+        if (pedidosPendientes == null){
             pedidosPendientes = new ArrayList<>();
+        }
         pedidosPendientes.add(pedido);
     }
 

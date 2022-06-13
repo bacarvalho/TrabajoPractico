@@ -21,12 +21,12 @@ public class PlatinumTest {
 
     Servicio servicio;
     Pedido p;
+    RobotCreator robotCreator = new RobotCreator();
     Robot robot1;
     Robot robot2;
     Robot robot3;
     Robot robot4;
     Robot robot5;
-    RobotCreator robotCreator = new RobotCreator();
     Collection<Robot> robotsPedido;
     Collection<Robot> robots;
     static final float CUOTA = 200;
@@ -36,8 +36,6 @@ public class PlatinumTest {
     @BeforeEach
     void setUp() {
         servicio = new Platinium();
-
-
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOSYMUEBLES),new Superficie(SuperficieEnum.PISOS));
         robots = Arrays.asList(
                 robot1 = robotCreator.crearRobot(new K311Y_fl(),1),
