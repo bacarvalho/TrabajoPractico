@@ -21,11 +21,12 @@ public class PlatinumTest {
 
     Servicio servicio;
     Pedido p;
-    K311Y_fl robot1;
-    K311Y_fu robot2;
-    P011H robot3;
-    S031RTY robot4;
-    K311Y_a robot5;
+    Robot robot1;
+    Robot robot2;
+    Robot robot3;
+    Robot robot4;
+    Robot robot5;
+    RobotCreator robotCreator = new RobotCreator();
     Collection<Robot> robotsPedido;
     Collection<Robot> robots;
     static final float CUOTA = 200;
@@ -35,24 +36,15 @@ public class PlatinumTest {
     @BeforeEach
     void setUp() {
         servicio = new Platinium();
-        robot1 = new K311Y_fl();
-        robot2 = new K311Y_fu();
-        robot3 = new P011H();
-        robot4 = new S031RTY();
-        robot5 = new K311Y_a();
+
 
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOSYMUEBLES),new Superficie(SuperficieEnum.PISOS));
-        robot1.agregarPedido(p);
-        robot2.agregarPedido(p);
-        robot3.agregarPedido(p);
-        robot4.agregarPedido(p);
-
         robots = Arrays.asList(
-                robot1,
-                robot2,
-                robot3,
-                robot4,
-                robot5
+                robot1 = robotCreator.crearRobot(new K311Y_fl(),1),
+                robot2 = robotCreator.crearRobot(new K311Y_fu(),1),
+                robot3 = robotCreator.crearRobot(new P011H(),1),
+                robot4 = robotCreator.crearRobot(new S031RTY(),1),
+                robot5 = robotCreator.crearRobot(new K311Y_a(),0)
         );
     }
 
