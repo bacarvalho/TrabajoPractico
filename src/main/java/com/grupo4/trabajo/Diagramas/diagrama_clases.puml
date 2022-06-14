@@ -98,7 +98,7 @@ cantOrdenamientos = 0
 }
 
 class RobotCreator{
-    +crearRobot(tipoRobot: Robot, cantPedidos : int): Robot
+    +crearRobot(modeloRobot: Robot, cantPedidos : int): Robot
 }
 
 
