@@ -26,20 +26,19 @@ public abstract class Servicio {
             pedidoValidator.validarPedido(pedido,cliente);
             Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
-            actualizarServicio(pedido, cliente, robotsService.getCostoRobots(robotsPedido));
+            actualizarServicio(pedido, cliente);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void actualizarServicio(Pedido pedido, Cliente cliente, float costo) {
+    public void actualizarServicio(Pedido pedido, Cliente cliente) {
         if (pedido.requiereLimpieza()) {
             setCantLimpiezas(getCantLimpiezas() - 1);
         }
         if (pedido.requiereOrdenamiento()) {
             setCantOrdenamientos(getCantOrdenamientos() - 1);
         }
-        cliente.setDeuda(cliente.getDeuda() + costo);
     }
 
 

@@ -26,13 +26,13 @@ class Empresa{
 abstract class Servicio{
 - pedidoValidator: PedidoValidator
 - robotsService: robotsService
+- actualizadorServicio: ActualizadorServicio
 - cantLimpiezas: int
 - cantOrdenamientos: int
 - limiteDeuda: float
 -cuota: float
 
 +realizarPedido(pedido: Pedido,cliente: Cliente)
--actualizarServicio(pedido: Pedido)
 +setters()
 +getters()
 }
@@ -80,6 +80,10 @@ superficie = null
  costo = 2700
 }
 
+class ActualizadorServicio{
++actualizarServicio(pedido: Pedido)
+}
+
 class Platinium{
 limiteDeuda = cuota
 cantLimpiezas = INFINITE
@@ -120,12 +124,15 @@ class BuscadorRobotsPlatinium{
 }
 
 class Pedido{
+- limpieza: Superficie
 - limpiezaSimple: boolean
-- requiereLimpieza: Superficie
 - ordenamiento: Superficie
-- requiereLustramiento: Superficie
+- lustramiento: Superficie
 
 +Pedido(limpiezaSimple,requiereLimpieza,ordenamiento,requiereLustramiento)
++requiereLimpieza(): boolean
++requiereOrdenamiento(): boolean
++requiereLustramiento(): boolean
 }
 
 enum SuperficieEnum{
@@ -154,6 +161,7 @@ interface PedidoValidator{
 
 Robot <-- Servicio : Uso
 PedidoValidator -left-* Servicio
+ActualizadorServicio -left-* Servicio
 RobotsService -left-* Servicio
 Pedido <--  Cliente : Uso
 
