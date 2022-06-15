@@ -4,13 +4,14 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Platinium;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.ClientInfoStatus;
 import java.util.*;
 
 import static org.junit.Assert.assertThrows;
@@ -20,11 +21,12 @@ public class PlatinumTest {
 
     Servicio servicio;
     Pedido p;
-    K311Y_fl robot1;
-    K311Y_fu robot2;
-    P011H robot3;
-    S031RTY robot4;
-    K311Y_a robot5;
+    RobotCreator robotCreator = new RobotCreator();
+    Robot robot1;
+    Robot robot2;
+    Robot robot3;
+    Robot robot4;
+    Robot robot5;
     Collection<Robot> robotsPedido;
     Collection<Robot> robots;
     static final float CUOTA = 200;
@@ -34,33 +36,22 @@ public class PlatinumTest {
     @BeforeEach
     void setUp() {
         servicio = new Platinium();
-        robot1 = new K311Y_fl();
-        robot2 = new K311Y_fu();
-        robot3 = new P011H();
-        robot4 = new S031RTY();
-        robot5 = new K311Y_a();
-
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOSYMUEBLES),new Superficie(SuperficieEnum.PISOS));
-        robot1.agregarPedido(p);
-        robot2.agregarPedido(p);
-        robot3.agregarPedido(p);
-        robot4.agregarPedido(p);
-
         robots = Arrays.asList(
-                robot1,
-                robot2,
-                robot3,
-                robot4,
-                robot5
+                robot1 = robotCreator.crearRobot(new K311Y_fl(),1),
+                robot2 = robotCreator.crearRobot(new K311Y_fu(),1),
+                robot3 = robotCreator.crearRobot(new P011H(),1),
+                robot4 = robotCreator.crearRobot(new S031RTY(),1),
+                robot5 = robotCreator.crearRobot(new K311Y_a(),0)
         );
     }
 
 
     @Test
-    public void pedidoConRobot () {
+    public void ClientePlatiniumSinDeudaSolicitaPedidoYSeLeAsignaElRobotConMenosPedidosPendientes() {
 
-        Empresa.setRobots(robots);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        Empresa.getInstancia().setRobots(robots);
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
 
         Robot robotMenosPedidos = robots.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
         List<Robot> robotsMenosPedidos = Arrays.asList(
@@ -70,15 +61,15 @@ public class PlatinumTest {
     }
 
     @Test
-    public void excedeLaDeuda() {
+    public void ClientePlatiniumSolicitaPedidoYEsRechazadoPorSerDeudor() {
         Platinium servicio = new Platinium();
         servicio.setLimiteDeuda(CUOTA);
 
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(servicio);
         cliente.setDeuda(DEUDA);
         cliente.setTipoServicio(servicio);
 
-        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
 
 }

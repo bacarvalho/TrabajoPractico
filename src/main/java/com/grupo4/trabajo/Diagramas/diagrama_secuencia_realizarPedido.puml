@@ -3,11 +3,16 @@
 
 autonumber
 
-Cliente -> Servicio: pedirPedido(pedido)
-Servicio -> Servicio : validarPedido(pedido)
-Servicio -> Empresa: buscarRobots(pedido)
-Servicio -> Empresa: agregarPedidoRobots(pedido)
-Servicio -> Servicio: actualizarServicio(pedido)
+Cliente -> Servicio: pedirPedido(pedido,this)
+Servicio-> Servicio: realizarPedido(pedido,cliente)
+Servicio-> PedidoValidator: validarPedido(pedido,cliente)
+Servicio-> RobotsService: getBuscadorRobots()
+RobotsService -> BuscadorRobots: buscarRobots(List<> robots, pedido)
+BuscadorRobots -> Empresa: getInstance().getRobots()
+BuscadorRobots -> Servicio: return List<> robotsPedido
+Servicio -> RobotsService: agregarPedidoRobots(pedido,List<> robotsPedido)
+Servicio -> Servicio: actualizarServicio()
+
 
 
 @enduml

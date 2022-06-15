@@ -6,11 +6,11 @@ public class Pedido {
     private Superficie ordenamiento;
     private Superficie lustramiento;
 
-    public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie requiereLimpieza, Superficie requiereLustramiento){
+    public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie limpieza, Superficie lustramiento){
         this.limpiezaSimple = limpiezaSimple;
         this.ordenamiento = ordenamiento;
-        this.limpieza = requiereLimpieza;
-        this.lustramiento = requiereLustramiento;
+        this.limpieza = limpieza;
+        this.lustramiento = lustramiento;
     }
 
     public boolean requiereLimpieza() {

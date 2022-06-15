@@ -6,33 +6,51 @@ class Cliente{
 -direccion: String
 -deuda: float
 -tiposervicio: Servicio
+-DiasUltLimpieza: int
 
++Cliente(Servicio)
 +pedirPedido(pedido: Pedido)
 +setters()
 +getters()
 }
 
 class Empresa{
+-instancia: Empresa
+-informe: Informe
 -Collection<Robot> robots
 -Collection<Cliente> clientes
+-Collection<Empleado> empleados
+
+-Empresa()
++getInstancia()
+}
+
+class Informe{
+    -ajusteComunDefinido: float
+    -cantPedidosSimples: int
+    -cantPedidosComplejos: int
+
+    +calcularCostoPedido(pedido)
+    +calcularCostoCliente(cliente)
 }
 
 
 abstract class Servicio{
+- pedidoValidator: PedidoValidator
+- robotsService: robotsService
+- actualizadorServicio: ActualizadorServicio
 - cantLimpiezas: int
 - cantOrdenamientos: int
 - limiteDeuda: float
- -cuota: float
+-cuota: float
 
-+validarPedido(pedido: Pedido,deuda: float)
-+asignarRobots(Collection<Robot> robots)
--actualizarServicio(pedido: Pedido)
++realizarPedido(pedido: Pedido,cliente: Cliente)
 +setters()
 +getters()
 }
 
 abstract class Robot{
-- pedidosPendientes: Collection<Pedido>
+- pedidosPendientes: Collection<PedidoLimpieza>
 - idRobot: String
 - superficie: SuperficieEnum
 - puedeOrdenar: boolean
@@ -74,6 +92,10 @@ superficie = null
  costo = 2700
 }
 
+class ActualizadorServicio{
++actualizarServicio(pedido: Pedido,Servicio servicio+)
+}
+
 class Platinium{
 limiteDeuda = cuota
 cantLimpiezas = INFINITE
@@ -91,16 +113,65 @@ cantLimpiezas = 3
 cantOrdenamientos = 0
 }
 
+class RobotCreator{
+    +crearRobot(modeloRobot: Robot, cantPedidos : int): Robot
+}
 
 
+class RobotsService{
+    -buscadorRobots: BuscadorRobots
+    +asignarPedidoRobots(Collection<Robot> robots)
+    +getCostoRobots(Collection<Robot> robots)
+}
+
+interface BuscadorRobots{
++buscarRobots(pedido,robots) : Collection<Robot>
+}
+
+class BuscadorRobotsEconomic{
+
+}
+
+class BuscadorRobotsPlatinium{
+}
 
 class Pedido{
-- limpiezaSimple: boolean
-- requiereLimpieza: Superficie
-- ordenamiento: Superficie
-- requiereLustramiento: Superficie
+-pedidoLimpieza: PedidoLimpieza
+-pedidoReparacion: pedidoReparacion
++Pedido(pedidoLimpieza:PedidoLimpieza, pedidoReparacion: PedidoReparacion)
++solicitaLimpieza(): boolean
++solicitaReparacion(): boolean
+}
 
-+Pedido(limpiezaSimple,requiereLimpieza,ordenamiento,requiereLustramiento)
+class PedidoLimpieza{
+- limpieza: Superficie
+- limpiezaSimple: boolean
+- ordenamiento: Superficie
+- lustramiento: Superficie
+- cantMascotas: int
+
++requiereLimpieza(): boolean
++requiereOrdenamiento(): boolean
++requiereLustramiento(): boolean
+}
+
+class PedidoReparacion{
+    -tipoReparacion: TipoReparacion
+    -complejidad: int
+}
+
+class Empleado{
+    -sueldo: float
+    -especialidad: TipoReparacion
+}
+
+enum TipoReparacion{
+GAS
+ELECTRICIDAD
+}
+
+abstract class CalculadorReparacion{
++static CalcularCosto(tipoReparacion : TipoReparacion,complejidad: int) : float
 }
 
 enum SuperficieEnum{
@@ -109,8 +180,14 @@ MUEBLES
 PISOSYMUEBLES
 }
 
+enum EnumResiduo{
+BARRO
+POLVO
+}
+
 class Superficie{
 - superficie: SuperficieEnum
+- residuo: EnumResiduo
 }
 
 Robot <|-- K311Y_fl
@@ -123,22 +200,45 @@ Servicio <|-- Platinium
 Servicio <|-- Classic
 Servicio <|-- Economic
 
-Robot <-- Servicio : Uso
+interface PedidoValidator{
++validarPedido(pedido: Pedido,cliente: Cliente)
+}
 
+Robot <-- Servicio : Uso
+PedidoValidator -left-* Servicio
+ActualizadorServicio -left-* Servicio
+RobotsService -left-* Servicio
 Pedido <--  Cliente : Uso
+
+RobotCreator --> Robot
+RobotsService *-up- BuscadorRobots
+BuscadorRobots <|-up- BuscadorRobotsEconomic
+BuscadorRobots <|-up- BuscadorRobotsPlatinium
 
 Cliente <-up- Empresa  : Uso
 
 Robot <-up-  Empresa : Uso
 
 Cliente *--  Servicio : composición
+Superficie *-- EnumResiduo
 
 Superficie *-left- SuperficieEnum
 Robot *-right- SuperficieEnum
 Pedido *-left- Superficie
 
+Empresa *-right- Informe
+
+Pedido *-up- PedidoLimpieza
+Pedido *-up- PedidoReparacion
+PedidoReparacion *-up- TipoReparacion
+Empleado *-right- TipoReparacion
+Empresa *-up- Empleado
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note right of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
-
+note bottom of PedidoValidator
+diagrama de funcionamiento
+de pedidoValidator
+en diagrama_clases_pedidoValidator
+end note
 @enduml

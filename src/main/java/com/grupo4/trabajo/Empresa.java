@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class Empresa {
+    private static Empresa instancia;
     private static Collection<Robot> robots = Arrays.asList(
             new K311Y_a(),
             new K311Y_fl(),
@@ -15,15 +16,22 @@ public class Empresa {
         );
     private Collection<Cliente> clientes;
 
-    public Empresa(){
+    private Empresa(){
 
     }
 
-    public static Collection<Robot> getRobots() {
+    public static Empresa getInstancia() {
+        if(instancia == null){
+            instancia = new Empresa();
+        }
+        return instancia;
+    }
+
+    public Collection<Robot> getRobots() {
         return robots;
     }
 
-    public static void setRobots(Collection<Robot> robots) {
+    public void setRobots(Collection<Robot> robots) {
         Empresa.robots = robots;
     }
 

@@ -5,6 +5,9 @@ import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
+import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +26,8 @@ class ClassicTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         servicio = new Classic();
-        cliente=new Cliente();
-        cliente.setDeuda(2000);
+        cliente=new Cliente(servicio);
+        cliente.setDeuda(2001);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -34,9 +37,9 @@ class ClassicTest {
 
     //Test Case Nro 2.
     @Test
-    void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
+    void ClienteClassicSolicitaPedidoDeLimpiezaYOrdenamientoSeLeAsignanLosRobotsK311Y_flyS031RTY(){
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
         Collection<Robot> robotsBuscados = Arrays.asList(
@@ -49,9 +52,9 @@ class ClassicTest {
 
     //Test Case Nro 3.
     @Test
-    void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
+    void ClienteClassicSolicitaPedidoDeLimpiezaYLustradoDeMueblesSeLeAsignanLosRobotsK331Y_flyK311Y_fu(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        robotsPedido = servicio.buscarRobots(p, Empresa.getRobots());
+        robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
 
         Collection<Robot> robotsBuscados = Arrays.asList(
                 new K311Y_fl(),
@@ -63,9 +66,17 @@ class ClassicTest {
 
     //Test Case nro 4.
     @Test
-    void denegarPedidoPorDeuda(){
+    void ClienteClassicSolicitaUnPedidoYEsRechazadoPorSerDeudor(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        assertThrows(EsDeudorException.class, () -> servicio.validarPedido(p, cliente));
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
+    }
+
+    @Test
+    void ClienteClassicSolicitaUnPedidoDeOrdenamientoYElServicioLeDescuentaLaCantidadDeOrdenamientosDisponibles(){
+        int cantOrd = servicio.getCantOrdenamientos();
+        p = new Pedido(true,new Superficie(null), null ,null);
+        ActualizadorServicio.actualizarServicio(p,servicio);
+        assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
     }
 
 }
