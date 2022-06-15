@@ -48,7 +48,7 @@ public class PlatinumTest {
 
 
     @Test
-    public void pedidoConRobot () {
+    public void ClientePlatiniumSolicitaPedidoYSeLeAsignaElRobotConMenosPedidosPendientes() {
 
         Empresa.getInstancia().setRobots(robots);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
@@ -61,7 +61,7 @@ public class PlatinumTest {
     }
 
     @Test
-    public void excedeLaDeuda() {
+    public void ClientePlatiniumSolicitaPedidoYEsRechazadoPorSerDeudor() {
         Platinium servicio = new Platinium();
         servicio.setLimiteDeuda(CUOTA);
 

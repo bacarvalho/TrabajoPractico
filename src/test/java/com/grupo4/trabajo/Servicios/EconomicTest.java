@@ -34,7 +34,7 @@ public class EconomicTest {
 
 
     @Test
-    void TpCaso1EconomicNoPudeOrdenar() throws NoCantLimpiezasDisponibleException, NoCantOrdenamientoDisponibleException {
+    void ClienteEconomicSolicitaPedidoYEsRechazadoPorSerDeudor() throws NoCantLimpiezasDisponibleException, NoCantOrdenamientoDisponibleException {
         /*
          * 1. Un cliente Economic realiza un pedido de limpieza y ordenamiento. El pedido es rechazado ya que no puede solicitar ordenamiento.
          */

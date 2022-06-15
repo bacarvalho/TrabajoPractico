@@ -36,7 +36,7 @@ class ClassicTest {
 
     //Test Case Nro 2.
     @Test
-    void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso2(){
+    void ClienteClassicSolicitaPedidoDeLimpiezaYOrdenamientoSeLeAsignanLosRobotsK311Y_flyS031RTY(){
         p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
@@ -51,7 +51,7 @@ class ClassicTest {
 
     //Test Case Nro 3.
     @Test
-    void buscarRobotsLimpiezaYOrdenamientoSinDeudaCaso3(){
+    void ClienteClassicSolicitaPedidoDeLimpiezaYLustradoDeMueblesSeLeAsignanLosRobotsK331Y_flyK311Y_fu(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
 
@@ -65,7 +65,7 @@ class ClassicTest {
 
     //Test Case nro 4.
     @Test
-    void denegarPedidoPorDeuda(){
+    void ClienteClassicSolicitaUnPedidoYEsRechazadoPorSerDeudor(){
         p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
         assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }

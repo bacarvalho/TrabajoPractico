@@ -9,7 +9,7 @@ abstract class Servicio{
 - limiteDeuda: float
  -cuota: float
 
-+asignarRobots(Collection<Robot> robots)
++realizarPedido(pedido: Pedido,cliente: Cliente)
 -actualizarServicio(pedido: Pedido)
 +setters()
 +getters()
