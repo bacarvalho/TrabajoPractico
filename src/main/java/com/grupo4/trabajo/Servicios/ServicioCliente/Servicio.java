@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public abstract class Servicio {
-    private ActualizadorServicio actualizadorServicio;
+    //private ActualizadorServicio actualizadorServicio;
     private PedidoValidator pedidoValidator;
     private RobotsService robotsService;
     private int cantLimpiezas;
@@ -22,16 +22,13 @@ public abstract class Servicio {
     private float limiteDeuda;
     private float couta;
 
-    public Servicio(){
-        setActualizadorServicio(new ActualizadorServicio());
-    }
-
     public void realizarPedido(Pedido pedido, Cliente cliente){
         try{
             pedidoValidator.validarPedido(pedido,cliente);
             Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
-            actualizadorServicio.actualizarServicio(pedido, this);
+            //actualizadorServicio.actualizarServicio(pedido, this);
+            ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
             System.out.println(e.getMessage());
         }
@@ -83,13 +80,5 @@ public abstract class Servicio {
 
     public void setRobotsService(RobotsService robotsService) {
         this.robotsService = robotsService;
-    }
-
-    public ActualizadorServicio getActualizadorServicio() {
-        return actualizadorServicio;
-    }
-
-    public void setActualizadorServicio(ActualizadorServicio actualizadorServicio) {
-        this.actualizadorServicio = actualizadorServicio;
     }
 }

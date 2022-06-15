@@ -5,6 +5,7 @@ import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
+import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
@@ -74,7 +75,7 @@ class ClassicTest {
     void ClienteClassicSolicitaUnPedidoDeOrdenamientoYElServicioLeDescuentaLaCantidadDeOrdenamientosDisponibles(){
         int cantOrd = servicio.getCantOrdenamientos();
         p = new Pedido(true,new Superficie(null), null ,null);
-        servicio.getActualizadorServicio().actualizarServicio(p,servicio);
+        ActualizadorServicio.actualizarServicio(p,servicio);
         assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
     }
 

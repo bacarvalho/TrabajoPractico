@@ -5,6 +5,7 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Economic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.Superficie;
@@ -53,7 +54,7 @@ public class EconomicTest {
     void ClienteEconomicSinDeudaSolicitaUnPedidoDeLimpiezaYSeLeDescuentaLaCantidadDeLimpiezas(){
         int cantLim = servicio.getCantLimpiezas();
         pedidoEco = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,null);
-        servicio.getActualizadorServicio().actualizarServicio(pedidoEco,servicio);
+        ActualizadorServicio.actualizarServicio(pedidoEco,servicio);
         assertEquals(cantLim-1,servicio.getCantLimpiezas());
     }
 

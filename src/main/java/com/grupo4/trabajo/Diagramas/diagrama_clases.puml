@@ -81,7 +81,7 @@ superficie = null
 }
 
 class ActualizadorServicio{
-+actualizarServicio(pedido: Pedido,Servicio servicio)
++actualizarServicio(pedido: Pedido,Servicio servicio+)
 }
 
 class Platinium{
