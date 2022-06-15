@@ -22,6 +22,10 @@ public abstract class Servicio {
     private float limiteDeuda;
     private float couta;
 
+    public Servicio(){
+        setActualizadorServicio(new ActualizadorServicio());
+    }
+
     public void realizarPedido(Pedido pedido, Cliente cliente){
         try{
             pedidoValidator.validarPedido(pedido,cliente);
@@ -32,7 +36,7 @@ public abstract class Servicio {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public int getCantLimpiezas() {
         return cantLimpiezas;
     }

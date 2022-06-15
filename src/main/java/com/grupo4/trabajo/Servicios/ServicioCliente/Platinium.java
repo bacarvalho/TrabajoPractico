@@ -8,6 +8,7 @@ import com.grupo4.trabajo.Validators.pedidoValidatorPlatinium;
 
 public class Platinium extends Servicio{
     public Platinium(){
+        super();
         setLimiteDeuda(getCouta());
         setPedidoValidator(new pedidoValidatorPlatinium());
         setRobotsService(new RobotsService(new BuscadorRobotsPlatinium()));

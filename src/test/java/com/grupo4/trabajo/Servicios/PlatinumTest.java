@@ -48,7 +48,7 @@ public class PlatinumTest {
 
 
     @Test
-    public void ClientePlatiniumSolicitaPedidoYSeLeAsignaElRobotConMenosPedidosPendientes() {
+    public void ClientePlatiniumSinDeudaSolicitaPedidoYSeLeAsignaElRobotConMenosPedidosPendientes() {
 
         Empresa.getInstancia().setRobots(robots);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());

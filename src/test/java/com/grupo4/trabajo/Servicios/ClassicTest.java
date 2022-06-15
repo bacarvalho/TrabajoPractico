@@ -70,4 +70,12 @@ class ClassicTest {
         assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
 
+    @Test
+    void ClienteClassicSolicitaUnPedidoDeOrdenamientoYElServicioLeDescuentaLaCantidadDeOrdenamientosDisponibles(){
+        int cantOrd = servicio.getCantOrdenamientos();
+        p = new Pedido(true,new Superficie(null), null ,null);
+        servicio.getActualizadorServicio().actualizarServicio(p,servicio);
+        assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
+    }
+
 }

@@ -7,6 +7,7 @@ import com.grupo4.trabajo.Validators.PedidoValidatorClassic;
 
 public class Classic extends Servicio{
     public Classic(){
+        super();
         setLimiteDeuda(2000);
         setCantOrdenamientos(3);
         setPedidoValidator(new PedidoValidatorClassic());
