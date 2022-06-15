@@ -96,7 +96,7 @@ note bottom of pedidoValidatorPlatinium
     }
 end note
 
-note bottom of Platinium: pedidoValidator = new PedidoValidatorPlatinium()
-note bottom of Classic: pedidoValidator = new PedidoValidatorClassic()
-note bottom of Economic: pedidoValidator = new PedidoValidatorEconomic()
+note bottom of Platinium: setPedidoValidator(new PedidoValidatorPlatinium())
+note bottom of Classic: setPedidoValidator(new PedidoValidatorClassic())
+note bottom of Economic: setPedidoValidator(new PedidoValidatorEconomic())
 @enduml

@@ -105,6 +105,7 @@ class RobotCreator{
 class RobotsService{
     -buscadorRobots: BuscadorRobots
     +asignarPedidoRobots(Collection<Robot> robots)
+    +getCostoRobots(Collection<Robot> robots)
 }
 
 interface BuscadorRobots{

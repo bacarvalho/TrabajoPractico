@@ -11,6 +11,7 @@ RobotsService -> BuscadorRobots: buscarRobots(List<> robots, pedido)
 BuscadorRobots -> Empresa: getInstance().getRobots()
 BuscadorRobots -> Servicio: return List<> robotsPedido
 Servicio -> RobotsService: agregarPedidoRobots(pedido,List<> robotsPedido)
+Servicio -> Servicio: actualizarServicio()
 
 
 

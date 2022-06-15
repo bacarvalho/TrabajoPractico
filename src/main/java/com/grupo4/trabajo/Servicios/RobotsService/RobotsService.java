@@ -19,6 +19,16 @@ public class RobotsService {
             it.next().agregarPedido(pedido);
         }
     }
+
+    public float getCostoRobots(Collection<Robot> robots){
+        float costo = 0f;
+        Iterator<Robot> it = robots.iterator();
+        while(it.hasNext()){
+            costo += it.next().getCosto();
+        }
+        return costo;
+    }
+
     public BuscadorRobots getBuscadorRobots() {
         return buscadorRobots;
     }
