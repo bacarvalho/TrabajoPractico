@@ -6,6 +6,7 @@ class Cliente{
 -direccion: String
 -deuda: float
 -tiposervicio: Servicio
+-DiasUltLimpieza: int
 
 +Cliente(Servicio)
 +pedirPedido(pedido: Pedido)
@@ -15,11 +16,22 @@ class Cliente{
 
 class Empresa{
 -instancia: Empresa
+-informe: Informe
 -Collection<Robot> robots
 -Collection<Cliente> clientes
+-Collection<Empleado> empleados
 
 -Empresa()
 +getInstancia()
+}
+
+class Informe{
+    -ajusteComunDefinido: float
+    -cantPedidosSimples: int
+    -cantPedidosComplejos: int
+
+    +calcularCostoPedido(pedido)
+    +calcularCostoCliente(cliente)
 }
 
 
@@ -38,7 +50,7 @@ abstract class Servicio{
 }
 
 abstract class Robot{
-- pedidosPendientes: Collection<Pedido>
+- pedidosPendientes: Collection<PedidoLimpieza>
 - idRobot: String
 - superficie: SuperficieEnum
 - puedeOrdenar: boolean
@@ -124,15 +136,42 @@ class BuscadorRobotsPlatinium{
 }
 
 class Pedido{
+-pedidoLimpieza: PedidoLimpieza
+-pedidoReparacion: pedidoReparacion
++Pedido(pedidoLimpieza:PedidoLimpieza, pedidoReparacion: PedidoReparacion)
++solicitaLimpieza(): boolean
++solicitaReparacion(): boolean
+}
+
+class PedidoLimpieza{
 - limpieza: Superficie
 - limpiezaSimple: boolean
 - ordenamiento: Superficie
 - lustramiento: Superficie
+- cantMascotas: int
 
-+Pedido(limpiezaSimple,requiereLimpieza,ordenamiento,requiereLustramiento)
 +requiereLimpieza(): boolean
 +requiereOrdenamiento(): boolean
 +requiereLustramiento(): boolean
+}
+
+class PedidoReparacion{
+    -tipoReparacion: TipoReparacion
+    -complejidad: int
+}
+
+class Empleado{
+    -sueldo: float
+    -especialidad: TipoReparacion
+}
+
+enum TipoReparacion{
+GAS
+ELECTRICIDAD
+}
+
+abstract class CalculadorReparacion{
++static CalcularCosto(tipoReparacion : TipoReparacion,complejidad: int) : float
 }
 
 enum SuperficieEnum{
@@ -141,8 +180,14 @@ MUEBLES
 PISOSYMUEBLES
 }
 
+enum EnumResiduo{
+BARRO
+POLVO
+}
+
 class Superficie{
 - superficie: SuperficieEnum
+- residuo: EnumResiduo
 }
 
 Robot <|-- K311Y_fl
@@ -175,11 +220,19 @@ Cliente <-up- Empresa  : Uso
 Robot <-up-  Empresa : Uso
 
 Cliente *--  Servicio : composición
+Superficie *-- EnumResiduo
 
 Superficie *-left- SuperficieEnum
 Robot *-right- SuperficieEnum
 Pedido *-left- Superficie
 
+Empresa *-right- Informe
+
+Pedido *-up- PedidoLimpieza
+Pedido *-up- PedidoReparacion
+PedidoReparacion *-up- TipoReparacion
+Empleado *-right- TipoReparacion
+Empresa *-up- Empleado
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note right of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos
