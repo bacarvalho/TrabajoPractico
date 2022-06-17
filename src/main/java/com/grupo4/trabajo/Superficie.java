@@ -1,6 +1,6 @@
 package com.grupo4.trabajo;
 
-import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Enumerados.SuperficieEnum;
 
 public class Superficie {
     private SuperficieEnum superficie;

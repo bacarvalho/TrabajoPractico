@@ -1,5 +1,7 @@
 package com.grupo4.trabajo.Robots;
 
+import com.grupo4.trabajo.Enumerados.SuperficieEnum;
+
 public class P011H extends Robot{
     public P011H(){
         setSuperficie(SuperficieEnum.PISOS);

@@ -1,4 +1,4 @@
-package com.grupo4.trabajo.Robots;
+package com.grupo4.trabajo.Enumerados;
 
 public enum SuperficieEnum {
     PISOS,MUEBLES,PISOSYMUEBLES
