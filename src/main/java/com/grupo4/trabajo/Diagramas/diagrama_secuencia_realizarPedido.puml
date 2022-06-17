@@ -3,19 +3,16 @@
 
 autonumber
 
-Cliente -> Servicio: pedirPedido(pedido)
-Servicio -> "RealizarPedido()": realizar el pedido
-activate "RealizarPedido()"
-"RealizarPedido()" -> "validarPedido()": validar el pedido
-activate "validarPedido()"
-"validarPedido()" --> Cliente : no es moroso
-"validarPedido()" --> Servicio : tiene servicio suficiente
-"validarPedido()" --> "RealizarPedido()": pedido validado
-destroy "validarPedido()"
-"RealizarPedido()" -> CollectionRobots: buscarRobots(pedido)
-"RealizarPedido()" -> CollectionRobots: agregar el pedido a los robots necesarios
-"RealizarPedido()" -> Servicio: actualizarServicio()
-destroy "RealizarPedido()"
-Servicio -> Cliente: actualizar deuda
+Cliente -> Servicio: pedirPedido(pedido,this)
+Servicio-> Servicio: realizarPedido(pedido,cliente)
+Servicio-> PedidoValidator: validarPedido(pedido,cliente)
+Servicio-> RobotsService: getBuscadorRobots()
+RobotsService -> BuscadorRobots: buscarRobots(List<> robots, pedido)
+BuscadorRobots -> Empresa: getInstance().getRobots()
+BuscadorRobots -> Servicio: return List<> robotsPedido
+Servicio -> RobotsService: agregarPedidoRobots(pedido,List<> robotsPedido)
+Servicio -> Servicio: actualizarServicio()
+
+
 
 @enduml

@@ -1,33 +1,26 @@
 package com.grupo4.trabajo;
 
-import com.grupo4.trabajo.Robots.Superficie;
-
 public class Pedido {
     private boolean limpiezaSimple;
-    private boolean requiereLimpieza;
-    private boolean ordenamiento;
-    private boolean requiereLustramiento;
-    private Superficie superficie;
+    private Superficie limpieza;
+    private Superficie ordenamiento;
+    private Superficie lustramiento;
 
-    public Pedido(boolean limpiezaSimple,boolean ordenamiento,Superficie superficie, boolean requiereLimpieza,boolean requiereLustramiento){
+    public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie limpieza, Superficie lustramiento){
         this.limpiezaSimple = limpiezaSimple;
         this.ordenamiento = ordenamiento;
-        this.superficie = superficie;
-        this.requiereLimpieza = requiereLimpieza;
-        this.requiereLustramiento = requiereLustramiento;
+        this.limpieza = limpieza;
+        this.lustramiento = lustramiento;
     }
 
     public boolean requiereLimpieza() {
-        return requiereLimpieza;
+        return limpieza != null;
     }
 
-    public void setRequiereLimpieza(boolean requiereLimpieza) {
-        this.requiereLimpieza = requiereLimpieza;
+    public void setLimpieza(Superficie limpieza) {
+        this.limpieza = limpieza;
     }
 
-    public void setSuperficie(Superficie superficie) {
-        this.superficie = superficie;
-    }
 
     public boolean limpiezaSimple() {
         return limpiezaSimple;
@@ -38,23 +31,30 @@ public class Pedido {
     }
 
     public boolean requiereOrdenamiento() {
-        return ordenamiento;
+        return ordenamiento != null;
     }
 
-    public void setOrdenamiento(boolean ordenamiento) {
+    public void setOrdenamiento(Superficie ordenamiento) {
         this.ordenamiento = ordenamiento;
     }
 
-    public Superficie getSuperficie() {
-        return superficie;
-    }
-
     public boolean requiereLustramiento() {
-        return requiereLustramiento;
+        return lustramiento != null;
     }
 
-    public void setRequiereLustramiento(boolean requiereLustramiento) {
-        this.requiereLustramiento = requiereLustramiento;
+    public void setLustramiento(Superficie lustramiento) {
+        this.lustramiento = lustramiento;
     }
 
+    public Superficie getLimpieza() {
+        return limpieza;
+    }
+
+    public Superficie getOrdenamiento() {
+        return ordenamiento;
+    }
+
+    public Superficie getLustramiento() {
+        return lustramiento;
+    }
 }
