@@ -16,16 +16,16 @@ public class BuscadorRobotsPlatinium implements BuscadorRobots {
         if(robot.isPuedeLustrar() && robot.isPuedeOrdenar())
             robotsPedido.add(robot);
         else {
-            if (pedido.requiereOrdenamiento()) {
+            if (pedido.getPedidoLimpieza().requiereOrdenamiento()) {
                 Collection<Robot> aux = robots.stream()
-                        .filter(r -> r.isPuedeOrdenar() && r.getSuperficie() == pedido.getOrdenamiento().getSuperficie())
+                        .filter(r -> r.isPuedeOrdenar() && r.getSuperficie() == pedido.getPedidoLimpieza().getOrdenamiento().getSuperficie())
                         .collect(Collectors.toList());
                 Robot robotAux = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                 robotsPedido.add(robotAux);
             }
-            if (pedido.requiereLustramiento()) {
+            if (pedido.getPedidoLimpieza().requiereLustramiento()) {
                 Collection<Robot> aux = robots.stream()
-                        .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getLustramiento().getSuperficie())
+                        .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getPedidoLimpieza().getLustramiento().getSuperficie())
                         .collect(Collectors.toList());
                 Robot robotAux2 = aux.stream().min(Comparator.comparingDouble(Robot::getIntPedidosPendientes)).get();
                 robotsPedido.add(robotAux2);
