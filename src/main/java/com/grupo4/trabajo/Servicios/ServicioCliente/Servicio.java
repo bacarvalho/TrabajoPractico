@@ -12,6 +12,7 @@ import com.grupo4.trabajo.Validators.PedidoValidator;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public abstract class Servicio {
     //private ActualizadorServicio actualizadorServicio;
@@ -27,6 +28,7 @@ public abstract class Servicio {
             pedidoValidator.validarPedido(pedido,cliente);
             Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
+            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {

@@ -2,6 +2,9 @@ package com.grupo4.trabajo.informes;
 
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Robots.Robot;
+
+import java.util.List;
 
 public class Informe {
     private int cantidadPedidosSimples;
@@ -22,13 +25,13 @@ public class Informe {
         this.cantidadPedidosSimples=0;
     }
 
-    public void calcularCostoPedido(Pedido pedido){
+    public float calcularCostoPedido(Pedido pedido, List<Robot> robotList){
         if(pedido.limpiezaSimple()){
             setEstrategia(new TareaSimple());
         } else{
             setEstrategia(new TareaCompleja());
         }
-        estrategia.calcularCosto(pedido);
+        return estrategia.calcularCosto(pedido, robotList);
     }
 
     public void calcularCostoCliente(Cliente cliente){
@@ -51,11 +54,4 @@ public class Informe {
         this.cantidadPedidosComplejos = cantidadPedidosComplejos;
     }
 
-    public float getAjusteComunDefinido() {
-        return ajusteComunDefinido;
-    }
-
-    public void setAjusteComunDefinido(float ajusteComunDefinido) {
-        this.ajusteComunDefinido = ajusteComunDefinido;
-    }
 }

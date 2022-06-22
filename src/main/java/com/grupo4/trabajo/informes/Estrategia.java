@@ -1,7 +1,10 @@
 package com.grupo4.trabajo.informes;
 
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Robots.Robot;
+
+import java.util.List;
 
 public interface Estrategia {
-    public void calcularCosto(Pedido pedido);
+    public float calcularCosto(Pedido pedido, List<Robot> robotList);
 }
