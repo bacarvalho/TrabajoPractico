@@ -54,4 +54,12 @@ public class Informe {
         this.cantidadPedidosComplejos = cantidadPedidosComplejos;
     }
 
+    public void incrementarContadorPedidos(Pedido pedido){
+        if(pedido.limpiezaSimple()){
+            setCantidadPedidosSimples(getCantidadPedidosSimples()+1);
+        }else{
+            setCantidadPedidosComplejos(getCantidadPedidosComplejos()+1);
+        }
+    }
+
 }

@@ -28,6 +28,7 @@ public abstract class Servicio {
             pedidoValidator.validarPedido(pedido,cliente);
             Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
+            Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
