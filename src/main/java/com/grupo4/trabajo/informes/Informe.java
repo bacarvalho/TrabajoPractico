@@ -5,13 +5,18 @@ import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Informe {
     private int cantidadPedidosSimples;
     private int cantidadPedidosComplejos;
-    private final static float AJUSTE_COMUN_DEFINIDO=3;
+    private final static int AJUSTE_COMUN_DEFINIDO=3;
     private Estrategia estrategia;
+
+    public int getAjusteComunDefinido() {
+        return AJUSTE_COMUN_DEFINIDO;
+    }
 
     public Estrategia getEstrategia() {
         return estrategia;
@@ -35,8 +40,13 @@ public class Informe {
         return estrategia.calcularCosto(pedido, robotList,empleadoList);
     }
 
-    public void calcularCostoCliente(Cliente cliente){
-
+    public float calcularCostoCliente(Cliente cliente){
+        float totalCostoCliente=0;
+        List<Float> costosCliente = cliente.getCostosDeServicios();
+        for(int i = 0; i<costosCliente.size();i++){
+            totalCostoCliente+=costosCliente.get(i);
+        }
+        return  totalCostoCliente;
     }
 
     public int getCantidadPedidosSimples() {
