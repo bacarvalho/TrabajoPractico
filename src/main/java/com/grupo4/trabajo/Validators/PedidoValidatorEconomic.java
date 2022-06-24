@@ -28,7 +28,7 @@ public class PedidoValidatorEconomic implements PedidoValidator,DeudorValidator,
 
     @Override
     public void limpiezasDisponibles(Pedido pedido, Cliente cliente) throws  NoCantLimpiezasDisponibleException {
-        if(pedido.requiereLimpieza()){
+        if(pedido.getPedidoLimpieza().requiereLimpieza()){
             if(cliente.getTipoServicio().getCantLimpiezas() == 0){
                 throw new NoCantLimpiezasDisponibleException("El cliente no tiene más limpiezas disponibles");
             }
@@ -37,7 +37,7 @@ public class PedidoValidatorEconomic implements PedidoValidator,DeudorValidator,
 
     @Override
     public void ordenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException{
-        if(pedido.requiereOrdenamiento()){
+        if(pedido.getPedidoLimpieza().requiereOrdenamiento()){
             throw new NoCantOrdenamientoDisponibleException("El cliente Economic no puede ordenar");
         }
     }

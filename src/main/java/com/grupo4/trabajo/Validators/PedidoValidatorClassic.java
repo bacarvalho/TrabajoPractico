@@ -27,7 +27,7 @@ public class PedidoValidatorClassic implements PedidoValidator,DeudorValidator,O
 
     @Override
     public void ordenamientosDisponibles(Pedido pedido, Cliente cliente) throws NoCantOrdenamientoDisponibleException {
-        if(pedido.requiereOrdenamiento() && cliente.getTipoServicio().getCantOrdenamientos() ==0 ){
+        if(pedido.getPedidoLimpieza().requiereOrdenamiento() && cliente.getTipoServicio().getCantOrdenamientos() ==0 ){
             throw new NoCantOrdenamientoDisponibleException("No hay suficiente ordenamiento");
         }
     }

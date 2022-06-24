@@ -11,23 +11,23 @@ import java.util.stream.Collectors;
 public class BuscadorRobotsEconomic implements BuscadorRobots {
     public Collection<Robot> buscarRobots(Pedido pedido, Collection<Robot> robots) {
         Collection<Robot> robotsPedido = new ArrayList<>();
-        if(pedido.requiereLimpieza()){
+        if(pedido.getPedidoLimpieza().requiereLimpieza()){
             Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.getSuperficie() == pedido.getLimpieza().getSuperficie())
+                    .filter(robot -> robot.getSuperficie() == pedido.getPedidoLimpieza().getLimpieza().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereOrdenamiento()){
+        if(pedido.getPedidoLimpieza().requiereOrdenamiento()){
             Collection<Robot> aux = robots.stream()
-                    .filter(robot -> robot.isPuedeOrdenar() && robot.getSuperficie() == pedido.getOrdenamiento().getSuperficie())
+                    .filter(robot -> robot.isPuedeOrdenar() && robot.getSuperficie() == pedido.getPedidoLimpieza().getOrdenamiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
         }
-        if(pedido.requiereLustramiento()){
+        if(pedido.getPedidoLimpieza().requiereLustramiento()){
             Collection<Robot> aux = robots.stream()
-                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getLustramiento().getSuperficie())
+                    .filter(r -> r.isPuedeLustrar() && r.getSuperficie() == pedido.getPedidoLimpieza().getLustramiento().getSuperficie())
                     .collect(Collectors.toList());
             Robot robot = aux.stream().min(Comparator.comparingDouble(Robot::getCosto)).get();
             robotsPedido.add(robot);
