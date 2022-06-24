@@ -1,6 +1,7 @@
 package com.grupo4.trabajo.informes;
 
 import com.grupo4.trabajo.Cliente;
+import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
@@ -25,13 +26,13 @@ public class Informe {
         this.cantidadPedidosSimples=0;
     }
 
-    public float calcularCostoPedido(Pedido pedido, List<Robot> robotList){
+    public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, List<Empleado> empleadoList){
         if(pedido.limpiezaSimple()){
             setEstrategia(new TareaSimple());
         } else{
             setEstrategia(new TareaCompleja());
         }
-        return estrategia.calcularCosto(pedido, robotList);
+        return estrategia.calcularCosto(pedido, robotList,empleadoList);
     }
 
     public void calcularCostoCliente(Cliente cliente){

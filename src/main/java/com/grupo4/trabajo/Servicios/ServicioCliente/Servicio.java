@@ -29,7 +29,8 @@ public abstract class Servicio {
             Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
             robotsService.agregarPedidoRobots(robotsPedido,pedido);
             Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
-            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido));
+            //obtener empleados del pedido
+            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleadoList));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
