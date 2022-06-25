@@ -16,6 +16,10 @@ public class TareaCompleja implements Estrategia{
     }
 
     private float calcularCostoRobots(List<Robot> robotList, int cantidadHoras){
+        if(robotList==null){
+            return 0;
+        }
+
         float costoTotal=0;
         int factorDeAjusteComun= Empresa.getInstancia().getInforme().getAjusteComunDefinido();
         Iterator<Robot> it = robotList.iterator();
@@ -29,6 +33,9 @@ public class TareaCompleja implements Estrategia{
 
 
     private float costoEmpleado(Pedido pedido, Empleado empleado){
+        if(empleado==null){
+            return 0;
+        }
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();
     }
 
