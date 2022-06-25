@@ -5,16 +5,20 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     private String direccion;
     private float deuda;
     private Servicio tipoServicio;
+    private List<Float> costosDeServicios; //sumar los costos de las reparaciones
     int DiasDesdeUltimaLimpieza;
-
 
 
     public Cliente(Servicio tipoServicio){
         this.tipoServicio = tipoServicio;
+        this.costosDeServicios=new ArrayList<>();
     }
 
     public void pedirPedido(Pedido pedido) throws EsDeudorException, NoCantOrdenamientoDisponibleException, NoCantLimpiezasDisponibleException {
@@ -39,6 +43,14 @@ public class Cliente {
 
     public Servicio getTipoServicio() {
         return tipoServicio;
+    }
+
+    public List<Float> getCostosDeServicios() {
+        return costosDeServicios;
+    }
+
+    public void agregarCostoPedido(Float costo){
+        this.costosDeServicios.add(costo);
     }
 
     public void setTipoServicio(Servicio tipoServicio) {
