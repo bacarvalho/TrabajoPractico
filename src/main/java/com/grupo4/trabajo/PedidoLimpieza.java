@@ -3,21 +3,19 @@ package com.grupo4.trabajo;
 public class PedidoLimpieza {
    private boolean limpiezaSimple;
    private Superficie limpieza;
-   private TipoResiduos residuo;
    private Superficie ordenamiento;
    private Superficie lustramiento;
    private int CantMascotas;
-   private Cliente cliente;
+   private int DiasUltimaLimpieza;
 
 
-    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int Mascotas,TipoResiduos residuo , Cliente cliente ){
+    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int Mascotas, Cliente cliente ){
         this.ordenamiento = ordenamiento;
         this.limpieza = limpieza;
         this.lustramiento = lustramiento;
         this.CantMascotas = Mascotas;
-        this.limpiezaSimple = setTipoLimpieza();
-        this.cliente = cliente;
-        this.residuo = residuo;
+        this.limpiezaSimple = LimpiezaSimple();
+        this.DiasUltimaLimpieza = cliente.getDiasDesdeUltimaLimpieza();
 
     }
 
@@ -55,11 +53,12 @@ public class PedidoLimpieza {
     }
 
 
-    private boolean setTipoLimpieza(){
-        return (cliente.getDiasDesdeUltimaLimpieza() <= 15 || residuo == TipoResiduos.POLVO || CantMascotas <= 1 && residuo != TipoResiduos.BARRO);
+    private boolean LimpiezaSimple(){
+        return (DiasUltimaLimpieza <= 15 || limpieza.getResiduo() == TipoResiduos.POLVO || CantMascotas <= 1 && limpieza.getResiduo() != TipoResiduos.BARRO);
 
     }
 
-
-
+    public boolean isLimpiezaSimple() {
+        return limpiezaSimple;
+    }
 }

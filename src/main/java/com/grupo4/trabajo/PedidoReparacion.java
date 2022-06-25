@@ -3,7 +3,6 @@ package com.grupo4.trabajo;
 public class PedidoReparacion {
     TipoReparacion reparacion;
     int complejidad;
-    private Cliente cliente;
 
 
     public PedidoReparacion( TipoReparacion tipoReparacion, int ComplejidadTrabajo ){
@@ -20,13 +19,19 @@ public class PedidoReparacion {
     }
 
 
+    public TipoReparacion getReparacion() {
+        return reparacion;
+    }
 
+    public void setReparacion(TipoReparacion reparacion) {
+        this.reparacion = reparacion;
+    }
 
+    public int getComplejidad() {
+        return complejidad;
+    }
 
-
-
-
-
-
-
+    public void setComplejidad(int complejidad) {
+        this.complejidad = complejidad;
+    }
 }

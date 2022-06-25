@@ -4,6 +4,7 @@ import com.grupo4.trabajo.Robots.SuperficieEnum;
 
 public class Superficie {
     private SuperficieEnum superficie;
+    private TipoResiduos residuo;
 
     public Superficie(SuperficieEnum superficie){
         this.superficie = superficie;
@@ -15,5 +16,13 @@ public class Superficie {
 
     public void setSuperficie(SuperficieEnum superficie) {
         this.superficie = superficie;
+    }
+
+    public TipoResiduos getResiduo() {
+        return residuo;
+    }
+
+    public void setResiduo(TipoResiduos residuo) {
+        this.residuo = residuo;
     }
 }

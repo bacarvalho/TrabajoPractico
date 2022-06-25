@@ -1,6 +1,7 @@
 package com.grupo4.trabajo.Servicios.RobotsService;
 
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.PedidoLimpieza;
 import com.grupo4.trabajo.Robots.Robot;
 
 import java.util.Collection;
@@ -13,7 +14,7 @@ public class RobotsService {
         this.buscadorRobots = buscadorRobots;
     }
 
-    public void agregarPedidoRobots(Collection<Robot> robots, Pedido pedido){
+    public void agregarPedidoRobots(Collection<Robot> robots, PedidoLimpieza pedido){
         Iterator<Robot> it = robots.iterator();
         while(it.hasNext()){
             it.next().agregarPedido(pedido);
