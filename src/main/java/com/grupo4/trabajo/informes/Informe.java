@@ -31,6 +31,7 @@ public class Informe {
         this.cantidadPedidosSimples=0;
     }
 
+    //calcula costo del pedido para la empresa
     public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, Empleado empleado){
         if(pedido.getPedidoLimpieza().isLimpiezaSimple()){
             setEstrategia(new TareaSimple());

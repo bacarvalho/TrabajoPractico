@@ -37,7 +37,7 @@ public abstract class Servicio {
             }
             if (pedido.getPedidoReparacion().requiereReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
-
+                //consultar si usamos el metodo CalculadorReparacion
             }
             //obtener empleados del pedido
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleado));
