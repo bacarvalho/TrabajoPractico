@@ -13,6 +13,8 @@ public class Cliente {
     private float deuda;
     private Servicio tipoServicio;
     private List<Float> costosDeServicios; //sumar los costos de las reparaciones
+    int DiasDesdeUltimaLimpieza;
+
 
     public Cliente(Servicio tipoServicio){
         this.tipoServicio = tipoServicio;
@@ -53,5 +55,12 @@ public class Cliente {
 
     public void setTipoServicio(Servicio tipoServicio) {
         this.tipoServicio = tipoServicio;
+    }
+    public int getDiasDesdeUltimaLimpieza() {
+        return DiasDesdeUltimaLimpieza;
+    }
+
+    public void setDiasDesdeUltimaLimpieza(int diasDesdeUltimaLimpieza) {
+        this.DiasDesdeUltimaLimpieza = diasDesdeUltimaLimpieza;
     }
 }

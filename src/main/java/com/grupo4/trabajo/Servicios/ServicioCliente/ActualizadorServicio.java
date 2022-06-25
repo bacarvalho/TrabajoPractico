@@ -3,10 +3,10 @@ import com.grupo4.trabajo.Pedido;
 
 public abstract class ActualizadorServicio {
     public static void actualizarServicio(Pedido pedido, Servicio servicio) {
-        if (pedido.requiereLimpieza()) {
+        if (pedido.getPedidoLimpieza().requiereLimpieza()) {
             servicio.setCantLimpiezas(servicio.getCantLimpiezas() - 1);
         }
-        if (pedido.requiereOrdenamiento()) {
+        if (pedido.getPedidoLimpieza().requiereOrdenamiento()) {
             servicio.setCantOrdenamientos(servicio.getCantOrdenamientos() - 1);
         }
     }

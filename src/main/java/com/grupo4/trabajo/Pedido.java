@@ -1,60 +1,38 @@
 package com.grupo4.trabajo;
 
 public class Pedido {
-    private boolean limpiezaSimple;
-    private Superficie limpieza;
-    private Superficie ordenamiento;
-    private Superficie lustramiento;
+    private PedidoLimpieza pedidoLimpieza;
+    private PedidoReparacion pedidoReparacion;
+    private Cliente cliente;
 
-    public Pedido(boolean limpiezaSimple, Superficie ordenamiento, Superficie limpieza, Superficie lustramiento){
-        this.limpiezaSimple = limpiezaSimple;
-        this.ordenamiento = ordenamiento;
-        this.limpieza = limpieza;
-        this.lustramiento = lustramiento;
+    public Pedido( PedidoLimpieza pedidoLimpieza,PedidoReparacion pedidoReparacion, Cliente cliente ){
+        this.pedidoLimpieza = pedidoLimpieza;
+        this.pedidoReparacion = pedidoReparacion;
+        this.cliente = cliente;
+
     }
 
-    public boolean requiereLimpieza() {
-        return limpieza != null;
+    public PedidoLimpieza getPedidoLimpieza() {
+        return pedidoLimpieza;
     }
 
-    public void setLimpieza(Superficie limpieza) {
-        this.limpieza = limpieza;
+    public PedidoReparacion getPedidoReparacion() {
+        return pedidoReparacion;
     }
 
-
-    public boolean limpiezaSimple() {
-        return limpiezaSimple;
+    public boolean requierePedidoLimpieza() {
+        return this.pedidoLimpieza.requiereLimpieza();
     }
 
-    public void setLimpiezaSimple(boolean limpiezaSimple) {
-        this.limpiezaSimple = limpiezaSimple;
+    public boolean requierePedidoReparacion() {
+        return this.pedidoReparacion.requiereReparacion();
     }
 
-    public boolean requiereOrdenamiento() {
-        return ordenamiento != null;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void setOrdenamiento(Superficie ordenamiento) {
-        this.ordenamiento = ordenamiento;
-    }
-
-    public boolean requiereLustramiento() {
-        return lustramiento != null;
-    }
-
-    public void setLustramiento(Superficie lustramiento) {
-        this.lustramiento = lustramiento;
-    }
-
-    public Superficie getLimpieza() {
-        return limpieza;
-    }
-
-    public Superficie getOrdenamiento() {
-        return ordenamiento;
-    }
-
-    public Superficie getLustramiento() {
-        return lustramiento;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
