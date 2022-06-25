@@ -1,5 +1,6 @@
 package com.grupo4.trabajo;
 
+import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.informes.Informe;
 
@@ -16,7 +17,22 @@ public class Empresa {
             new P011H(),
             new S031RTY()
         );
+
+    public void setEmpleados(Collection<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
     private Collection<Cliente> clientes;
+
+    public Collection<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public int getCantidadDeEmpleados (){
+        return empleados.size();
+    }
+
+    private Collection<Empleado> empleados;
 
     public Informe getInforme() {
         return informe;
