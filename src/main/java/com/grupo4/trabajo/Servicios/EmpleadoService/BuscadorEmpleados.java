@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class BuscadorEmpleados {
 
 
-    // Tenemos 1 solo empleado por cada especialidad.
+    // Tenemos 1 solo empleado por cada especialidad. A revisar
     public static Empleado BuscarEmpleado(PedidoReparacion pedidoReparacion){
         List<Empleado> listaEmpleados = Empresa.getInstancia().getListaEmpleados();
 
