@@ -5,17 +5,17 @@ public class PedidoLimpieza {
    private Superficie limpieza;
    private Superficie ordenamiento;
    private Superficie lustramiento;
-   private int CantMascotas;
-   private int DiasUltimaLimpieza;
+   private int cantMascotas;
+   private int diasUltimaLimpieza;
 
 
-    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int Mascotas, Cliente cliente ){
+    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int mascotas, Cliente cliente ){
         this.ordenamiento = ordenamiento;
         this.limpieza = limpieza;
         this.lustramiento = lustramiento;
-        this.CantMascotas = Mascotas;
+        this.cantMascotas = mascotas;
         this.limpiezaSimple = LimpiezaSimple();
-        this.DiasUltimaLimpieza = cliente.getDiasDesdeUltimaLimpieza();
+        this.diasUltimaLimpieza = cliente.getDiasDesdeUltimaLimpieza();
 
     }
 
@@ -54,7 +54,7 @@ public class PedidoLimpieza {
 
 
     private boolean LimpiezaSimple(){
-        return (DiasUltimaLimpieza <= 15 || limpieza.getResiduo() == TipoResiduos.POLVO) && (CantMascotas <= 1 && limpieza.getResiduo() != TipoResiduos.BARRO);
+        return (diasUltimaLimpieza <= 15 || limpieza.getResiduo() == TipoResiduos.POLVO) && (cantMascotas <= 1 && limpieza.getResiduo() != TipoResiduos.BARRO);
 
     }
 
