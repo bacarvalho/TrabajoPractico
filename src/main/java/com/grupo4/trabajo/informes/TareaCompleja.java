@@ -9,9 +9,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TareaCompleja implements Estrategia{
+    private final static int CANTIDAD_HORAS = 2;
     @Override
-    public float calcularCosto(Pedido pedido, List<Robot> robotList, List<Empleado> empleadoList) {
-        return calcularCostoRobots(robotList,pedido.getCantidadHoras()) + calcularCostoEmpleados(pedido,empleadoList);
+    public float calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado) {
+        return calcularCostoRobots(robotList,CANTIDAD_HORAS) + costoEmpleado(pedido,empleado);
     }
 
     private float calcularCostoRobots(List<Robot> robotList, int cantidadHoras){
@@ -25,15 +26,7 @@ public class TareaCompleja implements Estrategia{
         return costoTotal;
     }
 
-    private float calcularCostoEmpleados(Pedido pedido,List<Empleado> empleadoList){
-        float costoTotal=0;
-        Iterator<Empleado> it = empleadoList.iterator();
-        while (it.hasNext()) {
-            Empleado empleado = (Empleado) it.next();
-            costoTotal+=costoEmpleado(pedido,empleado);
-        }
-        return costoTotal;
-    }
+
 
     private float costoEmpleado(Pedido pedido, Empleado empleado){
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();

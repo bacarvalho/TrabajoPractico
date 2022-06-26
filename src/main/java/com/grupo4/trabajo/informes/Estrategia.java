@@ -7,5 +7,5 @@ import com.grupo4.trabajo.Robots.Robot;
 import java.util.List;
 
 public interface Estrategia {
-    public float calcularCosto(Pedido pedido, List<Robot> robotList, List<Empleado> empleadoList);
+    public float calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado);
 }

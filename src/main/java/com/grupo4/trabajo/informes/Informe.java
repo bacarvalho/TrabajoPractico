@@ -31,13 +31,13 @@ public class Informe {
         this.cantidadPedidosSimples=0;
     }
 
-    public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, List<Empleado> empleadoList){
-        if(pedido.limpiezaSimple()){
+    public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, Empleado empleado){
+        if(pedido.getPedidoLimpieza().isLimpiezaSimple()){
             setEstrategia(new TareaSimple());
         } else{
             setEstrategia(new TareaCompleja());
         }
-        return estrategia.calcularCosto(pedido, robotList,empleadoList);
+        return estrategia.calcularCosto(pedido, robotList,empleado);
     }
 
     public float calcularCostoCliente(Cliente cliente){
@@ -66,7 +66,7 @@ public class Informe {
     }
 
     public void incrementarContadorPedidos(Pedido pedido){
-        if(pedido.limpiezaSimple()){
+        if(pedido.getPedidoLimpieza().isLimpiezaSimple()){
             setCantidadPedidosSimples(getCantidadPedidosSimples()+1);
         }else{
             setCantidadPedidosComplejos(getCantidadPedidosComplejos()+1);
@@ -74,3 +74,4 @@ public class Informe {
     }
 
 }
+

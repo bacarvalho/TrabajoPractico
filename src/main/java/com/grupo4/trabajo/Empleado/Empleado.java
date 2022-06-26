@@ -1,5 +1,7 @@
 package com.grupo4.trabajo.Empleado;
 
+import com.grupo4.trabajo.TipoReparacion;
+
 public class Empleado {
     private float sueldo;
     private TipoReparacion tipoReparacion;

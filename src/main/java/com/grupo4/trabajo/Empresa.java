@@ -1,14 +1,17 @@
 package com.grupo4.trabajo;
 
+import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.informes.Informe;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class Empresa {
     private static Empresa instancia;
     private Informe informe;
+    private List<Empleado> ListaEmpleados;
     private static Collection<Robot> robots = Arrays.asList(
             new K311Y_a(),
             new K311Y_fl(),
@@ -51,5 +54,9 @@ public class Empresa {
 
     public void setClientes(Collection<Cliente> clientes) {
         this.clientes = clientes;
+    }
+
+    public List<Empleado> getListaEmpleados() {
+        return ListaEmpleados;
     }
 }

@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios.ServicioCliente;
 
+import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
@@ -7,6 +8,7 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
+import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
 import com.grupo4.trabajo.Servicios.RobotsService.RobotsService;
 import com.grupo4.trabajo.Validators.PedidoValidator;
 
@@ -24,13 +26,20 @@ public abstract class Servicio {
     private float couta;
 
     public void realizarPedido(Pedido pedido, Cliente cliente){
+        Empleado empleado = null;
+        Collection<Robot> robotsPedido = null;
         try{
             pedidoValidator.validarPedido(pedido,cliente);
-            Collection<Robot> robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido,Empresa.getInstancia().getRobots());
-            robotsService.agregarPedidoRobots(robotsPedido,pedido);
-            Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
+            if (pedido.getPedidoLimpieza().requiereLimpieza()) {
+                robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
+                robotsService.agregarPedidoRobots(robotsPedido, pedido.getPedidoLimpieza());
+                Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
+            }
+            if (pedido.getPedidoReparacion().requiereReparacion()) {
+                empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
+            }
             //obtener empleados del pedido
-            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleadoList));
+            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleado));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
