@@ -5,9 +5,12 @@ public class PedidoReparacion {
     int complejidad;
 
 
-    public PedidoReparacion( TipoReparacion tipoReparacion, int ComplejidadTrabajo ){
+    public PedidoReparacion( TipoReparacion tipoReparacion, int complejidadTrabajo ){
         this.reparacion = tipoReparacion;
-        this.complejidad = ComplejidadTrabajo;
+        if(complejidadTrabajo>8){
+            complejidadTrabajo=8;
+        }
+        this.complejidad = complejidadTrabajo;
 
 
     }

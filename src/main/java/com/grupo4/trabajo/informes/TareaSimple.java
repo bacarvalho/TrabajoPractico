@@ -15,6 +15,9 @@ public class TareaSimple implements Estrategia{
     }
 
     private float calcularCostoRobots(List<Robot> robotList){
+        if(robotList==null){
+            return 0;
+        }
         float costoTotal=0;
         Iterator<Robot> it = robotList.iterator();
         while (it.hasNext()) {
@@ -29,6 +32,9 @@ public class TareaSimple implements Estrategia{
 
 
     private float costoEmpleado(Pedido pedido, Empleado empleado){
+        if(empleado==null){
+            return 0;
+        }
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();
     }
 }

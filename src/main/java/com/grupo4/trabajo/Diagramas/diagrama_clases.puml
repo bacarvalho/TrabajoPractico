@@ -171,7 +171,7 @@ ELECTRICIDAD
 }
 
 abstract class CalculadorReparacion{
-+static CalcularCosto(tipoReparacion : TipoReparacion,complejidad: int) : float
++static CalcularCosto(PedidoReparacion : pedidoReparacion) : float
 }
 
 enum SuperficieEnum{

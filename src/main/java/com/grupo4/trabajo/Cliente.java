@@ -5,6 +5,7 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Cliente {
     private Servicio tipoServicio;
     private List<Float> costosDeServicios; //sumar los costos de las reparaciones
     int DiasDesdeUltimaLimpieza;
+    private List<Float> costosDeServicios; //sumar los costos de las reparaciones
 
 
     public Cliente(Servicio tipoServicio){
@@ -62,5 +64,13 @@ public class Cliente {
 
     public void setDiasDesdeUltimaLimpieza(int diasDesdeUltimaLimpieza) {
         this.DiasDesdeUltimaLimpieza = diasDesdeUltimaLimpieza;
+    }
+
+    public List<Float> getCostosDeServicios() {
+        return costosDeServicios;
+    }
+
+    public void agregarCostoPedido(Float costo){
+        this.costosDeServicios.add(costo);
     }
 }

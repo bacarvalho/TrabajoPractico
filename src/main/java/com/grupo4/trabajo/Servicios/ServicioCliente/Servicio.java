@@ -8,7 +8,7 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
 import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
+import com.grupo4.trabajo.Servicios.EmpleadoService.*;
 import com.grupo4.trabajo.Servicios.RobotsService.RobotsService;
 import com.grupo4.trabajo.Validators.PedidoValidator;
 
@@ -37,6 +37,7 @@ public abstract class Servicio {
             }
             if (pedido.getPedidoReparacion().requiereReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
+                //consultar si usamos el metodo CalculadorReparacion
             }
             //obtener empleados del pedido
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleado));
