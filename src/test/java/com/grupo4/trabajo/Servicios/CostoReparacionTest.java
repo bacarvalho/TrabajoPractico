@@ -66,4 +66,41 @@ public class CostoReparacionTest {
         PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,2);
         assertEquals(2750f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
     }
+
+    @Test
+    void ElectricidadComplejidadTres(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,3);
+        assertEquals(5698f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
+    @Test
+    void ElectricidadComplejidadCuatro(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,4);
+        assertEquals(6073f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
+    @Test
+    void ElectricidadComplejidadCinco(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,5);
+        assertEquals(6448f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
+    @Test
+    void ElectricidadComplejidadSeis(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,6);
+        assertEquals(6823f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
+    @Test
+    void ElectricidadComplejidadSiete(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,7);
+        assertEquals(9984f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
+    @Test
+    void ElectricidadComplejidadOcho(){
+        PedidoReparacion pedidoReparacion = new PedidoReparacion(TipoReparacion.ELECTRICIDAD,8);
+        assertEquals(10359f, CalculadorReparacion.calcularCostoReparacion(pedidoReparacion));
+    }
+
 }
