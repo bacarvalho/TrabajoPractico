@@ -18,7 +18,7 @@ import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClassicTest {
-    Servicio servicio;
+    /*Servicio servicio;
     Cliente cliente;
     Pedido p;
     Collection<Robot> robotsPedido;
@@ -78,5 +78,5 @@ class ClassicTest {
         ActualizadorServicio.actualizarServicio(p,servicio);
         assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
     }
-
+*/
 }

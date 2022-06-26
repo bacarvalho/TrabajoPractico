@@ -54,7 +54,7 @@ public class PedidoLimpieza {
 
 
     private boolean LimpiezaSimple(){
-        return (DiasUltimaLimpieza <= 15 || limpieza.getResiduo() == TipoResiduos.POLVO || CantMascotas <= 1 && limpieza.getResiduo() != TipoResiduos.BARRO);
+        return (DiasUltimaLimpieza <= 15 || limpieza.getResiduo() == TipoResiduos.POLVO) && (CantMascotas <= 1 && limpieza.getResiduo() != TipoResiduos.BARRO);
 
     }
 

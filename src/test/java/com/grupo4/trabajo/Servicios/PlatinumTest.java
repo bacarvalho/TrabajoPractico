@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlatinumTest {
 
-    Servicio servicio;
+   /* Servicio servicio;
     Pedido p;
     RobotCreator robotCreator = new RobotCreator();
     Robot robot1;
@@ -71,6 +71,6 @@ public class PlatinumTest {
 
         assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
-
+*/
 }
 

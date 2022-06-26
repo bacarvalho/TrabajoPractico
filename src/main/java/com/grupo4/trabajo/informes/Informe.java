@@ -33,7 +33,9 @@ public class Informe {
 
     //calcula costo del pedido para la empresa
     public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, Empleado empleado){
-        if(pedido.getPedidoLimpieza().isLimpiezaSimple()){
+
+        //si no se hizo un pedido de limpieza acompañado al de reparacion, asumimos que la tarea es simple
+        if(pedido.getPedidoLimpieza()==null || pedido.getPedidoLimpieza().isLimpiezaSimple()){
             setEstrategia(new TareaSimple());
         } else{
             setEstrategia(new TareaCompleja());

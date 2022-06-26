@@ -4,6 +4,7 @@ import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.informes.Informe;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -30,7 +31,10 @@ public class Empresa {
     }
 
     private Empresa(){
-
+        ListaEmpleados = new ArrayList<>();
+        ListaEmpleados.add(new Empleado(60000, TipoReparacion.ELECTRICIDAD));
+        ListaEmpleados.add(new Empleado(55000, TipoReparacion.GAS));
+        this.informe=new Informe();
     }
 
     public static Empresa getInstancia() {

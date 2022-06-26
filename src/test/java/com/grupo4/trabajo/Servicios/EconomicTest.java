@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EconomicTest {
-    Pedido pedidoEco;
+   /* Pedido pedidoEco;
     Servicio servicio;
     Cliente cliente;
 
@@ -57,5 +57,5 @@ public class EconomicTest {
         ActualizadorServicio.actualizarServicio(pedidoEco,servicio);
         assertEquals(cantLim-1,servicio.getCantLimpiezas());
     }
-
+*/
 }
