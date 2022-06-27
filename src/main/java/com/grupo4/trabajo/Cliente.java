@@ -15,7 +15,6 @@ public class Cliente {
     private Servicio tipoServicio;
     private List<Float> costosDeServicios; //sumar los costos de las reparaciones
     int DiasDesdeUltimaLimpieza;
-    private List<Float> costosDeServicios; //sumar los costos de las reparaciones
 
 
     public Cliente(Servicio tipoServicio){
@@ -47,13 +46,8 @@ public class Cliente {
         return tipoServicio;
     }
 
-    public List<Float> getCostosDeServicios() {
-        return costosDeServicios;
-    }
 
-    public void agregarCostoPedido(Float costo){
-        this.costosDeServicios.add(costo);
-    }
+
 
     public void setTipoServicio(Servicio tipoServicio) {
         this.tipoServicio = tipoServicio;

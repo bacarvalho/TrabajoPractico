@@ -1,6 +1,6 @@
 package com.grupo4.trabajo.Servicios;
 
-import com.grupo4.trabajo.CalculadoReparacion.CalculadorReparacion;
+import com.grupo4.trabajo.CalculadorReparacion.CalculadorReparacion;
 import com.grupo4.trabajo.PedidoReparacion;
 import com.grupo4.trabajo.TipoReparacion;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,9 @@
 package com.grupo4.trabajo.CalculadorReparacion;
 
+import com.grupo4.trabajo.PedidoReparacion;
+import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
+import com.grupo4.trabajo.TipoReparacion;
+
 public abstract class CalculadorReparacion {
     private final static float PRECIO_ELECTRICIDAD_COMPLEJIDAD_BAJA=2000;
     private final static float PRECIO_ELECTRICIDAD_COMPLEJIDAD_MEDIA=4573;
@@ -7,17 +11,21 @@ public abstract class CalculadorReparacion {
     private final static float PRECIO_GAS_COMPLEJIDAD_BAJA=1000;
     private final static float PRECIO_GAS_COMPLEJIDAD_MEDIA=3350;
     private final static float PRECIO_GAS_COMPLEJIDAD_ALTA=6389;
+    private TipoReparacion tipoReparacion;
 
-    public static float calcularCostoReparacion(TipoReparacion tipoReparacion, int complejidad, float sueldoEmpleado){
+
+    public static float calcularCostoReparacion(PedidoReparacion pedidoReparacion){
         float precio=0;
+        int complejidad=pedidoReparacion.getComplejidad();
 
-        if(tipoReparacion.equals(GAS)){
+        if(pedidoReparacion.getReparacion()==TipoReparacion.GAS){
             precio=reparacionGas(complejidad);
         }
-        if(tipoReparacion.equals(ELECTRICIDAD)){
+        if(pedidoReparacion.getReparacion()==TipoReparacion.ELECTRICIDAD){
             precio = reparacionElectricidad(complejidad);
         }
 
+        float sueldoEmpleado = BuscadorEmpleados.BuscarEmpleado(pedidoReparacion).getSueldo();
         return precio+(sueldoEmpleado/160)*complejidad;
     }
 
