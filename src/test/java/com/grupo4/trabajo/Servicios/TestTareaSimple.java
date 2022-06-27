@@ -50,11 +50,11 @@ public class TestTareaSimple {
         Cliente cliente = new Cliente(servicio);
         PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,1,5);
         PedidoReparacion pedidoReparacion=new PedidoReparacion(TipoReparacion.ELECTRICIDAD,2);
-        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
+        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion);
         Empleado empleado= BuscadorEmpleados.BuscarEmpleado(pedidoReparacion);
 
         Informe informe = new Informe();
-        assertEquals(2250.0f,informe.calcularCostoPedido(pedido, (List<Robot>) robots,empleado));
+        assertEquals(2250.0f,informe.calcularCostoPedido(pedido,robots,empleado));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class TestTareaSimple {
         Cliente cliente = new Cliente(servicio);
         PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,1,5);
         PedidoReparacion pedidoReparacion=null;
-        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
+        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion);
 
 
         Informe informe = new Informe();
@@ -79,7 +79,7 @@ public class TestTareaSimple {
 
         Cliente cliente = new Cliente(servicio);
         PedidoReparacion pedidoReparacion=new PedidoReparacion(TipoReparacion.GAS,7);
-        Pedido pedido=new Pedido(null,pedidoReparacion,cliente);
+        Pedido pedido=new Pedido(null,pedidoReparacion);
         Empleado empleado= BuscadorEmpleados.BuscarEmpleado(pedidoReparacion);
 
         Informe informe = new Informe();

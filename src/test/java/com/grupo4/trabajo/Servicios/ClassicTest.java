@@ -17,11 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClassicTest {
     Servicio servicio;
     Cliente cliente;
-    Pedido p;
+    PedidoLimpieza p;
+    Pedido pedido;
     Collection<Robot> robotsPedido;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
+        pedido = new Pedido(p,null);
         servicio = new Classic();
         cliente=new Cliente(servicio);
         cliente.setDeuda(2001);
@@ -35,7 +37,7 @@ class ClassicTest {
     //Test Case Nro 2.
     @Test
     void ClienteClassicSolicitaPedidoDeLimpiezaYOrdenamientoSeLeAsignanLosRobotsK311Y_flyS031RTY(){
-        p = new PedidoLimpieza(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
+        p = new PedidoLimpieza(new Superficie(null),new Superficie(SuperficieEnum.PISOS),null,1,3);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
@@ -50,7 +52,7 @@ class ClassicTest {
     //Test Case Nro 3.
     @Test
     void ClienteClassicSolicitaPedidoDeLimpiezaYLustradoDeMueblesSeLeAsignanLosRobotsK331Y_flyK311Y_fu(){
-        p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
+        p = new PedidoLimpieza(null,new Superficie(SuperficieEnum.PISOS), new Superficie(SuperficieEnum.MUEBLES),1,3);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
 
         Collection<Robot> robotsBuscados = Arrays.asList(
@@ -64,15 +66,16 @@ class ClassicTest {
     //Test Case nro 4.
     @Test
     void ClienteClassicSolicitaUnPedidoYEsRechazadoPorSerDeudor(){
-        p = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,new Superficie(SuperficieEnum.MUEBLES));
-        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
+        p = new PedidoLimpieza(null,new Superficie(SuperficieEnum.PISOS), new Superficie(SuperficieEnum.MUEBLES),1,3);
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(pedido, cliente));
     }
 
     @Test
     void ClienteClassicSolicitaUnPedidoDeOrdenamientoYElServicioLeDescuentaLaCantidadDeOrdenamientosDisponibles(){
         int cantOrd = servicio.getCantOrdenamientos();
-        p = new Pedido(true,new Superficie(null), null ,null);
-        ActualizadorServicio.actualizarServicio(p,servicio);
+        p = new PedidoLimpieza(new Superficie(null),null, null ,0,2);
+        pedido = new Pedido(p,null);
+        ActualizadorServicio.actualizarServicio(pedido,servicio);
         assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
     }
 

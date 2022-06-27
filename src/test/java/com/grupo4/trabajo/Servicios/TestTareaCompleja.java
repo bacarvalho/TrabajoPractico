@@ -43,7 +43,7 @@ public class TestTareaCompleja {
         Cliente cliente = new Cliente(servicio);
         PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,12);
         PedidoReparacion pedidoReparacion=null;
-        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
+        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion);
 
         assertEquals(9000.0f,Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robots,null));
     }
@@ -57,7 +57,7 @@ public class TestTareaCompleja {
         Cliente cliente = new Cliente(servicio);
         PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,10);
         PedidoReparacion pedidoReparacion=new PedidoReparacion(TipoReparacion.GAS,8);
-        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
+        Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion);
         Empleado empleado=BuscadorEmpleados.BuscarEmpleado(pedidoReparacion);
 
         assertEquals(11750.0f,Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robots,empleado));
