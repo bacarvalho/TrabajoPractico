@@ -7,12 +7,7 @@ public class PedidoReparacion {
 
     public PedidoReparacion( TipoReparacion tipoReparacion, int complejidadTrabajo ){
         this.reparacion = tipoReparacion;
-        if(complejidadTrabajo>8){
-            complejidadTrabajo=8;
-        }
         this.complejidad = complejidadTrabajo;
-
-
     }
 
     public boolean requiereReparacion(){
