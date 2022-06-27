@@ -1,5 +1,5 @@
 package com.grupo4.trabajo.Servicios.ServicioCliente;
-import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Pedido.Pedido;
 
 public abstract class ActualizadorServicio {
     public static void actualizarServicio(Pedido pedido, Servicio servicio) {

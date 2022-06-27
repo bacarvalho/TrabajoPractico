@@ -6,14 +6,12 @@ import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empresa;
-import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Pedido.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 import com.grupo4.trabajo.Servicios.EmpleadoService.*;
 import com.grupo4.trabajo.Servicios.RobotsService.RobotsService;
 import com.grupo4.trabajo.Validators.PedidoValidator;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class Servicio {
@@ -27,7 +25,7 @@ public abstract class Servicio {
 
     public void realizarPedido(Pedido pedido, Cliente cliente){
         Empleado empleado = null;
-        Collection<Robot> robotsPedido = null;
+        List<Robot> robotsPedido = null;
         try{
             pedidoValidator.validarPedido(pedido,cliente);
             if (pedido.getPedidoLimpieza().requiereLimpieza()) {
@@ -40,7 +38,7 @@ public abstract class Servicio {
                 //consultar si usamos el metodo CalculadorReparacion
             }
             //obtener empleados del pedido
-            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleado));
+            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {

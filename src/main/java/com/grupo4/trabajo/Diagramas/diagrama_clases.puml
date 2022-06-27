@@ -233,6 +233,8 @@ Pedido *-up- PedidoReparacion
 PedidoReparacion *-up- TipoReparacion
 Empleado *-right- TipoReparacion
 Empresa *-up- Empleado
+
+CalculadorReparacion --> PedidoReparacion
 note bottom of Classic : definimos los limites de cada tipo de servicio\n para mas legibilidad
 note bottom of P011H : definimos los limites de cada tipo de robot\n para mas legibilidad
 note right of Cliente : las funciones "setters" y "getters" \n hacen referencia a los get y set de cada variable de la clase\n se hara referencia a esto en cada clase con atributos

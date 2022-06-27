@@ -3,6 +3,7 @@ package com.grupo4.trabajo;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
+import com.grupo4.trabajo.Pedido.Pedido;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 
 
@@ -13,8 +14,6 @@ public class Cliente {
     private String direccion;
     private float deuda;
     private Servicio tipoServicio;
-    private List<Float> costosDeServicios; //sumar los costos de las reparaciones
-    int DiasDesdeUltimaLimpieza;
     private List<Float> costosDeServicios; //sumar los costos de las reparaciones
 
 
@@ -58,19 +57,5 @@ public class Cliente {
     public void setTipoServicio(Servicio tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
-    public int getDiasDesdeUltimaLimpieza() {
-        return DiasDesdeUltimaLimpieza;
-    }
 
-    public void setDiasDesdeUltimaLimpieza(int diasDesdeUltimaLimpieza) {
-        this.DiasDesdeUltimaLimpieza = diasDesdeUltimaLimpieza;
-    }
-
-    public List<Float> getCostosDeServicios() {
-        return costosDeServicios;
-    }
-
-    public void agregarCostoPedido(Float costo){
-        this.costosDeServicios.add(costo);
-    }
 }

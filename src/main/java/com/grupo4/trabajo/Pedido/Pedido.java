@@ -1,10 +1,10 @@
-package com.grupo4.trabajo;
+package com.grupo4.trabajo.Pedido;
 
 public class Pedido {
     private PedidoLimpieza pedidoLimpieza;
     private PedidoReparacion pedidoReparacion;
 
-    public Pedido( PedidoLimpieza pedidoLimpieza,PedidoReparacion pedidoReparacion, Cliente cliente ){
+    public Pedido( PedidoLimpieza pedidoLimpieza,PedidoReparacion pedidoReparacion){
         this.pedidoLimpieza = pedidoLimpieza;
         this.pedidoReparacion = pedidoReparacion;
 

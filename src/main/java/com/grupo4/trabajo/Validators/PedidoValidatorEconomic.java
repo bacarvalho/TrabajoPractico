@@ -4,7 +4,7 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
-import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Pedido.Pedido;
 
 public class PedidoValidatorEconomic implements PedidoValidator,DeudorValidator,LimpiezasDisponiblesValidator,OrdenamientosDisponiblesValidator{
     @Override

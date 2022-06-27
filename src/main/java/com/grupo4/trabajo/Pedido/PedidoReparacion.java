@@ -1,4 +1,4 @@
-package com.grupo4.trabajo;
+package com.grupo4.trabajo.Pedido;
 
 public class PedidoReparacion {
     TipoReparacion reparacion;
@@ -7,12 +7,7 @@ public class PedidoReparacion {
 
     public PedidoReparacion( TipoReparacion tipoReparacion, int complejidadTrabajo ){
         this.reparacion = tipoReparacion;
-        if(complejidadTrabajo>8){
-            complejidadTrabajo=8;
-        }
         this.complejidad = complejidadTrabajo;
-
-
     }
 
     public boolean requiereReparacion(){

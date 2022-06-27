@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.Robots;
 
-import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Exceptions.SinPedidosPendientesException;
-import com.grupo4.trabajo.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.SuperficieEnum;
 
 import java.util.ArrayList;
 import java.util.List;

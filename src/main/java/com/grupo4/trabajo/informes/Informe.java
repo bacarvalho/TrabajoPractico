@@ -2,10 +2,9 @@ package com.grupo4.trabajo.informes;
 
 import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Empleado.Empleado;
-import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.Pedido.Pedido;
 import com.grupo4.trabajo.Robots.Robot;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class Informe {
@@ -35,7 +34,7 @@ public class Informe {
     public float calcularCostoPedido(Pedido pedido, List<Robot> robotList, Empleado empleado){
 
         //si no se hizo un pedido de limpieza acompañado al de reparacion, asumimos que la tarea es simple
-        if(pedido.getPedidoLimpieza()==null || pedido.getPedidoLimpieza().isLimpiezaSimple()){
+        if(pedido.getPedidoLimpieza()==null || pedido.getPedidoLimpieza().LimpiezaSimple()){
             setEstrategia(new TareaSimple());
         } else{
             setEstrategia(new TareaCompleja());

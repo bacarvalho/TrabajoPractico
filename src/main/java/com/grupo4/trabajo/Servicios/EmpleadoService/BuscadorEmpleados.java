@@ -2,7 +2,7 @@ package com.grupo4.trabajo.Servicios.EmpleadoService;
 
 import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Empresa;
-import com.grupo4.trabajo.PedidoReparacion;
+import com.grupo4.trabajo.Pedido.PedidoReparacion;
 
 import java.util.List;
 

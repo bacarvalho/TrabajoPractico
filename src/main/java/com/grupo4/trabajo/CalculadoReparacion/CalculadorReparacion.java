@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.CalculadoReparacion;
 
-import com.grupo4.trabajo.PedidoReparacion;
+import com.grupo4.trabajo.Pedido.PedidoReparacion;
 import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
-import com.grupo4.trabajo.TipoReparacion;
+import com.grupo4.trabajo.Pedido.TipoReparacion;
 
 public abstract class CalculadorReparacion {
     private final static float PRECIO_ELECTRICIDAD_COMPLEJIDAD_BAJA=2000;
@@ -11,7 +11,6 @@ public abstract class CalculadorReparacion {
     private final static float PRECIO_GAS_COMPLEJIDAD_BAJA=1000;
     private final static float PRECIO_GAS_COMPLEJIDAD_MEDIA=3350;
     private final static float PRECIO_GAS_COMPLEJIDAD_ALTA=6389;
-    private TipoReparacion tipoReparacion;
 
 
     public static float calcularCostoReparacion(PedidoReparacion pedidoReparacion){
