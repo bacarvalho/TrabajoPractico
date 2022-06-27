@@ -15,8 +15,9 @@ public class BuscadorRobotsPlatinium implements BuscadorRobots {
     public List<Robot> buscarRobots(PedidoLimpieza pedido, Collection<Robot> robots) {
         List<Robot> robotsPedido = new ArrayList<>();
         Robot robot = robots.stream().min(Comparator.comparingInt(Robot::getIntPedidosPendientes)).get();
-        if(robot.isPuedeLustrar() && robot.isPuedeOrdenar())
+        if(robot.isPuedeLustrar() && robot.isPuedeOrdenar()){
             robotsPedido.add(robot);
+        }
         else {
             if (pedido.requiereOrdenamiento()) {
                 Collection<Robot> aux = robots.stream()
