@@ -1,20 +1,20 @@
 package com.grupo4.trabajo;
 
 public class PedidoLimpieza {
-   private boolean limpiezaSimple;
-   private Superficie limpieza;
-   private Superficie ordenamiento;
-   private Superficie lustramiento;
-   private int cantMascotas;
-   private int diasUltimaLimpieza;
+
+    private boolean limpiezaSimple;
+    private Superficie limpieza;
+    private Superficie ordenamiento;
+    private Superficie lustramiento;
+    private int cantMascotas;
+    private int diasUltimaLimpieza;
 
 
-    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int mascotas, int diasUltimaLimpieza){
+    public PedidoLimpieza(Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int mascotas, int diasUltimaLimpieza){
         this.ordenamiento = ordenamiento;
         this.limpieza = limpieza;
         this.lustramiento = lustramiento;
         this.cantMascotas = mascotas;
-        this.limpiezaSimple = LimpiezaSimple();
         this.diasUltimaLimpieza = diasUltimaLimpieza;
 
     }

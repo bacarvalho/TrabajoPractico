@@ -1,14 +1,11 @@
 package com.grupo4.trabajo.Servicios;
 
-import com.grupo4.trabajo.Cliente;
-import com.grupo4.trabajo.Empresa;
+import com.grupo4.trabajo.*;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
-import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
-import com.grupo4.trabajo.Superficie;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -18,7 +15,7 @@ import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClassicTest {
-    /*Servicio servicio;
+    Servicio servicio;
     Cliente cliente;
     Pedido p;
     Collection<Robot> robotsPedido;
@@ -38,7 +35,7 @@ class ClassicTest {
     //Test Case Nro 2.
     @Test
     void ClienteClassicSolicitaPedidoDeLimpiezaYOrdenamientoSeLeAsignanLosRobotsK311Y_flyS031RTY(){
-        p = new Pedido(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
+        p = new PedidoLimpieza(true,new Superficie(null), new Superficie(SuperficieEnum.PISOS),null);
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(p, Empresa.getInstancia().getRobots());
         Iterator<Robot> it = robotsPedido.iterator();
 
@@ -78,5 +75,5 @@ class ClassicTest {
         ActualizadorServicio.actualizarServicio(p,servicio);
         assertEquals(cantOrd-1,servicio.getCantOrdenamientos());
     }
-*/
+
 }
