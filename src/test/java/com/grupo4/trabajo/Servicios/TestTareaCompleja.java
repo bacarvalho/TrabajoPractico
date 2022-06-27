@@ -41,7 +41,7 @@ public class TestTareaCompleja {
         Superficie superficieOrdenamiento=new Superficie(SuperficieEnum.PISOS);
         Superficie superficieLimpieza = new Superficie(SuperficieEnum.MUEBLES);
         Cliente cliente = new Cliente(servicio);
-        PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,cliente);
+        PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,12);
         PedidoReparacion pedidoReparacion=null;
         Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
 
@@ -55,7 +55,7 @@ public class TestTareaCompleja {
         Superficie superficieOrdenamiento=new Superficie(SuperficieEnum.PISOS);
         Superficie superficieLimpieza = new Superficie(SuperficieEnum.MUEBLES);
         Cliente cliente = new Cliente(servicio);
-        PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,cliente);
+        PedidoLimpieza pedidoLimpieza=new PedidoLimpieza(superficieOrdenamiento,superficieLimpieza,null,5,10);
         PedidoReparacion pedidoReparacion=new PedidoReparacion(TipoReparacion.GAS,8);
         Pedido pedido=new Pedido(pedidoLimpieza,pedidoReparacion,cliente);
         Empleado empleado=BuscadorEmpleados.BuscarEmpleado(pedidoReparacion);
