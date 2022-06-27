@@ -11,7 +11,6 @@ public abstract class CalculadorReparacion {
     private final static float PRECIO_GAS_COMPLEJIDAD_BAJA=1000;
     private final static float PRECIO_GAS_COMPLEJIDAD_MEDIA=3350;
     private final static float PRECIO_GAS_COMPLEJIDAD_ALTA=6389;
-    private TipoReparacion tipoReparacion;
 
 
     public static float calcularCostoReparacion(PedidoReparacion pedidoReparacion){

@@ -1,6 +1,7 @@
 package com.grupo4.trabajo;
 
 import com.grupo4.trabajo.Empleado.Empleado;
+import com.grupo4.trabajo.Pedido.TipoReparacion;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.informes.Informe;
 
