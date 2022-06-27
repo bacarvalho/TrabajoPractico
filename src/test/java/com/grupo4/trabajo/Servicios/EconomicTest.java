@@ -4,6 +4,7 @@ import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
 import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.PedidoLimpieza;
 import com.grupo4.trabajo.Robots.SuperficieEnum;
 import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Economic;
@@ -15,7 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EconomicTest {
-   /* Pedido pedidoEco;
+    PedidoLimpieza pedidoEco;
+    Pedido pedido;
     Servicio servicio;
     Cliente cliente;
 
@@ -23,7 +25,8 @@ public class EconomicTest {
     void setUp() {
         servicio = new Economic();
         cliente = new Cliente(servicio);
-        pedidoEco = new Pedido(true,new Superficie(SuperficieEnum.MUEBLES), new Superficie(SuperficieEnum.PISOS),new Superficie(SuperficieEnum.PISOS));
+        pedidoEco = new PedidoLimpieza(new Superficie(null),new Superficie(SuperficieEnum.PISOS), null,1,3);
+        pedido = new Pedido(pedidoEco,null);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -36,26 +39,26 @@ public class EconomicTest {
     @Test
     void ClienteEconomicSolicitaPedidoYEsRechazadoPorSerDeudor(){
         cliente.setDeuda(2);
-        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(pedidoEco,cliente));
+        assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(pedido,cliente));
     }
 
     @Test
     void ClienteEconomicSolicitaPedidoDeOrdenamientosYesRechazadoPorqueElServicioNoOfreceOrdenamientos(){
-        assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.getPedidoValidator().validarPedido(pedidoEco,cliente));
+        assertThrows(NoCantOrdenamientoDisponibleException.class, () -> servicio.getPedidoValidator().validarPedido(pedido,cliente));
     }
 
     @Test
     void ClienteEconomicConServiciosDeLimpiezasAgotadasSolicitaUnPedidoDeLimpiezaYEsRechazada(){
         servicio.setCantLimpiezas(0);
-        assertThrows(NoCantLimpiezasDisponibleException.class, () -> servicio.getPedidoValidator().validarPedido(pedidoEco,cliente));
+        assertThrows(NoCantLimpiezasDisponibleException.class, () -> servicio.getPedidoValidator().validarPedido(pedido,cliente));
     }
 
     @Test
     void ClienteEconomicSinDeudaSolicitaUnPedidoDeLimpiezaYSeLeDescuentaLaCantidadDeLimpiezas(){
         int cantLim = servicio.getCantLimpiezas();
-        pedidoEco = new Pedido(true,null, new Superficie(SuperficieEnum.PISOS) ,null);
-        ActualizadorServicio.actualizarServicio(pedidoEco,servicio);
+        pedidoEco = new PedidoLimpieza(null,new Superficie(SuperficieEnum.PISOS), null,1,0);
+        ActualizadorServicio.actualizarServicio(pedido,servicio);
         assertEquals(cantLim-1,servicio.getCantLimpiezas());
     }
-*/
+
 }
