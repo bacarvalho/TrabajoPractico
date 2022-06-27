@@ -27,8 +27,8 @@ public class TestTareaSimple {
     Robot robot3;
     Robot robot4;
     Robot robot5;
-    Collection<Robot> robotsPedido;
-    Collection<Robot> robots;
+    List<Robot> robotsPedido;
+    List<Robot> robots;
 
     @BeforeEach
     void setUp() {

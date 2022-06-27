@@ -13,7 +13,7 @@ public class Empresa {
     private static Empresa instancia;
     private Informe informe;
     private List<Empleado> ListaEmpleados;
-    private static Collection<Robot> robots = Arrays.asList(
+    private static List<Robot> robots = Arrays.asList(
             new K311Y_a(),
             new K311Y_fl(),
             new K311Y_fu(),
@@ -48,7 +48,7 @@ public class Empresa {
         return robots;
     }
 
-    public void setRobots(Collection<Robot> robots) {
+    public void setRobots(List<Robot> robots) {
         Empresa.robots = robots;
     }
 
