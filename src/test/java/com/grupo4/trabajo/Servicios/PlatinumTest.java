@@ -1,6 +1,10 @@
 package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.*;
+import com.grupo4.trabajo.Pedido.Pedido;
+import com.grupo4.trabajo.Pedido.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.Superficie;
+import com.grupo4.trabajo.Pedido.SuperficieEnum;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Platinium;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;

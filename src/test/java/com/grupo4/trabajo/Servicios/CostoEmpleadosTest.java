@@ -2,15 +2,15 @@ package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.*;
 import com.grupo4.trabajo.Empleado.Empleado;
-import com.grupo4.trabajo.Robots.Robot;
-import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Pedido.Pedido;
+import com.grupo4.trabajo.Pedido.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.PedidoReparacion;
+import com.grupo4.trabajo.Pedido.TipoReparacion;
 import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Economic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

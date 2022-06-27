@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.CalculadoReparacion;
 
-import com.grupo4.trabajo.PedidoReparacion;
+import com.grupo4.trabajo.Pedido.PedidoReparacion;
 import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
-import com.grupo4.trabajo.TipoReparacion;
+import com.grupo4.trabajo.Pedido.TipoReparacion;
 
 public abstract class CalculadorReparacion {
     private final static float PRECIO_ELECTRICIDAD_COMPLEJIDAD_BAJA=2000;

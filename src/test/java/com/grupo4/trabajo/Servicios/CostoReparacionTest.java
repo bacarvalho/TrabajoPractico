@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.CalculadoReparacion.CalculadorReparacion;
-import com.grupo4.trabajo.PedidoReparacion;
-import com.grupo4.trabajo.TipoReparacion;
+import com.grupo4.trabajo.Pedido.PedidoReparacion;
+import com.grupo4.trabajo.Pedido.TipoReparacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -3,13 +3,13 @@ import com.grupo4.trabajo.Cliente;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
 import com.grupo4.trabajo.Exceptions.NoCantOrdenamientoDisponibleException;
-import com.grupo4.trabajo.Pedido;
-import com.grupo4.trabajo.PedidoLimpieza;
-import com.grupo4.trabajo.Robots.SuperficieEnum;
+import com.grupo4.trabajo.Pedido.Pedido;
+import com.grupo4.trabajo.Pedido.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.SuperficieEnum;
 import com.grupo4.trabajo.Servicios.ServicioCliente.ActualizadorServicio;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Economic;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
-import com.grupo4.trabajo.Superficie;
+import com.grupo4.trabajo.Pedido.Superficie;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

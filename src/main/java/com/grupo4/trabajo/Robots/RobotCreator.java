@@ -1,8 +1,8 @@
 package com.grupo4.trabajo.Robots;
 
-import com.grupo4.trabajo.Pedido;
-import com.grupo4.trabajo.PedidoLimpieza;
-import com.grupo4.trabajo.Superficie;
+import com.grupo4.trabajo.Pedido.PedidoLimpieza;
+import com.grupo4.trabajo.Pedido.Superficie;
+import com.grupo4.trabajo.Pedido.SuperficieEnum;
 
 public class RobotCreator {
     public Robot crearRobot(Robot modeloRobot,int cantidadDePedidos){

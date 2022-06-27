@@ -1,4 +1,4 @@
-package com.grupo4.trabajo;
+package com.grupo4.trabajo.Pedido;
 
 public class PedidoReparacion {
     TipoReparacion reparacion;

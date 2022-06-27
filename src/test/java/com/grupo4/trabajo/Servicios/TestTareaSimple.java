@@ -2,21 +2,17 @@ package com.grupo4.trabajo.Servicios;
 
 import com.grupo4.trabajo.*;
 import com.grupo4.trabajo.Empleado.Empleado;
+import com.grupo4.trabajo.Pedido.*;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Servicios.EmpleadoService.BuscadorEmpleados;
-import com.grupo4.trabajo.Servicios.RobotsService.BuscadorRobotsEconomic;
-import com.grupo4.trabajo.Servicios.RobotsService.RobotsService;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Classic;
-import com.grupo4.trabajo.Servicios.ServicioCliente.Platinium;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
 import com.grupo4.trabajo.informes.Informe;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class TestTareaSimple {
