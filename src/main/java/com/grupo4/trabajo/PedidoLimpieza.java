@@ -9,13 +9,13 @@ public class PedidoLimpieza {
    private int diasUltimaLimpieza;
 
 
-    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int mascotas, Cliente cliente ){
+    public PedidoLimpieza( Superficie ordenamiento, Superficie limpieza, Superficie lustramiento, int mascotas, int diasUltimaLimpieza){
         this.ordenamiento = ordenamiento;
         this.limpieza = limpieza;
         this.lustramiento = lustramiento;
         this.cantMascotas = mascotas;
         this.limpiezaSimple = LimpiezaSimple();
-        this.diasUltimaLimpieza = cliente.getDiasDesdeUltimaLimpieza();
+        this.diasUltimaLimpieza = diasUltimaLimpieza;
 
     }
 
