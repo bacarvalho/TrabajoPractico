@@ -1,17 +1,17 @@
 package com.grupo4.trabajo.Servicios.RobotsService;
 
-import com.grupo4.trabajo.Pedido;
 import com.grupo4.trabajo.PedidoLimpieza;
 import com.grupo4.trabajo.Robots.Robot;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BuscadorRobotsEconomic implements BuscadorRobots {
-    public Collection<Robot> buscarRobots(PedidoLimpieza pedido, Collection<Robot> robots) {
-        Collection<Robot> robotsPedido = new ArrayList<>();
+    public List<Robot> buscarRobots(PedidoLimpieza pedido, Collection<Robot> robots) {
+        List<Robot> robotsPedido = new ArrayList<>();
         if(pedido.requiereLimpieza()){
             Collection<Robot> aux = robots.stream()
                     .filter(robot -> robot.getSuperficie() == pedido.getLimpieza().getSuperficie())

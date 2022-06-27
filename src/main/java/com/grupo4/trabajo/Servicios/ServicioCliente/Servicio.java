@@ -27,7 +27,7 @@ public abstract class Servicio {
 
     public void realizarPedido(Pedido pedido, Cliente cliente){
         Empleado empleado = null;
-        Collection<Robot> robotsPedido = null;
+        List<Robot> robotsPedido = null;
         try{
             pedidoValidator.validarPedido(pedido,cliente);
             if (pedido.getPedidoLimpieza().requiereLimpieza()) {
@@ -40,7 +40,7 @@ public abstract class Servicio {
                 //consultar si usamos el metodo CalculadorReparacion
             }
             //obtener empleados del pedido
-            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido, (List<Robot>) robotsPedido, empleado));
+            cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
             //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {

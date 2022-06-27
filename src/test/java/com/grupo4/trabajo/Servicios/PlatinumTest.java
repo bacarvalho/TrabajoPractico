@@ -1,12 +1,9 @@
 package com.grupo4.trabajo.Servicios;
 
-import com.grupo4.trabajo.Cliente;
-import com.grupo4.trabajo.Empresa;
-import com.grupo4.trabajo.Pedido;
+import com.grupo4.trabajo.*;
 import com.grupo4.trabajo.Robots.*;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Platinium;
 import com.grupo4.trabajo.Servicios.ServicioCliente.Servicio;
-import com.grupo4.trabajo.Superficie;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,16 +16,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlatinumTest {
 
-   /* Servicio servicio;
-    Pedido p;
+    Servicio servicio;
+    PedidoLimpieza p;
+    Pedido pedido;
     RobotCreator robotCreator = new RobotCreator();
     Robot robot1;
     Robot robot2;
     Robot robot3;
     Robot robot4;
     Robot robot5;
-    Collection<Robot> robotsPedido;
-    Collection<Robot> robots;
+    List<Robot> robotsPedido;
+    List<Robot> robots;
     static final float CUOTA = 200;
     static final float DEUDA = 300;
 
@@ -71,6 +69,5 @@ public class PlatinumTest {
 
         assertThrows(EsDeudorException.class, () -> servicio.getPedidoValidator().validarPedido(p, cliente));
     }
-*/
 }
 
