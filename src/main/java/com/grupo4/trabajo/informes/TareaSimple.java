@@ -37,4 +37,9 @@ public class TareaSimple implements Estrategia{
         }
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();
     }
+
+    @Override
+    public String toString() {
+        return "tarea simple";
+    }
 }
