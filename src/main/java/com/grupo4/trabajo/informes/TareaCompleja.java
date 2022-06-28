@@ -31,7 +31,6 @@ public class TareaCompleja implements Estrategia{
     }
 
 
-
     private float costoEmpleado(Pedido pedido, Empleado empleado){
         if(empleado==null){
             return 0;

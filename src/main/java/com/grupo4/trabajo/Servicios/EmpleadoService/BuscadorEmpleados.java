@@ -13,11 +13,14 @@ public abstract class BuscadorEmpleados {
     public static Empleado BuscarEmpleado(PedidoReparacion pedidoReparacion){
         List<Empleado> listaEmpleados = Empresa.getInstancia().getListaEmpleados();
 
-        for(int i=0;i<listaEmpleados.size();i++) {
-            if(listaEmpleados.get(i).getTipoReparacion() == pedidoReparacion.getReparacion()) {
-                return listaEmpleados.get(i);
+        if (pedidoReparacion !=null){
+            for(int i=0;i<listaEmpleados.size();i++) {
+                if(listaEmpleados.get(i).getTipoReparacion() == pedidoReparacion.getReparacion()) {
+                    return listaEmpleados.get(i);
+                }
             }
         }
+
 
         return null;
 
