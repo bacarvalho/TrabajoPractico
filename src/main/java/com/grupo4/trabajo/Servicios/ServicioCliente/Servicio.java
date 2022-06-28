@@ -39,7 +39,6 @@ public abstract class Servicio {
             }
             //obtener empleados del pedido
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
-            //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
             System.out.println(e.getMessage());

@@ -154,8 +154,8 @@ class Pedido{
 -pedidoLimpieza: PedidoLimpieza
 -pedidoReparacion: pedidoReparacion
 +Pedido(pedidoLimpieza:PedidoLimpieza, pedidoReparacion: PedidoReparacion)
-+solicitaLimpieza(): boolean
-+solicitaReparacion(): boolean
++requierePedidoLimpieza(): boolean
++requierePedidoReparacion(): boolean
 }
 
 class PedidoLimpieza{
@@ -168,6 +168,7 @@ class PedidoLimpieza{
 +requiereLimpieza(): boolean
 +requiereOrdenamiento(): boolean
 +requiereLustramiento(): boolean
++limpiezaSimple(): boolean
 }
 
 class PedidoReparacion{
