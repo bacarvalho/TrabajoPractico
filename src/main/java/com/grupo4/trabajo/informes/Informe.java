@@ -68,9 +68,14 @@ public class Informe {
     }
 
     public void incrementarContadorPedidos(Pedido pedido){
-        if(pedido.getPedidoLimpieza().LimpiezaSimple()){
-            setCantidadPedidosSimples(getCantidadPedidosSimples()+1);
-        }else{
+        if(pedido.requierePedidoLimpieza()){
+            if(pedido.getPedidoLimpieza().LimpiezaSimple()){
+                setCantidadPedidosSimples(getCantidadPedidosSimples()+1);
+            }else{
+                setCantidadPedidosComplejos(getCantidadPedidosComplejos()+1);
+            }
+        }
+        else{
             setCantidadPedidosComplejos(getCantidadPedidosComplejos()+1);
         }
     }
