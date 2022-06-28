@@ -31,7 +31,7 @@ public class TareaSimple implements EstrategiaTarea {
 
 
     private float costoEmpleado(Pedido pedido, Empleado empleado){
-        if(empleado==null || pedido.requierePedidoReparacion()){
+        if(empleado==null || !pedido.requierePedidoReparacion()){
             return 0;
         }
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();

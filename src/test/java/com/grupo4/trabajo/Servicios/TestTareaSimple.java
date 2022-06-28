@@ -50,7 +50,7 @@ public class TestTareaSimple {
         Empleado empleado= BuscadorEmpleados.BuscarEmpleado(pedidoReparacion);
 
         Informe informe = new Informe();
-        //assertEquals(2250.0f,informe.calcularCostoPedido(pedido,robots,empleado));
+        assertEquals(2250.0f,informe.calcularCostoPedido(pedido,robots,empleado));
     }
 
     @Test

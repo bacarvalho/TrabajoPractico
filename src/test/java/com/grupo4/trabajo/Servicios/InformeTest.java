@@ -89,7 +89,7 @@ public class InformeTest {
 
         total += Empresa.getInstancia().getInforme().calcularCostoPedido(pedido2,robotsPedido, empleado);
 
-        empleado = null;
+        empleado = null; // el pedido 3 no requiere de reparacion.
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(pedido3.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
         total += Empresa.getInstancia().getInforme().calcularCostoPedido(pedido3,robotsPedido, empleado);
 
