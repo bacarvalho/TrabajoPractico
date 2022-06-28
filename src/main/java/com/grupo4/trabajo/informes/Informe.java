@@ -11,18 +11,18 @@ public class Informe {
     private int cantidadPedidosSimples;
     private int cantidadPedidosComplejos;
     private final static int AJUSTE_COMUN_DEFINIDO=3;
-    private Estrategia estrategia;
+    private EstrategiaTarea estrategiaTarea;
 
     public int getAjusteComunDefinido() {
         return AJUSTE_COMUN_DEFINIDO;
     }
 
-    public Estrategia getEstrategia() {
-        return estrategia;
+    public EstrategiaTarea getEstrategia() {
+        return estrategiaTarea;
     }
 
-    public void setEstrategia(Estrategia estrategia) {
-        this.estrategia = estrategia;
+    public void setEstrategia(EstrategiaTarea estrategiaTarea) {
+        this.estrategiaTarea = estrategiaTarea;
     }
 
     public Informe(){
@@ -39,7 +39,7 @@ public class Informe {
         } else{
             setEstrategia(new TareaCompleja());
         }
-        return estrategia.calcularCosto(pedido, robotList,empleado);
+        return estrategiaTarea.calcularCosto(pedido, robotList,empleado);
     }
 
     public float calcularCostoCliente(Cliente cliente){

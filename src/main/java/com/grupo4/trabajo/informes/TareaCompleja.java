@@ -8,7 +8,7 @@ import com.grupo4.trabajo.Robots.Robot;
 import java.util.Iterator;
 import java.util.List;
 
-public class TareaCompleja implements Estrategia{
+public class TareaCompleja implements EstrategiaTarea {
     private final static int CANTIDAD_HORAS = 2;
     @Override
     public float calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado) {
