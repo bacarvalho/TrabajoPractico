@@ -28,12 +28,12 @@ public abstract class Servicio {
         List<Robot> robotsPedido = null;
         try{
             pedidoValidator.validarPedido(pedido,cliente);
-            if (pedido.getPedidoLimpieza().requiereLimpieza()) {
+            if (pedido.requierePedidoLimpieza()) {
                 robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
                 robotsService.agregarPedidoRobots(robotsPedido, pedido.getPedidoLimpieza());
                 Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             }
-            if (pedido.getPedidoReparacion().requiereReparacion()) {
+            if (pedido.requierePedidoReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
                 //consultar si usamos el metodo CalculadorReparacion
             }

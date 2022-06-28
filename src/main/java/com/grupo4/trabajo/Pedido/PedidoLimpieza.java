@@ -2,7 +2,6 @@ package com.grupo4.trabajo.Pedido;
 
 public class PedidoLimpieza {
 
-    private boolean limpiezaSimple;
     private Superficie limpieza;
     private Superficie ordenamiento;
     private Superficie lustramiento;
@@ -58,7 +57,4 @@ public class PedidoLimpieza {
 
     }
 
-    public boolean isLimpiezaSimple() {
-        return limpiezaSimple;
-    }
 }

@@ -19,11 +19,11 @@ public class Pedido {
     }
 
     public boolean requierePedidoLimpieza() {
-        return this.pedidoLimpieza.requiereLimpieza();
+        return this.pedidoLimpieza != null;
     }
 
     public boolean requierePedidoReparacion() {
-        return this.pedidoReparacion.requiereReparacion();
+        return this.pedidoReparacion != null;
     }
 
 
