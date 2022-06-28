@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios.ServicioCliente;
 
+import com.grupo4.trabajo.CalculadoReparacion.CalculadorReparacion;
 import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
@@ -35,7 +36,7 @@ public abstract class Servicio {
             }
             if (pedido.requierePedidoReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
-                //consultar si usamos el metodo CalculadorReparacion
+                cliente.recibirMensaje("El precio de la reparacion es: " + CalculadorReparacion.calcularCostoReparacion(pedido.getPedidoReparacion()));
             }
             //obtener empleados del pedido
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
