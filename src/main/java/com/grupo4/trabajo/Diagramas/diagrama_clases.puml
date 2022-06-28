@@ -34,6 +34,20 @@ class Informe{
     +calcularCostoCliente(cliente)
 }
 
+Informe *-- Estrategia
+
+interface Estrategia {
+    +calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado) : float
+}
+Estrategia <|.down. TarejaCompleja
+class TarejaCompleja {
+
+}
+
+Estrategia <|.down. TareaSimple
+class TareaSimple {
+
+}
 
 abstract class Servicio{
 - pedidoValidator: PedidoValidator
