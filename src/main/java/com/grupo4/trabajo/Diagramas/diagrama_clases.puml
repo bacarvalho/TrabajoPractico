@@ -10,6 +10,7 @@ class Cliente{
 
 +Cliente(Servicio)
 +pedirPedido(pedido: Pedido)
++recibirMensaje(mensaje: String)
 +setters()
 +getters()
 }
@@ -32,19 +33,20 @@ class Informe{
 
     +calcularCostoPedido(pedido)
     +calcularCostoCliente(cliente)
+    +incrementarContadorPedidos(pedido: Pedido)
 }
 
-Informe *-- Estrategia
+Informe *-- EstrategiaTarea
 
-interface Estrategia {
+interface EstrategiaTarea {
     +calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado) : float
 }
-Estrategia <|.down. TarejaCompleja
+EstrategiaTarea <|.down. TarejaCompleja
 class TarejaCompleja {
 
 }
 
-Estrategia <|.down. TareaSimple
+EstrategiaTarea <|.down. TareaSimple
 class TareaSimple {
 
 }
@@ -153,8 +155,8 @@ class Pedido{
 -pedidoLimpieza: PedidoLimpieza
 -pedidoReparacion: pedidoReparacion
 +Pedido(pedidoLimpieza:PedidoLimpieza, pedidoReparacion: PedidoReparacion)
-+solicitaLimpieza(): boolean
-+solicitaReparacion(): boolean
++requierePedidoLimpieza(): boolean
++requierePedidoReparacion(): boolean
 }
 
 class PedidoLimpieza{
@@ -167,6 +169,7 @@ class PedidoLimpieza{
 +requiereLimpieza(): boolean
 +requiereOrdenamiento(): boolean
 +requiereLustramiento(): boolean
++limpiezaSimple(): boolean
 }
 
 class PedidoReparacion{
@@ -226,8 +229,8 @@ Pedido <--  Cliente : Uso
 
 RobotCreator --> Robot
 RobotsService *-up- BuscadorRobots
-BuscadorRobots <|-up- BuscadorRobotsEconomic
-BuscadorRobots <|-up- BuscadorRobotsPlatinium
+BuscadorRobots <|.up. BuscadorRobotsEconomic
+BuscadorRobots <|.up. BuscadorRobotsPlatinium
 
 Cliente <-up- Empresa  : Uso
 

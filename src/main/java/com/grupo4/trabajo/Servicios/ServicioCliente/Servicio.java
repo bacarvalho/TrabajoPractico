@@ -1,5 +1,6 @@
 package com.grupo4.trabajo.Servicios.ServicioCliente;
 
+import com.grupo4.trabajo.CalculadoReparacion.CalculadorReparacion;
 import com.grupo4.trabajo.Empleado.Empleado;
 import com.grupo4.trabajo.Exceptions.EsDeudorException;
 import com.grupo4.trabajo.Exceptions.NoCantLimpiezasDisponibleException;
@@ -31,15 +32,13 @@ public abstract class Servicio {
             if (pedido.requierePedidoLimpieza()) {
                 robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
                 robotsService.agregarPedidoRobots(robotsPedido, pedido.getPedidoLimpieza());
-                Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             }
             if (pedido.requierePedidoReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
-                //consultar si usamos el metodo CalculadorReparacion
+                cliente.recibirMensaje("El precio de la reparacion es: " + CalculadorReparacion.calcularCostoReparacion(pedido.getPedidoReparacion()));
             }
-            //obtener empleados del pedido
+            Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
-            //actualizadorServicio.actualizarServicio(pedido, this);
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {
             System.out.println(e.getMessage());

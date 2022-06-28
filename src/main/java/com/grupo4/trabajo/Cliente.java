@@ -63,6 +63,10 @@ public class Cliente {
         return costoTotal;
     }
 
+    public void recibirMensaje(String mensaje){
+        System.out.println(mensaje);
+    }
+
     public void agregarCostoPedido(Float costo){
         this.costosDeServicios.add(costo);
     }

@@ -8,7 +8,7 @@ import com.grupo4.trabajo.Robots.Robot;
 import java.util.Iterator;
 import java.util.List;
 
-public class TareaCompleja implements Estrategia{
+public class TareaCompleja implements EstrategiaTarea {
     private final static int CANTIDAD_HORAS = 2;
     @Override
     public float calcularCosto(Pedido pedido, List<Robot> robotList, Empleado empleado) {
@@ -32,7 +32,7 @@ public class TareaCompleja implements Estrategia{
 
 
     private float costoEmpleado(Pedido pedido, Empleado empleado){
-        if(empleado==null){
+        if(empleado==null || !pedido.requierePedidoReparacion()){
             return 0;
         }
         return (empleado.getSueldo()/160) * pedido.getPedidoReparacion().getComplejidad();

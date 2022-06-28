@@ -6,12 +6,14 @@ autonumber
 Cliente -> Servicio: pedirPedido(pedido,this)
 Servicio-> Servicio: realizarPedido(pedido,cliente)
 Servicio-> PedidoValidator: validarPedido(pedido,cliente)
-Servicio-> RobotsService: getBuscadorRobots()
-RobotsService -> BuscadorRobots: buscarRobots(List<> robots, pedido)
-BuscadorRobots -> Empresa: getInstance().getRobots()
-BuscadorRobots -> Servicio: return List<> robotsPedido
-Servicio -> RobotsService: agregarPedidoRobots(pedido,List<> robotsPedido)
-Servicio -> Servicio: actualizarServicio()
+Servicio-> Pedido : requiereLimpieza()
+Servicio-> BuscadorRobots: buscarRobots(pedidoLimpieza)
+Servicio-> RobotsService: agregarPedidoRobots(robots)
+Servicio-> Pedido: requiereReparacion()
+Servicio-> BuscadorEmpleados: buscarEmpleado(pedidoReparacion)
+Servicio-> Cliente: recibirMensaje(mensaje)
+Servicio-> Cliente: agregarCostoPedido(precioDelPedido)
+Servicio-> ActualizadorServicio: actualizarServicio(pedido,this)
 
 
 

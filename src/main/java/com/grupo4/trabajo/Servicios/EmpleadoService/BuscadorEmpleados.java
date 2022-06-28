@@ -12,16 +12,11 @@ public abstract class BuscadorEmpleados {
     // Tenemos 1 solo empleado por cada especialidad. A revisar
     public static Empleado BuscarEmpleado(PedidoReparacion pedidoReparacion){
         List<Empleado> listaEmpleados = Empresa.getInstancia().getListaEmpleados();
-
-        if (pedidoReparacion !=null){
-            for(int i=0;i<listaEmpleados.size();i++) {
-                if(listaEmpleados.get(i).getTipoReparacion() == pedidoReparacion.getReparacion()) {
-                    return listaEmpleados.get(i);
-                }
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.getTipoReparacion() == pedidoReparacion.getReparacion()) {
+                return empleado;
             }
         }
-
-
         return null;
 
     }
