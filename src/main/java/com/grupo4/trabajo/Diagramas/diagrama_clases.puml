@@ -226,8 +226,8 @@ Pedido <--  Cliente : Uso
 
 RobotCreator --> Robot
 RobotsService *-up- BuscadorRobots
-BuscadorRobots <|-up- BuscadorRobotsEconomic
-BuscadorRobots <|-up- BuscadorRobotsPlatinium
+BuscadorRobots <|.up. BuscadorRobotsEconomic
+BuscadorRobots <|.up. BuscadorRobotsPlatinium
 
 Cliente <-up- Empresa  : Uso
 
