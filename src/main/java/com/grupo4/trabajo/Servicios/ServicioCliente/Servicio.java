@@ -32,13 +32,12 @@ public abstract class Servicio {
             if (pedido.requierePedidoLimpieza()) {
                 robotsPedido = robotsService.getBuscadorRobots().buscarRobots(pedido.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
                 robotsService.agregarPedidoRobots(robotsPedido, pedido.getPedidoLimpieza());
-                Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             }
             if (pedido.requierePedidoReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
                 cliente.recibirMensaje("El precio de la reparacion es: " + CalculadorReparacion.calcularCostoReparacion(pedido.getPedidoReparacion()));
             }
-            //obtener empleados del pedido
+            Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));
             ActualizadorServicio.actualizarServicio(pedido,this);
         } catch (EsDeudorException | NoCantOrdenamientoDisponibleException | NoCantLimpiezasDisponibleException e) {

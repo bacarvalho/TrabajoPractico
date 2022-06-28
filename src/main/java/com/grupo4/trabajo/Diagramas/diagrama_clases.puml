@@ -10,6 +10,7 @@ class Cliente{
 
 +Cliente(Servicio)
 +pedirPedido(pedido: Pedido)
++recibirMensaje(mensaje: String)
 +setters()
 +getters()
 }
