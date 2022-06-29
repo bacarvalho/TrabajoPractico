@@ -63,8 +63,8 @@ public class Cliente {
         return costoTotal;
     }
 
-    public void recibirMensaje(String mensaje){
-        System.out.println(mensaje);
+    public float devolverCostoReparacion(float costo){
+        return costo;
     }
 
     public void agregarCostoPedido(Float costo){
