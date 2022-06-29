@@ -62,7 +62,7 @@ public class InformeTest {
         cliente.pedirPedido(pedido3);
 
         assertEquals(1, Empresa.getInstancia().getInforme().getCantidadPedidosSimples());  //Al ser una instacia el test falla, porque cambia el valor de la cantidad. Si se corre solo, anda.
-        assertEquals(1, Empresa.getInstancia().getInforme().getCantidadPedidosComplejos());
+        assertEquals(2, Empresa.getInstancia().getInforme().getCantidadPedidosComplejos());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class InformeTest {
         robotsPedido = servicio.getRobotsService().getBuscadorRobots().buscarRobots(pedido3.getPedidoLimpieza(), Empresa.getInstancia().getRobots());
         total += Empresa.getInstancia().getInforme().calcularCostoPedido(pedido3,robotsPedido, empleado);
 
-        assertEquals(cliente.getTotalCostosDeServiciosGenerados(), total);
+        assertEquals(Empresa.getInstancia().getInforme().calcularCostoCliente(cliente), total);
     }
 
 }
