@@ -35,7 +35,7 @@ public abstract class Servicio {
             }
             if (pedido.requierePedidoReparacion()) {
                 empleado = BuscadorEmpleados.BuscarEmpleado(pedido.getPedidoReparacion());
-                cliente.recibirMensaje("El precio de la reparacion es: " + CalculadorReparacion.calcularCostoReparacion(pedido.getPedidoReparacion()));
+                cliente.devolverCostoReparacion(CalculadorReparacion.calcularCostoReparacion(pedido.getPedidoReparacion()));
             }
             Empresa.getInstancia().getInforme().incrementarContadorPedidos(pedido);
             cliente.agregarCostoPedido(Empresa.getInstancia().getInforme().calcularCostoPedido(pedido,robotsPedido, empleado));

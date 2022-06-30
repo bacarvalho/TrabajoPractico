@@ -52,19 +52,9 @@ public class Cliente {
         return costosDeServicios;
     }
 
-    public float getTotalCostosDeServiciosGenerados() {
-        Float costoTotal = Float.valueOf(0);
-        Iterator<Float> it = costosDeServicios.iterator();
-        while (it.hasNext()) {
-            Float total = (float) it.next();
-            costoTotal+= total ;
-        }
 
-        return costoTotal;
-    }
-
-    public void recibirMensaje(String mensaje){
-        System.out.println(mensaje);
+    public float devolverCostoReparacion(float costo){
+        return costo;
     }
 
     public void agregarCostoPedido(Float costo){
